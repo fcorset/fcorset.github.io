@@ -1,5 +1,5 @@
 ---
-title: "Welcome to my website!"
+title: "Welcome to the website of Franck Corset!"
 ---
 
 You're up and running!
