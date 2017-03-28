@@ -8,6 +8,10 @@ title: "Curriculum Vitae"
 
 # Enseignements 
 
-Au département informatique de l'IUT2
+Au département informatique de l'IUT2 : Mathématiques et Statistique
 
 En M2 SSD de l'UFR IM2AG : Fiabilité et Statistique Computationnelle
+
+# Recherche 
+
+Fiabilité et Optimisation de la maintenance
