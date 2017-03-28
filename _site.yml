@@ -7,9 +7,13 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
-#    - text: "About"
-#      icon: fa-user 
-#      href: about.html
+    - text: "Enseignement"
+      icon: fa-gear
+      menu:
+        - text: "TP1"
+          href: ./TPs/tp1.html
+        - text: "TP2"
+          href: tp2.html
     - text: "Shiny"
       href: shiny.html
     - text: "CV"
