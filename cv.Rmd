@@ -1,9 +1,13 @@
 ---
-title: "CV"
+title: "Curriculum Vitae"
 ---
 
-<a href="CV.pdf#" class="download" title="Download CV as PDF">Download CV</a>			
+<a href="CV.pdf#" class="download" title="Download CV as PDF">Télécharger le CV</a>			
 
-## Header
+## Maître de Conférences à l'Université Grenoble Alpes
 
-Say more about your CV here.
+# Enseignements 
+
+Au département informatique de l'IUT2
+
+En M2 SSD de l'UFR IM2AG : Fiabilité et Statistique Computationnelle
