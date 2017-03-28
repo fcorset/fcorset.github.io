@@ -7,9 +7,9 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
-    - text: "About"
-      icon: fa-user 
-      href: about.html
+#    - text: "About"
+#      icon: fa-user 
+#      href: about.html
     - text: "Shiny"
       href: shiny.html
     - text: "CV"
