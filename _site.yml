@@ -10,8 +10,8 @@ navbar:
     - text: "About"
       icon: fa-user 
       href: about.html
-    - text: "Essai"
-      href: essai.html
+    - text: "Shiny"
+      href: shiny.html
     - text: "CV"
       icon: fa-file-pdf-o
       href: cv.html
