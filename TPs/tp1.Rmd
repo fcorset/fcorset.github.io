@@ -295,7 +295,9 @@ simu <- replicate(100,lancer())
 La fonction apply() permet de retourner un vecteur obtennu en appliquant une fonction sur une matrice. On peut, dans l'exemple précédent, compre le nombre de piles obtenu par expérience.
 
 ```{r}
-apply(simu,MARGIN=2,FUN=sum)
+(nb.pile<-apply(simu,MARGIN=2,FUN=sum))
+table(nb.pile)
+barplot(table(nb.pile)/100,main="Diagramme en baton des piles obtenus",xlab="Nombre de piles")
 ```
 
 # Exercices
