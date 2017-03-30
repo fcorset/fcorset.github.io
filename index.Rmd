@@ -2,4 +2,4 @@
 title: "Bienvenue sur mon site web !"
 ---
 
-Ce site web a été créé avec Rmarkdown et Rstudio
+Ce site web a été créé avec Rmarkdown et Rstudio 
