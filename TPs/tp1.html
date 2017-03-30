@@ -132,7 +132,7 @@ $(document).ready(function () {
 <p>Vous devez créer un nouveau script R que vous nommerez “TP1.R”. Pensez à commenter chacune de vos lignes de commandes.</p>
 </div>
 <div id="r-est-un-super-calculateur" class="section level1">
-<h1>R est un super-calculateur}</h1>
+<h1>R est un super-calculateur</h1>
 <p>Il est possible d’effectuer des calculs très simples comme :</p>
 <ul>
 <li>calcul simple</li>
@@ -248,6 +248,240 @@ class(z)</code></pre>
 <pre class="r"><code>z</code></pre>
 <pre><code>## [1] Petit Grand Moyen Grand Moyen Petit Petit
 ## Levels: Petit &lt; Moyen &lt; Grand</code></pre>
+</div>
+</div>
+<div id="fonctions-sous-r" class="section level1">
+<h1>Fonctions sous R</h1>
+<p>Une fonction est un objet R, comme les vecteurs, les matrices, les tableaux de données. Il existe beaucoup de fonctions classiques que vous serez amenés à utiliser. Ainsi, la fonction c() permet de créer un vecteur.</p>
+<pre class="r"><code>c(1:5)</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div id="mes-premieres-fonctions" class="section level2">
+<h2>Mes premières fonctions</h2>
+<p>Vous pouvez également créer vos propres fonctions. La syntaxe est la suivante</p>
+<pre class="r"><code>Hello &lt;- function()
+{
+cat(&quot;Hello World&quot;,&quot;\n&quot;) 
+}</code></pre>
+<p>Ensuite, vous pouvez exécuter cette fonction comme suit (ne pas oublier les parenthèses)</p>
+<pre class="r"><code>Hello()</code></pre>
+<pre><code>## Hello World</code></pre>
+<p>On peut remarquer que la fontion précédente n’avait pas d’argument. La plupart du temps, les fonctions possèdent des arguments en entrée.</p>
+<pre class="r"><code>Bonjour &lt;- function(x)
+{
+  cat(&quot;Bonjour&quot;,x,&quot;\n&quot;) 
+}</code></pre>
+<pre class="r"><code>Bonjour(&quot;et bon TP&quot;)</code></pre>
+<pre><code>## Bonjour et bon TP</code></pre>
+</div>
+<div id="quelques-fonctions-usuelles" class="section level2">
+<h2>Quelques fonctions usuelles</h2>
+<p>La fonction sample(x) permet de tirer aléatoirement parmi les éléments de x, avec ou sans remise. Ainsi, on peut simuler 10 lancers d’une pièce de monnaie comme suit (en considérant que les 1 sont des piles et les 0 des faces) :</p>
+<pre class="r"><code>sample(0:1,10,replace=T)</code></pre>
+<pre><code>##  [1] 0 1 1 0 0 1 0 0 0 1</code></pre>
+<p>On peut également générer des nombres aléatoires entre 0 et 1 par la fonction runif :</p>
+<pre class="r"><code>runif(5)</code></pre>
+<pre><code>## [1] 0.7532884 0.5417174 0.2009357 0.7126264 0.4934434</code></pre>
+<p>Une autre commande utile est replicate() qui permet de répéter une expression. On peut par exemple répéter 100 fois le lancement de 10 pièces de monnaie.</p>
+<pre class="r"><code>lancer &lt;- function() sample(0:1,10,replace=T)
+simu &lt;- replicate(100,lancer())</code></pre>
+<p>La fonction apply() permet de retourner un vecteur obtennu en appliquant une fonction sur une matrice. On peut, dans l’exemple précédent, compre le nombre de piles obtenu par expérience.</p>
+<pre class="r"><code>apply(simu,MARGIN=2,FUN=sum)</code></pre>
+<pre><code>##   [1] 2 5 4 3 6 5 7 4 5 3 8 5 7 5 8 4 4 4 3 5 2 4 3 5 4 7 6 5 8 6 2 6 1 3 8
+##  [36] 7 5 6 6 4 8 8 5 6 7 4 2 5 6 6 4 8 6 5 5 5 2 6 5 5 9 5 6 9 4 6 3 3 4 6
+##  [71] 4 7 5 3 5 3 7 5 5 4 7 3 7 4 4 4 6 4 6 5 5 3 3 7 3 5 4 4 6 4</code></pre>
+</div>
+</div>
+<div id="exercices" class="section level1">
+<h1>Exercices</h1>
+<ul>
+<li><p>Faire une fonction qui simule le lancement d’une pièce (résultat pile ou face).</p></li>
+<li><p>Faire une fonction qui simule le lancement d’un dé à 6 faces (avec la fonction sample()).</p></li>
+<li><p>Simuler le jeu de Yams (lancer de 5 dés simultanément) en utilisant les paramètres size et replace de la fonction sample().</p></li>
+<li><p>Estimer la probabilité d’obtenir un yams en utilisant les fonctions apply(), replicate() et unique(). Comparer à la valeur théorique.</p></li>
+</ul>
+</div>
+<div id="tp-etude-sur-lindice-de-la-masse-corporelle" class="section level1">
+<h1>TP : Etude sur l’indice de la masse corporelle</h1>
+<p>On dispose d’un échantillon de 10 enfants agés de 3 ou 4 ans lors de leur entrée en maternelle. Les données disponibles pour chaque enfant sont :</p>
+<ul>
+<li>le sexe : F pour fille et G pour garçon;</li>
+<li>le fait que leur école soit située en ZEP : O pour oui et N pour non;</li>
+<li>l’âge en années et en mois (constituant deux variables);</li>
+<li>le poids en kg arrondi à 100 g près;</li>
+<li>la taille en cm arrondie à 0,5 cm près.</li>
+</ul>
+
+<ol style="list-style-type: decimal">
+<li>Choisissez la fonction R appropriée pour enregistrer les données de chacune des variables dans des vecteurs que vous nommerez {}, {}, {} et {}.</li>
+<li>Calculez la moyenne des variables lorsque c’est possible.</li>
+<li>Calculer l’IMC des individus et regroupez les valeurs obtenues dans un vecteur nommé IMC sachant que <span class="math display">\[
+IMC= \displaystyle \frac{Poids (kg)}{Taille^2(m)}
+\]</span></li>
+<li>Regroupez ces variables dans la structure R qui vous paraît la plus adaptée.</li>
+<li>Utilisez l’aide en ligne de R afin d’obtenir des informations sur la fonction plot().</li>
+<li>Tracez le nuage de points du Poids en fonction de la Taille. Pensez à fournir un titre à votre graphique et à annoter vos axes.</li>
+</ol>
+</div>
+<div id="importer-des-donnees" class="section level1">
+<h1>Importer des données</h1>
+<div id="importer-des-donnees-depuis-un-fichier-texte-ascii" class="section level2">
+<h2>Importer des données depuis un fichier texte ASCII</h2>
+<p>On peut entrer à la main dans un fichier à l’aide de votre éditeur de texte préféré. Lorsque le nombre de données est important, il est préférable d’utiliser un tableur.</p>
+<p>Il existe trois fonctions R principales à utiliser pour importer des données depuis un fichier texte :</p>
+<ul>
+<li>read.table() : pour les jeux de données sous forme de tableaux.</li>
+<li>read.ftable() : permet de lire les tableaux de contingence.</li>
+<li>scan() : beaucoup plus flexible et puissant.</li>
+</ul>
+<div id="importer-avec-read.table" class="section level3">
+<h3>Importer avec read.table()</h3>
+<p>Cette instruction va lire les données présentes dans le fichier et les rapatrier sous la forme d’un data.frame :</p>
+<pre class="r"><code>donnees &lt;- read.table(file=&quot;nutriage.txt&quot;,header=T,sep=&quot;\t&quot;,dec=&quot;.&quot;)</code></pre>
+<p>Vous avez intérêt à utiliser la fonction file.choose() à la place du nom du fichier. Cette fonction va ouvrir une boite de dialogue, dans laquelle vous pourrez aller chercher votre fichier.</p>
+<p>La fonction read.table() comprend de nombreux paramètres dont les plus utilisés sont :</p>
+<ul>
+<li>file=chemin/vers/fichier : emplacement et nom du fichier à lire. file.choose() permet d’ouvrir une fenêtre de dialogue pour choisir le fichier.</li>
+<li>header=TRUE : valeur logique indiquant si le fichier contient le nom des variables sur la première ligne.</li>
+<li>sep=“<span class="math inline">\(\backslash t\)</span>” : les valeurs sur chaque ligne sont séparées par ce caractère (“<span class="math inline">\(\backslash t\)</span>” pour tabulation, &quot; &quot; pour un espace, “,” pour une virgule).</li>
+<li>dec=“.” : séparateur décimal pour les nombres (“.” ou “,”).</li>
+<li>row.names=1 : la première colonne du fichier contient le nom des individus. Si ce n’est pas le cas, il suffit d’omettre ce paramètre.</li>
+</ul>
+<p>La fonction attach() permet d’avoir accès aux variables du data.frame directement en tapant leur nom.</p>
+<pre class="r"><code>attach(donnees)</code></pre>
+<pre class="r"><code>rnorm(10)</code></pre>
+<pre><code>##  [1] -1.2976711  0.6386499  0.9845792  2.3912878 -0.1971209 -1.0729095
+##  [7]  0.8918081  1.1857516  1.2493146 -1.0015261</code></pre>
+</div>
+</div>
+<div id="importer-depuis-rstudio" class="section level2">
+<h2>Importer depuis RStudio</h2>
+<p>RStudio permet d’importer directement des données via le menu “Environment” puis l’onglet “Import Dataset”. Télécharger le fichier nommé “nutriage.txt” depuis l’intranet et créer sous R le dataframe associé à ce jeux de données, que vous nommerez “nutriage”. La description de ce jeu de données se trouve dans le fichier “nutriage.html”, que vous trouverez sur l’intranet.</p>
+<p>Question : Combien y-a-t-il de variables ? Combien y-a-t-il d’invidus ?</p>
+</div>
+</div>
+<div id="etude-dun-jeu-de-donnees" class="section level1">
+<h1>Etude d’un jeu de données</h1>
+<div id="structuration-des-variables-suivant-leur-type" class="section level2">
+<h2>Structuration des variables suivant leur type</h2>
+<p>En statistique, on classe les variables selon 4 catégories :</p>
+<ul>
+<li>qualitatives nominales (sans ordre)</li>
+<li>qualitatives ordinales (avec ordre)</li>
+<li>quantitatives discrètes</li>
+<li>quantitatives continues</li>
+</ul>
+<div class="figure">
+<img src="data:image/png;base64,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" alt="Classification des variables statistiques" />
+<p class="caption">Classification des variables statistiques</p>
+</div>
+<p>Question : A partir de cette figure, classer toutes les variables du jeu de données nutriage ?</p>
+<p>Par défaut, R considère toute variable à variable numérique comme étant quantitative. Pour changer le type d’une variable, vous utiliserez les fonctions suivantes :</p>
+<ul>
+<li>Pour rendre la la variable qualitative nominale, on utilise pour cela la fonction as.factor().</li>
+<li>Pour rendre la la variable qualitative ordinale, on utilise la fonction as.ordered().</li>
+</ul>
+<p>Question : Pour toutes les variables qualitatives que vous avez identifiées, changer leurs types sous R.</p>
+<p>De plus on utilise la fonction levels() pour recoder les modalités d’une variable qualitative. La fonction nlevels() donne le nombre de modalités de cette variable.</p>
+<p>Question : Recoder les modalités des variables qualitatives en suivant le fichier explicatif “nutriage.html”.</p>
+</div>
+<div id="presentation-synthetique-des-donnees" class="section level2">
+<h2>Présentation synthétique des données</h2>
+<p>On dispose des mesures d’une ou plusieurs variables pour chacun des N individus. Le tableau donne les variables en colonne et les individus en ligne. Sous R, les données ainsi définies sont dans une structure appelée data.frame.</p>
+<div id="tableau-des-effectifs-ou-des-frequences-dune-variable-qualitative" class="section level3">
+<h3>Tableau des effectifs ou des fréquences d’une variable qualitative</h3>
+<p>Pour connaître la distribution d’une variable dans notre échantillon, il est plus pratique de représenter un tableau de données individuelles sous une forme plus condensée, par exemple un tableau des effectifs ou des fréquences. On peut le faire sous R grâce à la commande table(). On se servira de la fonction length() pour donner le tableau des fréquences.</p>
+<p>Question : Comment les personnes de cet échantillon utilisent les matières grasses pour cuisiner ?</p>
+<p>Question : Combien de personnes mangent quotiennement de la viande ?</p>
+</div>
+<div id="tableau-de-donnees-regroupees-en-classes-dune-variable-quantitative" class="section level3">
+<h3>Tableau de données regroupées en classes d’une variable quantitative</h3>
+<p>On peut représenter un tableau de données individuelles quantitatives en regroupant les valeurs par intervalle. Par exemple, on peut se servir de la fonction hist() en spécifiant le vecteur des bornes des classes dans son paramètre breaks.</p>
+<pre class="r"><code>res&lt;-hist(taille,plot=F)
+nn&lt;-as.character(res$breaks)
+x&lt;-as.table(res$counts)
+dimnames(x)&lt;-list(paste(nn[-length(nn)],nn[-1],sep=&quot;-&quot;))
+x</code></pre>
+<pre><code>## 140-145 145-150 150-155 155-160 160-165 165-170 170-175 175-180 180-185 
+##       1       7      37      50      46      31      27      17       4 
+## 185-190 
+##       6</code></pre>
+<p>Question : Combien y-a-t-il d’individus dont la taille est dans l’intervalle ]155,160] ?</p>
+</div>
+</div>
+<div id="tableaux-croisant-deux-variables-qualitatives" class="section level2">
+<h2>Tableaux croisant deux variables qualitatives</h2>
+<div id="tableau-de-contingence" class="section level3">
+<h3>Tableau de contingence</h3>
+<p>On peut utiliser la fonction table() pour obtenir le tableau de contingence de deux variables</p>
+<pre class="r"><code>matable&lt;-table(sexe,situation)
+matable</code></pre>
+<pre><code>##     situation
+## sexe  1  2  3
+##    1 20 63  2
+##    2 78 56  7</code></pre>
+<p>Question : Dans cet échantillon de 226 individus, quel est le pourcentage d’hommes vivant en couple ?</p>
+<p>On peut ajouter les marges en utilisant la fonction addmargins().</p>
+<pre class="r"><code>matable_complete &lt;- addmargins(matable)
+matable_complete</code></pre>
+<pre><code>##      situation
+## sexe    1   2   3 Sum
+##   1    20  63   2  85
+##   2    78  56   7 141
+##   Sum  98 119   9 226</code></pre>
+<p>Question : Parmi les hommes, quel est le pourcentage d’homme vivant en couple ?</p>
+</div>
+</div>
+</div>
+<div id="resumes-numeriques" class="section level1">
+<h1>Résumés numériques</h1>
+<p>Tous les exemples donnés seront effectués sur la variable taille. Les résumés numériques ne peuvent être calculés en présence de données manquantes (NA). Si cela est nécessaire, il est possible d’utiliser la fonction na.omit() pour les retirer lors du calcul.</p>
+<pre class="r"><code>x&lt;-na.omit(taille)</code></pre>
+<div id="resumes-de-position-dune-distribution-dune-variable-quantitative" class="section level2">
+<h2>Résumés de position d’une distribution d’une variable quantitative</h2>
+<div id="la-mediane" class="section level3">
+<h3>La médiane</h3>
+<p>La médiane d’une série statistique est la valeur <span class="math inline">\(m_e\)</span> de la variable <span class="math inline">\(X\)</span> qui partage cette série statistique en deux parties (inférieure et supérieure à <span class="math inline">\(m_e\)</span>) de même effectif. Cette quantité ne se calcule pas sur des variables purement qualitatives.</p>
+<p>La fonction R est median() et s’applique uniquement sur des valeurs numériques.</p>
+<pre class="r"><code>median(taille)</code></pre>
+<pre><code>## [1] 163</code></pre>
+<p>Question : Combien d’invidus mesurent strictement moins que la médiane et combien mesurent strictement plus que la médiane ?</p>
+</div>
+<div id="la-moyenne" class="section level3">
+<h3>La moyenne</h3>
+<p>Elle se calcule uniquement sur des variables quantitatives via la fonction mean().</p>
+<pre class="r"><code>mean(taille)</code></pre>
+<pre><code>## [1] 163.9602</code></pre>
+<p>Question : Quelle est la moyenne de la variable taille ? La comparer à la moyenne ?</p>
+</div>
+<div id="les-fractiles" class="section level3">
+<h3>Les fractiles</h3>
+<p>Le fractile d’ordre p (0&lt;p&lt;1) est la valeur <span class="math inline">\(q_p\)</span> qui coupe l’échantillon en deux portions, l’une ayant un nombre d’éléments (inférieurs à <span class="math inline">\(q_p\)</span>) égal à <span class="math inline">\(p\%\)</span> du nombre total d’éléments et l’autre à <span class="math inline">\((1-p)\%\)</span> étant supérieurs à <span class="math inline">\(q_p\)</span>. Il ne se calcule pas pour des variables purement qualitatives. Si on prend <span class="math inline">\(p=0.5\)</span>, on retrouve la définition de la médiane.</p>
+<p>En R, la fonction quantile() (avec le paramètre probs) permet de donner les fractiles de la variable.</p>
+<pre class="r"><code>quantile(taille,probs=c(0.1,0.25,0.77))</code></pre>
+<pre><code>## 10% 25% 77% 
+## 153 157 171</code></pre>
+<p>En créant 3 vecteurs, vous donnerez 3 sorties pour la variable taille :</p>
+<ul>
+<li>1er et 9ème déciles</li>
+<li>1er, 2ème et 3ème quartiles</li>
+<li>tous les déciles</li>
+</ul>
+<p>La fonction summary() appliquée sur un vecteur de données quantitatives permet de calculer le minimum, le maximum, la moyenne et les trois quartiles.</p>
+<pre class="r"><code>summary(age)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   65.00   70.00   74.00   74.48   78.00   91.00</code></pre>
+<p>Question : Donner les principaux résumés numériques pour la variable age.</p>
+</div>
+</div>
+<div id="resume-de-dispersion-autour-de-la-moyenne-dune-distribution" class="section level2">
+<h2>Résumé de dispersion autour de la moyenne d’une distribution</h2>
+<p>Ces résumés peuvent être calculés uniquement pour des variables quantitatives. Les principales sont :</p>
+<ul>
+<li>Variance <span class="math inline">\(\sigma^2\)</span> de la population. Attention, la fonction var() du logiciel R renvoie une estimation non biaisée de la variance.</li>
+<li>l’écart type est la racine carrée de la variance.</li>
+<li>Coefficient de variation <span class="math inline">\(c_v=\frac{\sigma}{\mu}\)</span></li>
+</ul>
+<p>Reprogrammer les fonctions variance, écart-type, et coefficient de variation d’une population (qu’on nommera var.pop, sd.pop et co.pop).</p>
 </div>
 </div>
 
