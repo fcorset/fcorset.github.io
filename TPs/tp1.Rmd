@@ -219,7 +219,7 @@ Taille & 100&97 & 95.5& 101&100&98.5&103&98&101.5&100\\
 \end{tabular}
 
 
-1. Choisissez la fonction R appropriée pour enregistrer les données de chacune des variables dans des vecteurs que vous nommerez {\bf Individus}, {\bf Poids}, {\bf Taille} et {\bf Sexe}.
+1. Choisissez la fonction R appropriée pour enregistrer les données de chacune des variables dans des vecteurs que vous nommerez Individus, Poids, Taille et Sexe.
 2. Calculez la moyenne des variables lorsque c'est possible.
 3. Calculer l'IMC des individus et regroupez les valeurs obtenues dans un vecteur nommé IMC sachant que 
 $$
@@ -247,6 +247,8 @@ Cette instruction va lire les données présentes dans le fichier et les rapatri
 
 ```{r}
 donnees <- read.table(file="nutriage.txt",header=T,sep="\t",dec=".")
+library(DT)
+datatable(donnees, options = list(pageLength = 5))
 ```
 
 Vous avez intérêt à utiliser la fonction file.choose() à la place du nom du fichier. Cette fonction va ouvrir une boite de dialogue, dans laquelle vous pourrez aller chercher votre fichier.
