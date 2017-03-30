@@ -5,8 +5,9 @@ title: "TP 1 : Introduction au logiciel R"
 # Présentation de Rstudio
 
 RStudio est une interface du logiciel R. Il comprend 4 fenêtres : 
-- Une fenêtre edition où l'on mettra les scripts R. Il est à noter qu'on peut exécuter la ligne courante en tapant ctrl R (pour exécuter plusieurs lignes, il faut les sélectionner) ou en cliquant sur run 
-- Une fenêtre console qui permet d'executer des commandes
-- Une fenêtre espace de travail et historique
-- Une fenêtre explorateur, graphiques, packages, aide.
+
+* Une fenêtre edition où l'on mettra les scripts R. Il est à noter qu'on peut exécuter la ligne courante en tapant ctrl R (pour exécuter plusieurs lignes, il faut les sélectionner) ou en cliquant sur run 
+* Une fenêtre console qui permet d'executer des commandes
+* Une fenêtre espace de travail et historique
+* Une fenêtre explorateur, graphiques, packages, aide.
 
