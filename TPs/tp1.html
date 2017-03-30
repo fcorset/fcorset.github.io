@@ -129,6 +129,126 @@ $(document).ready(function () {
 <li>Une fenêtre espace de travail et historique</li>
 <li>Une fenêtre explorateur, graphiques, packages, aide.</li>
 </ul>
+<p>Vous devez créer un nouveau script R que vous nommerez “TP1.R”. Pensez à commenter chacune de vos lignes de commandes.</p>
+</div>
+<div id="r-est-un-super-calculateur" class="section level1">
+<h1>R est un super-calculateur}</h1>
+<p>Il est possible d’effectuer des calculs très simples comme :</p>
+<ul>
+<li>calcul simple</li>
+</ul>
+<pre class="r"><code>5*(-3.2)</code></pre>
+<pre><code>## [1] -16</code></pre>
+<ul>
+<li>fonction puissance</li>
+</ul>
+<pre class="r"><code>5^2</code></pre>
+<pre><code>## [1] 25</code></pre>
+<pre class="r"><code>5**2</code></pre>
+<pre><code>## [1] 25</code></pre>
+<ul>
+<li>fonctions trigonométriques</li>
+</ul>
+<pre class="r"><code>sin(2*pi/3)</code></pre>
+<pre><code>## [1] 0.8660254</code></pre>
+<ul>
+<li>d’autres fonctions utiles</li>
+</ul>
+<pre class="r"><code>sqrt(3)/2</code></pre>
+<pre><code>## [1] 0.8660254</code></pre>
+<pre class="r"><code>log(exp(1))</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>log(1)</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="affectations" class="section level1">
+<h1>Affectations</h1>
+<pre class="r"><code>x&lt;-1
+x</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>2*x</code></pre>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="differents-types-de-donnees" class="section level1">
+<h1>Différents types de données</h1>
+<div id="vecteurs" class="section level2">
+<h2>Vecteurs</h2>
+<p>On peut créer des vecteurs via la commande suivante</p>
+<pre class="r"><code>c(1,2,3,4,5)</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<pre class="r"><code>c(1:5)</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>On peut également effectuer des opérations sur les vecteurs :</p>
+<pre class="r"><code>x&lt;-c(10:22)
+y&lt;-2*c(1:5)
+z&lt;-seq(0,20,1.3)
+z[8]</code></pre>
+<pre><code>## [1] 9.1</code></pre>
+<pre class="r"><code>z[-8]</code></pre>
+<pre><code>##  [1]  0.0  1.3  2.6  3.9  5.2  6.5  7.8 10.4 11.7 13.0 14.3 15.6 16.9 18.2
+## [15] 19.5</code></pre>
+<pre class="r"><code>z[1:8]</code></pre>
+<pre><code>## [1] 0.0 1.3 2.6 3.9 5.2 6.5 7.8 9.1</code></pre>
+<pre class="r"><code>z[-(1:8)]</code></pre>
+<pre><code>## [1] 10.4 11.7 13.0 14.3 15.6 16.9 18.2 19.5</code></pre>
+<pre class="r"><code>z[9:length(z)]</code></pre>
+<pre><code>## [1] 10.4 11.7 13.0 14.3 15.6 16.9 18.2 19.5</code></pre>
+<pre class="r"><code>z[c(2,6,14)]</code></pre>
+<pre><code>## [1]  1.3  6.5 16.9</code></pre>
+<pre class="r"><code>z[z&gt;10]</code></pre>
+<pre><code>## [1] 10.4 11.7 13.0 14.3 15.6 16.9 18.2 19.5</code></pre>
+<pre class="r"><code>z[z&gt;4 &amp; z&lt;15]</code></pre>
+<pre><code>## [1]  5.2  6.5  7.8  9.1 10.4 11.7 13.0 14.3</code></pre>
+</div>
+<div id="matrices" class="section level2">
+<h2>Matrices</h2>
+<pre class="r"><code>A&lt;-matrix(1:12,nrow=4,ncol=3,byrow=TRUE)
+B&lt;-matrix(1:12,nrow=4,ncol=3)
+t(A)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<pre class="r"><code>A[2,3]</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>A[,3]</code></pre>
+<pre><code>## [1]  3  6  9 12</code></pre>
+<pre class="r"><code>A[,c(1,3)]</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    3
+## [2,]    4    6
+## [3,]    7    9
+## [4,]   10   12</code></pre>
+<pre class="r"><code>t(B)%*%A</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   70   80   90
+## [2,]  158  184  210
+## [3,]  246  288  330</code></pre>
+</div>
+<div id="tableau-individustimesvariables" class="section level2">
+<h2>Tableau individus<span class="math inline">\(\times\)</span>variables</h2>
+<p>Cette structure est très utilisée en statistique et se nomme data.frame sous R. C’est une matrice dont les lignes correspondent aux individus et les colonnes aux variables mesurées sur ces individus. Chaque colonne représente une variable dont tous les éléments sont du même type. Voici un exemple :</p>
+<pre class="r"><code>IMC &lt;- data.frame(Sexe=c(&quot;H&quot;,&quot;F&quot;,&quot;H&quot;,&quot;F&quot;),Taille=c(1.83,1.76,1.82,1.60),Poids=c(67,58,66,48),row.names=c(&quot;Pierre&quot;,&quot;Valérie&quot;,&quot;Paul&quot;,&quot;Virginie&quot;))</code></pre>
+</div>
+<div id="les-facteurs-factor-et-les-variables-ordinales-ordered" class="section level2">
+<h2>Les facteurs (factor) et les variables ordinales (ordered)</h2>
+<p>Le logiciel permet d’organiser les chaînes de caractères au moyen de factor() :</p>
+<pre class="r"><code>x&lt;-factor(c(&quot;bleu&quot;,&quot;vert&quot;,&quot;bleu&quot;,&quot;rouge&quot;,&quot;bleu&quot;,&quot;vert&quot;,&quot;vert&quot;))
+x</code></pre>
+<pre><code>## [1] bleu  vert  bleu  rouge bleu  vert  vert 
+## Levels: bleu rouge vert</code></pre>
+<pre class="r"><code>levels(x) </code></pre>
+<pre><code>## [1] &quot;bleu&quot;  &quot;rouge&quot; &quot;vert&quot;</code></pre>
+<pre class="r"><code>class(x)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<p>Il est possible de mettre des facteurs dans un data.frame. La fonction factor() est donc à utiliser pour stocker les variables qualitatives. Pour les variables ordinales, il est plutôt conseillé d’utiliser la fonction ordered():</p>
+<pre class="r"><code>z &lt;- ordered(c(&quot;Petit&quot;,&quot;Grand&quot;,&quot;Moyen&quot;,&quot;Grand&quot;,&quot;Moyen&quot;,&quot;Petit&quot;,&quot;Petit&quot;),levels=c(&quot;Petit&quot;,&quot;Moyen&quot;,&quot;Grand&quot;)) 
+class(z)</code></pre>
+<pre><code>## [1] &quot;ordered&quot; &quot;factor&quot;</code></pre>
+<pre class="r"><code>z</code></pre>
+<pre><code>## [1] Petit Grand Moyen Grand Moyen Petit Petit
+## Levels: Petit &lt; Moyen &lt; Grand</code></pre>
+</div>
 </div>
 
 
