@@ -277,18 +277,18 @@ cat(&quot;Hello World&quot;,&quot;\n&quot;)
 <h2>Quelques fonctions usuelles</h2>
 <p>La fonction sample(x) permet de tirer aléatoirement parmi les éléments de x, avec ou sans remise. Ainsi, on peut simuler 10 lancers d’une pièce de monnaie comme suit (en considérant que les 1 sont des piles et les 0 des faces) :</p>
 <pre class="r"><code>sample(0:1,10,replace=T)</code></pre>
-<pre><code>##  [1] 0 1 1 0 0 1 0 0 0 1</code></pre>
+<pre><code>##  [1] 0 0 0 1 1 1 0 0 0 0</code></pre>
 <p>On peut également générer des nombres aléatoires entre 0 et 1 par la fonction runif :</p>
 <pre class="r"><code>runif(5)</code></pre>
-<pre><code>## [1] 0.7532884 0.5417174 0.2009357 0.7126264 0.4934434</code></pre>
+<pre><code>## [1] 0.21097046 0.83672819 0.07558633 0.95250246 0.74316191</code></pre>
 <p>Une autre commande utile est replicate() qui permet de répéter une expression. On peut par exemple répéter 100 fois le lancement de 10 pièces de monnaie.</p>
 <pre class="r"><code>lancer &lt;- function() sample(0:1,10,replace=T)
 simu &lt;- replicate(100,lancer())</code></pre>
 <p>La fonction apply() permet de retourner un vecteur obtennu en appliquant une fonction sur une matrice. On peut, dans l’exemple précédent, compre le nombre de piles obtenu par expérience.</p>
 <pre class="r"><code>apply(simu,MARGIN=2,FUN=sum)</code></pre>
-<pre><code>##   [1] 2 5 4 3 6 5 7 4 5 3 8 5 7 5 8 4 4 4 3 5 2 4 3 5 4 7 6 5 8 6 2 6 1 3 8
-##  [36] 7 5 6 6 4 8 8 5 6 7 4 2 5 6 6 4 8 6 5 5 5 2 6 5 5 9 5 6 9 4 6 3 3 4 6
-##  [71] 4 7 5 3 5 3 7 5 5 4 7 3 7 4 4 4 6 4 6 5 5 3 3 7 3 5 4 4 6 4</code></pre>
+<pre><code>##   [1] 4 4 2 4 7 8 7 6 3 6 9 6 5 7 4 5 5 3 6 1 4 6 6 7 5 4 5 5 2 4 5 5 6 4 5
+##  [36] 7 8 2 6 8 3 5 3 4 2 4 6 6 5 5 5 5 5 5 3 7 4 3 3 8 4 4 7 4 3 6 8 6 6 4
+##  [71] 6 3 7 8 5 3 1 6 4 5 7 3 3 5 4 6 5 4 8 4 7 6 5 4 3 5 5 6 6 4</code></pre>
 </div>
 </div>
 <div id="exercices" class="section level1">
@@ -349,8 +349,8 @@ IMC= \displaystyle \frac{Poids (kg)}{Taille^2(m)}
 <p>La fonction attach() permet d’avoir accès aux variables du data.frame directement en tapant leur nom.</p>
 <pre class="r"><code>attach(donnees)</code></pre>
 <pre class="r"><code>rnorm(10)</code></pre>
-<pre><code>##  [1] -1.2976711  0.6386499  0.9845792  2.3912878 -0.1971209 -1.0729095
-##  [7]  0.8918081  1.1857516  1.2493146 -1.0015261</code></pre>
+<pre><code>##  [1] -0.44988306 -0.17539631 -0.68432412 -0.28642459 -0.09285345
+##  [6]  0.85059882  0.93814686 -0.41576315 -1.52993847  1.98205304</code></pre>
 </div>
 </div>
 <div id="importer-depuis-rstudio" class="section level2">
