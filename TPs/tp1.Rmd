@@ -149,6 +149,15 @@ l2$clé    # car clé pas élément de l2
 names(l2) # comme il est montré ici
 ```
 
+### Extraction dans une sous liste
+
+```{r}
+l2[1]
+names(l2)
+l2[c(2,1)]
+names(l2) # comme il est montré ici
+```
+
 ## Matrices
 
 ```{r}
@@ -161,6 +170,38 @@ A[,c(1,3)]
 t(B)%*%A
 ```
 
+## Auto-conversion vecteur
+
+```{r}
+a <- c(TRUE,2L)
+a
+class(a)
+a <- c(a,3)
+a
+class(a)
+a <- c(a,"quatre")
+a
+class(a)
+rm(a)
+```
+
+## Auto-conversion vector -> list
+
+```{r}
+c(l,v) # équivalent à c(l,as.list(v))
+c(v,l) # équivalent à c(as.list(v),l)
+```
+
+## Recycling
+
+```{r}
+(1:8)[c(TRUE,FALSE)]
+(1:9)[c(TRUE,FALSE)]
+(1:8)[c(TRUE,FALSE,FALSE)]
+cbind(1:5,c(TRUE,FALSE,FALSE))
+```
+
+Attention le reycling ne fonctionne pas sur les dataframes (cf. ci-dessous).
 
 ## Tableau individus$\times$variables
 
