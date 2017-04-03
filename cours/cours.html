@@ -323,7 +323,7 @@ S_n^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
 \]</span></p>
 <p>Cet estimateur est biaisé. On peut montrer que</p>
 <p><span class="math display">\[
-\E [S_n^2] = \frac{n-1}{n} \sigma^2
+\mathbb E [S_n^2] = \frac{n-1}{n} \sigma^2
 \]</span></p>
 <p>Ainsi, on obtient un estimateur sans biais en multipliant la variance empirique par <span class="math inline">\(n/(n-1)\)</span> où <span class="math inline">\(n\)</span> désigne la taille de l’échantillon, noté <span class="math inline">\({S_n^\prime}^2\)</span> :</p>
 <p><span class="math display">\[
@@ -334,7 +334,8 @@ S_n^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
 <div id="estimation-par-intervalle-de-confiance" class="section level2">
 <h2><span class="header-section-number">4.3</span> Estimation par intervalle de confiance</h2>
 <p>Lorsque l’on estime un paramètre <span class="math inline">\(\theta\)</span>, on veut avoir une idée de la précision de l’estimation effectuée. C’est le rôle des intervalles de confiance.</p>
-<p>** Problème :** Peut-on trouver deux statistiques <span class="math inline">\(T_1\)</span> et <span class="math inline">\(T_2\)</span> telles que <span class="math display">\[p(T_1\leq \theta\leq T_2)=1-\alpha\]</span> avec <span class="math inline">\(0&lt;\alpha&lt;1\)</span> fixé ? ou encore peut-on trouver deux statistiques <span class="math inline">\(T_1\)</span> et <span class="math inline">\(T_2\)</span> de manière à ce qu’on ait beaucoup de chance de trouver le paramètre inconnu entre ces deux statistiques ?</p>
+<p><strong>Problème</strong> :</p>
+<p>Peut-on trouver deux statistiques <span class="math inline">\(T_1\)</span> et <span class="math inline">\(T_2\)</span> telles que <span class="math display">\[p(T_1\leq \theta\leq T_2)=1-\alpha\]</span> avec <span class="math inline">\(0&lt;\alpha&lt;1\)</span> fixé ? ou encore peut-on trouver deux statistiques <span class="math inline">\(T_1\)</span> et <span class="math inline">\(T_2\)</span> de manière à ce qu’on ait beaucoup de chance de trouver le paramètre inconnu entre ces deux statistiques ?</p>
 <ol style="list-style-type: decimal">
 <li>L’intervalle <span class="math inline">\([T_1, T_2]\)</span> est un intervalle aléatoire appelé intervalle de confiance.</li>
 <li><span class="math inline">\(\alpha\)</span> est le risque d’erreur. Le paramètre <span class="math inline">\(\alpha\)</span> représente la probabilité que l’intervalle <span class="math inline">\([T_1(X_1,\ldots,X_n), T_2(X_1,\ldots,X_n)]\)</span> ne contienne pas le paramètre inconnu <span class="math inline">\(\theta\)</span>. En affirmant que <span class="math inline">\([T_1, T_2]\)</span> contient <span class="math inline">\(\theta\)</span>, on se trompe en moyenne 100<span class="math inline">\(\alpha\)</span> fois sur 100.</li>

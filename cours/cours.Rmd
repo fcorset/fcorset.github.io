@@ -213,7 +213,7 @@ $$
 Cet estimateur est biaisé. On peut montrer que 
 
 $$
-\E [S_n^2] = \frac{n-1}{n} \sigma^2
+\mathbb E [S_n^2] = \frac{n-1}{n} \sigma^2
 $$
 
 Ainsi, on obtient un estimateur sans biais en multipliant la variance empirique par $n/(n-1)$ où $n$ désigne la taille de l'échantillon, noté ${S_n^\prime}^2$ :
@@ -228,7 +228,9 @@ C'est cette dernière quantité qui est donnée dans le logiciel R via la foncti
 
 Lorsque l'on estime un paramètre $\theta$, on veut avoir une idée de la précision de l'estimation effectuée. C'est le rôle des intervalles de confiance.
 
-** Problème :** Peut-on trouver deux statistiques $T_1$ et $T_2$
+**Problème** :
+
+Peut-on trouver deux statistiques $T_1$ et $T_2$
 telles que $$p(T_1\leq \theta\leq T_2)=1-\alpha$$ avec
 $0<\alpha<1$ fixé ? ou encore peut-on trouver deux statistiques
 $T_1$ et $T_2$ de manière à ce qu'on ait beaucoup de chance de
