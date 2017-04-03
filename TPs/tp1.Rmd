@@ -352,6 +352,8 @@ Il existe trois fonctions R principales à utiliser pour importer des données d
 * read.ftable() : permet de lire les tableaux de contingence.
 * scan() : beaucoup plus flexible et puissant.
 
+Commencer par télécharger le fichier [Nutriage](https://fcorset.github.io/TPs/nutriage.txt).
+
 ### Importer avec read.table()
 
 Cette instruction va lire les données présentes dans le fichier et les rapatrier sous la forme d'un data.frame :
