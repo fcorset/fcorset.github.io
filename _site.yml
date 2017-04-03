@@ -11,7 +11,7 @@ navbar:
       icon: fa-gear
       menu:
         - text: "Cours de Stat en IUT 2A"
-          href: ./cours/cours.html
+          href: ./Cours/cours.html
         - text: "TP1"
           href: ./TPs/tp1.html
         - text: "TP2"
