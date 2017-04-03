@@ -292,4 +292,3 @@ $$
 $$
 
 où $n$ est la taille de l'échantillon, $\bar X$ la fréquence empirique et $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $N(0,1)$.
-
