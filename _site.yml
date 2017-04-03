@@ -1,7 +1,7 @@
-name: "Franck Corset"                                  # CHANGE HERE 
+name: "Franck Corset"                                 
 output_dir: "."
 navbar:
-  title: "Franck Corset"                               # CHANGE HERE 
+  title: "Franck Corset"                               
   type: inverse
   left:
     - text: "Home"
@@ -10,6 +10,8 @@ navbar:
     - text: "Enseignement"
       icon: fa-gear
       menu:
+        - text: "Cours de Stat en IUT 2A"
+          href: ./Cours/cours.html
         - text: "TP1"
           href: ./TPs/tp1.html
         - text: "TP2"
@@ -21,14 +23,14 @@ navbar:
 #      href: cv.html
     - text: "Blog"
       icon: fa-rss
-      href: https://fcorset.github.io/blog/    # CHANGE HERE 
+      href: https://fcorset.github.io/blog/     
   right:
     - text: "Contact me"
       icon: fa-envelope-o
-      href: mailto:franck.corset@univ-grenoble-alpes.fr                      # CHANGE HERE 
+      href: mailto:franck.corset@univ-grenoble-alpes.fr                       
     - text: "GitHub"
       icon: fa-github
-      href: https://github.com/fcorset         # CHANGE HERE 
+      href: https://github.com/fcorset          
 output:
   html_document:
     theme: cosmo
