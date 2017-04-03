@@ -1,5 +1,5 @@
 ---
-title: "cours de Statistique et Probabilités"
+title: "Cours de Statistique et Probabilités"
 author: "IUT Informatique S3d"
 output:
   html_document: 
@@ -140,324 +140,156 @@ suit approximativement une loi normale $\N(0,1)$ pour $n$ grand.
 
 # Estimation
 
-\section{Introduction}
-\textit{En probabilités, on travaille avec une loi connue. En
-statistique, cette loi est inconnue.}\\
+## Introduction
 
-Le statisticien travaille sur des données (notes de qualité de pièces produites dans une usine, données météorologiques, résultats d'expériences médicales ou physiques,...). Il le fait à la demande d'un interlocuteur qui a des attentes plus ou moins précises. Ces attentes peuvent être de plusieurs types :\\
-- extraire des résumés pertinents des données,\\
-- répondre à une question comme "le réchauffement climatique est-il réel ?",\\
-- prendre une décision comme la mise sur le marché d'un nouveau médicament,\\
-- effectuer une prévision, par exemple sur le résultat d'une élection qui aura lieu prochainement,...\\
-Il élabore un modèle et construit des outils pour répondre aux questions de son interlocuteur dans ce modèle. Il doit bien sûr garder un sens critique vis à vis du modèle qu'il a construit. Il est bien sûr crucial pour le statisticien d'estimer les paramètres au vu des données dont il dispose et d'avoir une idée de la précision de cette estimation. On introduit tout d'abord les estimateurs puis on verra enfin comment évaluer la précision des estimateurs au travers d'intervalles de confiance.\\
+**En probabilités, on travaille avec une loi connue. En
+statistique, cette loi est inconnue.**
 
-\noindent En résumé, voici les étapes de la statistique inférentielle :\\
-\noindent{\bf 1)} Observation d'une variable $X$ sur un groupe
+Le statisticien travaille sur des données (notes de qualité de pièces produites dans une usine, données météorologiques, résultats d'expériences médicales ou physiques,...). Il le fait à la demande d'un interlocuteur qui a des attentes plus ou moins précises. Ces attentes peuvent être de plusieurs types :
+
+- extraire des résumés pertinents des données,
+- répondre à une question comme "le réchauffement climatique est-il réel ?",
+- prendre une décision comme la mise sur le marché d'un nouveau médicament,
+- effectuer une prévision, par exemple sur le résultat d'une élection qui aura lieu prochainement,...
+
+Il élabore un modèle et construit des outils pour répondre aux questions de son interlocuteur dans ce modèle. Il doit bien sûr garder un sens critique vis à vis du modèle qu'il a construit. Il est bien sûr crucial pour le statisticien d'estimer les paramètres au vu des données dont il dispose et d'avoir une idée de la précision de cette estimation. On introduit tout d'abord les estimateurs puis on verra enfin comment évaluer la précision des estimateurs au travers d'intervalles de confiance.
+
+En résumé, voici les étapes de la statistique inférentielle :
+
+1. Observation d'une variable $X$ sur un groupe
 d'individus choisis d'une façon aléatoire et indépendante dans la
-population totale.\\
-\noindent{\bf 2)} On obtient des observations $x_1, \ldots,x_n$, réalisations de
+population totale.
+
+2. On obtient des observations $x_1, \ldots,x_n$, réalisations de
 variables aléatoires indépendantes et de même loi
 $X_1,\ldots,X_n$. On fait une étude descriptive de $x_1,
-\ldots,x_n$ (histogramme, moyenne, $\ldots$).\\
-\noindent{\bf 3)} Au vu de l'étude descriptive, trouver une loi de probabilité
-acceptable pour les variables $X_1, \ldots,X_n$.\\
-\noindent{\bf 4)} Inférence statistique : utiliser $x_1, \ldots,x_n$ pour
+\ldots,x_n$ (histogramme, moyenne, $\ldots$).
+
+3. Au vu de l'étude descriptive, trouver une loi de probabilité
+acceptable pour les variables $X_1, \ldots,X_n$.
+
+4. Inférence statistique : utiliser $x_1, \ldots,x_n$ pour
 estimer les paramètres du modèle et en déduire des propriétés sur
 la population totale.
-\section{Statistique et estimateur}
-\begin{enumerate}
-\item Pour un paramètre inconnu, un estimateur est une fonction des données, prenant des valeurs proches de ce paramètre.
-\begin{enumerate}
-\item Avant que les données ne soient collectées, l'estimateur est une variable aléatoire
-\item Une fois les données collectées, l'estimation est la valeur de l'estimateur pour ces données.
-\end{enumerate}
-\item Estimer un paramètre $\theta$ inconnu, c'est donc trouver une
+
+## Statistique et estimateur
+
+1. Pour un paramètre inconnu, un estimateur est une fonction des données, prenant des valeurs proches de ce paramètre.
+
+  1 Avant que les données ne soient collectées, l'estimateur est une variable aléatoire
+  2 Une fois les données collectées, l'estimation est la valeur de l'estimateur pour ces données.
+
+2. Estimer un paramètre $\theta$ inconnu, c'est donc trouver une
 statistique $T=\tau(X_1,\ldots,X_n)$ dont on pense que la valeur
 observée $\tau(x_1,\ldots,x_n)$ sera probablement "suffisamment
-proche" de la valeur inconnue $\theta$.\\
+proche" de la valeur inconnue $\theta$.
+
 Dans ce cas, $T$ sera appelé estimateur de $\theta$, et, $\tau(x_1,\ldots,x_n)$ sera une estimation de $\theta$.
 (valeur numérique).
 
-\begin{enumerate}
-\item Le biais de $T$ est la différence entre l'espérance de $T$ et la vraie valeur (inconnue) de $\theta$ : Biais=$\E[T]-\theta$.
-\item L'erreur quadratique est l'espérance des carrés des différences : QE= $\E[(T-\theta)^2]$.
-\end{enumerate}
-\item L'estimateur $T$ est :
-\begin{enumerate}
-\item sans biais si le biais est nul (Les valeurs de $T$ sont centrées sur la vraie valeur)
-\item asymptotiquement sans biais si le biais tend vers 0 quand la taille de l'échantillon tend vers l'infini.
-\item consistant si la probabilité de s'éloigner de la valeur à estimer de plus de $\epsilon$ ($\epsilon$ petit) tend vers 0 quand la taille de l'échantillon augmente.
-\end{enumerate}
-\item Voici maintenant quelques exemples standards d'estimateurs
-\begin{enumerate}
-\item La fréquence empirique d'un évènement est un estimateur sans biais consistant de la probabilité de cet évènement.
-\item La moyenne empirique d'un échantillon est un estimateur sans biais consistant de l'espérance théorique de ces variables :
+1. Le biais de $T$ est la différence entre l'espérance de $T$ et la vraie valeur (inconnue) de $\theta$ : Biais=$\E[T]-\theta$.
+2. L'erreur quadratique est l'espérance des carrés des différences : QE= $\E[(T-\theta)^2]$.
+
+L'estimateur $T$ est :
+
+- sans biais si le biais est nul (Les valeurs de $T$ sont centrées sur la vraie valeur)
+- asymptotiquement sans biais si le biais tend vers 0 quand la taille de l'échantillon tend vers l'infini.
+- consistant si la probabilité de s'éloigner de la valeur à estimer de plus de $\epsilon$ ($\epsilon$ petit) tend vers 0 quand la taille de l'échantillon augmente.
+
+Voici maintenant quelques exemples standards d'estimateurs
+
+1. La fréquence empirique d'un évènement est un estimateur sans biais consistant de la probabilité de cet évènement.
+
+2. La moyenne empirique d'un échantillon est un estimateur sans biais consistant de l'espérance théorique de ces variables :
 $$T(X_1,\ldots,X_n)=\bar
 X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i$$
-\item La variance empirique notée $S_n^2$ d'un échantillon (lorsque la moyenne est inconnue) est
-\begin{equation}\label{eq:VarEmpirique}
-	S_n^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
-\end{equation}
+
+3. La variance empirique notée $S_n^2$ d'un échantillon (lorsque la moyenne est inconnue) est
+
+$$
+S_n^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
+$$
+
 Cet estimateur est biaisé. On peut montrer que 
+
 $$
 \E [S_n^2] = \frac{n-1}{n} \sigma^2
 $$
-Ainsi, on obtient un estimateur sans biais en multipliant la variance empirique par $n/(n-1)$ où $n$ désigne la taille de l'échantillon, noté ${S_n^\prime}^2$ :
-\begin{equation}\label{eq:VarEmpirique}
-	{S^\prime_n}^2=\frac{1}{n-1}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
-\end{equation}
-C'est cette dernière quantité qui est donnée dans le logiciel R via la fonction var(). Si l'on veut calculer la variance empirique d'un échantillon sous le logiciel R, il faudra donc faire le nécessaire : par exemple faire une nouvelle fonction que l'on pourra appeler var.pop().
-\end{enumerate}
-\end{enumerate}
 
-\section{Estimation par intervalle de confiance}
-Lorsque l'on estime un paramètre $\theta$, on veut avoir une idée de la précision de l'estimation effectuée. C'est le rôle des intervalles de confiance.\\
-\noindent {\bf Problème :} Peut-on trouver deux statistiques $T_1$ et $T_2$
+Ainsi, on obtient un estimateur sans biais en multipliant la variance empirique par $n/(n-1)$ où $n$ désigne la taille de l'échantillon, noté ${S_n^\prime}^2$ :
+
+$$
+{S^\prime_n}^2=\frac{1}{n-1}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
+$$
+
+C'est cette dernière quantité qui est donnée dans le logiciel R via la fonction var(). Si l'on veut calculer la variance empirique d'un échantillon sous le logiciel R, il faudra donc faire le nécessaire : par exemple faire une nouvelle fonction que l'on pourra appeler var.pop().
+
+## Estimation par intervalle de confiance
+
+Lorsque l'on estime un paramètre $\theta$, on veut avoir une idée de la précision de l'estimation effectuée. C'est le rôle des intervalles de confiance.
+
+** Problème :** Peut-on trouver deux statistiques $T_1$ et $T_2$
 telles que $$p(T_1\leq \theta\leq T_2)=1-\alpha$$ avec
 $0<\alpha<1$ fixé ? ou encore peut-on trouver deux statistiques
 $T_1$ et $T_2$ de manière à ce qu'on ait beaucoup de chance de
 trouver le paramètre inconnu entre ces deux statistiques ?
-\begin{enumerate}
-\item L'intervalle $[T_1, T_2]$ est un intervalle aléatoire appelé
+
+1. L'intervalle $[T_1, T_2]$ est un intervalle aléatoire appelé
 intervalle de confiance.
-\item $\alpha$ est le risque d'erreur. Le paramètre $\alpha$ représente la
+2. $\alpha$ est le risque d'erreur. Le paramètre $\alpha$ représente la
 probabilité que l'intervalle $[T_1(X_1,\ldots,X_n),
 T_2(X_1,\ldots,X_n)]$ ne contienne pas le paramètre inconnu
 $\theta$. En affirmant que $[T_1, T_2]$ contient $\theta$, on se trompe
 en moyenne 100$\alpha$ fois sur 100.
-\item $(1-\alpha)$ est appelé niveau de confiance ou coefficient de sécurité.
-\end{enumerate}
+3. $(1-\alpha)$ est appelé niveau de confiance ou coefficient de sécurité.
 
-\subsection{Intervalles de confiance pour une moyenne}
+### Intervalles de confiance pour une moyenne
 
-\subsubsection{Cas d'un échantillon gaussien}
+#### Cas d'un échantillon gaussien
+
 On suppose que $X$ suit une loi normale $\N(\mu,\sigma^2)$. On rappelle que la moyenne empirique et que la variance empirique sont données par
 $$\bar X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i\quad{\rm and}\quad S^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2.$$
-\begin{enumerate}
-\item Si $\sigma^2$ est connue, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est 
+
+1. Si $\sigma^2$ est connue, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est 
 $$\left[ \bar X - u_{1-\alpha/2} \frac{\sigma}{\sqrt{n}};\bar X + u_{1-\alpha/2} \frac{\sigma}{\sqrt{n}} \right]$$
 où $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $N(0,1)$.
-\item Si $\sigma^2$ est inconnue, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est 
-$$\left[\bar X - t_{1-\alpha/2} \frac{S}{\sqrt{n}};\bar X + t_{1-\alpha/2} \frac{S}{\sqrt{n}} \right]
-$$
-où $t_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi de Student de paramètre $n-1$.
-\end{enumerate}
 
-\subsubsection{Cas d'un échantillon non gaussien, mais de grande taille}
+2. Si $\sigma^2$ est inconnue, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est 
+
+$$
+\left[\bar X - t_{1-\alpha/2} \frac{S}{\sqrt{n}};\bar X + t_{1-\alpha/2} \frac{S}{\sqrt{n}} \right]
+$$
+
+où $t_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi de Student de paramètre $n-1$.
+
+#### Cas d'un échantillon non gaussien, mais de grande taille
+
 Pour de grands échantillons, sans hypothèse de normalité, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est
-$$\left[\bar X - u_{1-\alpha/2} \frac{S}{\sqrt{n}};\bar X + u_{1-\alpha/2} \frac{S}{\sqrt{n}} \right]
+
+$$
+\left[\bar X - u_{1-\alpha/2} \frac{S}{\sqrt{n}};\bar X + u_{1-\alpha/2} \frac{S}{\sqrt{n}} \right]
 $$
 où $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $N(0,1)$.
 
+### Intervalle de confiance pour une variance
 
-\subsection{Intervalle de confiance pour une variance} % (fold)
-\label{sec:intervalle_de_confiance_pour_une_variance}
-On se place dans le cas où $X$ suit une loi normale, $\N(\mu,\sigma^2)$.\\
+On se place dans le cas où $X$ suit une loi normale, $\N(\mu,\sigma^2)$.
 
 Un intervalle de confiance de niveau $1-\alpha$ pour la variance $\sigma^2$ est
-$$\left[ \frac{nS^2}{q^{n-1}_{1-\alpha/2}};\frac{nS^2}{q^{n-1}_{\alpha/2}}\right] = \left[ \frac{(n-1)(S^\prime)^2}{q^{n-1}_{1-\alpha/2}};\frac{(n-1)(S^\prime)^2}{q^{n-1}_{\alpha/2}}\right] $$
+
+$$
+\left[ \frac{nS^2}{q^{n-1}_{1-\alpha/2}};\frac{nS^2}{q^{n-1}_{\alpha/2}}\right] = \left[ \frac{(n-1)(S^\prime)^2}{q^{n-1}_{1-\alpha/2}};\frac{(n-1)(S^\prime)^2}{q^{n-1}_{\alpha/2}}\right] 
+$$
+
 où $q^{n-1}_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi du chi-2 de paramètre $n-1$ et $q^{n-1}_{\alpha/2}$ son quantile d'ordre $\alpha/2$.
 
-% section intervalle_de_confiance_pour_une_variance (end)
+### Intervalle de confiance pour une proportion
 
-\subsection{Intervalle de confiance pour une proportion} % (fold)
 On suppose que l'on est en présence d'un échantillon de grande taille (en pratique $n\geq 30$). Un intervalle de confiance de niveau $(1-\alpha)$ pour une proportion $p$ inconnue est
-$$\left[\bar X - u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})};\hat X + u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})} \right].
+
 $$
+\left[\bar X - u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})};\hat X + u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})} \right].
+$$
+
 où $n$ est la taille de l'échantillon, $\bar X$ la fréquence empirique et $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $N(0,1)$.
-
-
-
-\chapter{Tests d'hypothèses}
-\section{Introduction}
-L'objectif d'un test d'hypothèse est de répondre à une question que l'on formalise de la manière suivante : au vu de l'observation d'un échantillon $(X_1,...,X_n)$, le paramètre $\theta$ du modèle est-il ou non dans un sous-ensemble appelé hypothèse nulle et noté $H_0$ ? 
-\section{Tests statistiques}
-\begin{enumerate}
-\item Dans un test,
-\begin{enumerate}
-\item l'hypothèse nulle notée $H_0$ est celle pour laquelle la probabilité de la rejeter à tort est contrôlée. C'est la plus importante : il serait très coûteux de la rejeter à tort.
-\item l'hypothèse alternative $H_1$ est l'opposée : l'hypothèse que vous avez de bonnes raisons d'accepter.
-\end{enumerate}
-\item Le seuil d'un test appelé aussi risque de première espèce est la probabilité de rejeter $H_0$ à tort : $P($rejeter $H_0/H_0$ est vraie).
-\item La statistique de test est une fonction des données tel que la loi de probabilité sous l'hypothèse nulle $H_0$ est connue.
-\item La règle de décision du test - qui est vue comme une fonction des valeurs prises par le test statistique - spécifie dans quels cas l'hypothèse $H_0$ serait rejetée.
-\item Un test peut être 
-\begin{enumerate}
-\item bilatéral si la règle de décision est :
-$${\rm rejeter}\, H_0 \Leftrightarrow T\not\in [l,l']$$
-(On rejette les valeurs trop petites ou trop grandes). Habituellement, $l$ et $l'$ sont choisis de manière à ce que $P_{H_0}(T<l)=P_{H_0}(T>l')=\alpha/2$.
-\item unilatéral si la règle de décision est :
-$${\rm rejeter}\, H_0 \Leftrightarrow T<l$$
-(On rejette les valeurs trop petites),\\
-ou
-$${\rm rejeter}\, H_0 \Leftrightarrow T>l$$
-(On rejette les valeurs trop grandes).
-\end{enumerate}
-\item A toute règle de décision que l'on se donne est associé un risque maximal qui doit être fixé par le statisticien, appelé {\em seuil de signification}, noté $\alpha$. Généralement, on choisit un seuil de signification faible (souvent égal à $\alpha=5\%$).\\
-En pratique, lorsque nous observons un échantillon et que nous sommes conduits à accepter $\mathcal H_1$, il est intéressant de se demander jusqu'à quel seuil de signification, l'acceptation de $\mathcal H_1$ aurait été maintenue. La solution est donnée par ce que l'on appelle la {\em p-valeur}, définie comme le risque maximal à encourir pour accepter $\mathcal H_1$. Cette p-valeur est donnée par tout logiciel de statistique, et l'utilisateur saura alors comparer ce risque à un seuil de signification $\alpha$ fixé.\\
-L'interprétation de cette p-valeur est extrêmement simple : {\bf plus la p-valeur est faible, plus la décision d'accepter l'assertion d'intérêt $\mathcal H_1$ est fiable et donc si la p-valeur est plus petite que le seuil de signification alors l'hypothèse $\mathcal H_1$ sera acceptée}.\\
-\noindent{\bf Règle d'acceptation : Si la $p$-valeur est supérieure au niveau $\alpha$ du test, on accepte $H_0$. Sinon, on rejette $H_0$.}\\
-Mais l'intérêt de la $p$-valeur est qu'elle donne plus d'information que cela : son écart avec $\alpha$ quantifie la marge avec laquelle on accepte $H_0$ dans le cas où elle est plus grande que $\alpha$ et la marge avec laquelle on rejette $H_0$ dans le cas contraire.\\
-
-\noindent{\bf Remarque :} la règle d'acceptation qui précède montre que la $p$-valeur est également définie comme le niveau de test à partir duquel on rejette $H_0$.
-\item Le risque de second espèce noté $\beta$ est la probabilité d'accepter $H_0$ à tort, i.e, la probabilité d'accepter $H_0$ quand l'hypothèse alternative $H_1$ est vraie : $$P_{H_1}({\rm accepter} \, H_0)=\beta.$$
-La puissance d'un test correspond à $1-\beta$. C'est la probabilité de rejeter à juste titre $H_0$. 
-\end{enumerate}
-\section{Quelques exemples de Tests}
-\noindent Notons par $$\bar X=\frac1n\sum_{i=1}^nX_i \quad S^2=\frac1n\sum_{i=1}^nX^2_i-\bar X^2$$
-la moyenne et la variance de l'échantillon. L'espérance inconnue de la distribution est usuellement notée $\mu$ et sa variance $\sigma^2$. On donne maintenant les statistiques de test et leurs lois de probabilités sous différentes hypothèses nulles $H_0$.
-\begin{enumerate}
-\item Test sur $\mu$, Echantillon gaussien, $\sigma^2$ connue.
-$$H_0\,:\,\mu=\mu_0\quad ;\quad T=\sqrt{n}\,\frac{\bar X-\mu_0}{\sigma}\sim N(0,1).$$
-\item Test sur $\mu$, Echantillon gaussien ou $n>30$, $\sigma^2$ inconnue.
-$$H_0\,:\,\mu=\mu_0\quad ;\quad T=\sqrt{n-1}\,\frac{\bar X-\mu_0}{S}\sim T(n-1).$$
-$T(n-1)$ désigne la distribution de Student à $(n-1)$ degrés de liberté.
-\item Test sur $\sigma$, Echantillon gaussien.
-$$H_0\,:\,\sigma=\sigma_0\quad ;\quad T=\sqrt{n}\,\frac{S^2}{\sigma_0^2}\sim \chi^2(n-1).$$
-$\chi^2(n-1)$ désigne la distribution du Chi-2 à $(n-1)$ degrés de liberté.\\
-\item Test sur $\mu$, Grand échantillon, $\sigma^2$ connue ou inconnue.
-$$H_0\,:\,\mu=\mu_0\quad ;\quad T=\sqrt{n}\,\frac{\bar X-\mu_0}{S}\sim N(0,1).$$
-\item Test sur une probabilité, Grand échantillon, Loi binomiale.
-$$H_0\,:\,p=p_0\quad ;\quad T=\sqrt{n}\,\frac{\bar X-p_0}{\sqrt{p_0(1-p_0)}}\sim N(0,1).$$
-\end{enumerate}
-\section{Tests de comparaison d'échantillons}
-\begin{enumerate}
-\item Comparaison de deux moyennes théoriques
-\begin{enumerate}
-\item On considère deux variables quantitatives $X_1$ et $X_2$ qui mesurent la même caractéristique mais dans deux populations différentes. On suppose que $X_1$ a une moyenne théorique $\mu_1$ et pour variance $\sigma^2_1$ et $X_2$ a pour moyenne théorique $\mu_2$ et pour variance $\sigma_2^2$. A partir des deux échantillons de tailles respectives $n_1$ et $n_2$, on veut comparer $\mu_1$ et $\mu_2$.
-\item Les hypothèses du test sont $\mathcal H_0 : \mu_1=\mu_2$ vs $\mathcal H_1 : \mu_1 \not = \mu_2$ (respectivement $\mathcal H_1 : \mu_1 < \mu_2$ ou $\mathcal H_1 : \mu_1 > \mu_2$).
-\item La statistique de test sous $\mathcal H_0$ est :
-$$
-T = \frac{\bar X_1 - \bar X_2}{\hat \sigma \sqrt{\frac1{n_1} + \frac 1{n_2}}} \leadsto \mathcal T_{n_1+n_2-2}
-$$
-avec ici $\hat\sigma^2 = \frac{(n_1-1)\sigma_1^2+(n_2-1)\sigma_2^2}{n_1+n_2-2}$, et $\sigma_1^2$ et $\sigma_2^2$ les estimateurs des variances des deux populations.
-\item \noindent{\bf Condition de validité :} pour appliquer ce test, il faut que les variables suivent des lois normales et que les variances soient égales.
-\item \noindent{\bf Remarque très importante :} comme les variances sont a priori inconnues, il faut vérifier l'hypothèse d'égalité des variances (cf. ci-après). \\
-\end{enumerate}
-\item Cas des échantillons appariés
-\begin{enumerate}
-\item On veut comparer les moyennes théoriques de deux variables aléatoires $X_1$ et $X_2$ sur la base de deux échantillons appariés. Soit la variable aléatoire différence, $D=X_1-X_2$, on compare la moyenne théorique $\delta = \mu_1-\mu_2$ de $D$ à la valeur référence $0$. On se retrouve dans le cas du test de moyenne à un échantillon.
-\item Les hypothèses du test sont $\mathcal H_0 : \mu_1-\mu_2=0$ vs $\mathcal H_1 : \mu_1-\mu_2\not=0$ (respectivement $>$ ou $<$).
-\item Sous $\mathcal H_0$, la statistique de test est :
-$$
-T = \sqrt n \frac{\bar D}{\hat\sigma} \leadsto \mathcal T_{n-1}
-$$
-\item \noindent{\bf Conditions de validité :} normalité des données ou taille d'échantillon grande ($\mathbf{n>30}$)
-\item \noindent{\bf Remarque :} Ce test est valide lorsque $n$ est grand ou que l'on peut faire une hypothèse de normalité sur les données. \\
-\end{enumerate}
-\item Comparaison de deux variances théoriques
-\begin{enumerate}
-\item Les hypothèses du test sont $\mathcal H_0 : \sigma_1^2 = \sigma_2^2$ vs $\mathcal H_1 : \sigma_1^2 \not= \sigma_2^2$ (respectivement $>$ ou $<$).
-\item La statistique de test sous $\mathcal H_0$ est :
-$$
-T = \frac{\hat \sigma_1^2}{\hat \sigma_2^2} \leadsto \mathcal F_{n_1-1,n_2-1}
-$$
-où $F_{n_1-1,n_2-1}$ est la loi de Fischer à $n_1-1$ et $n_2-1$ degrés de liberté.
-\item {\bf Conditions de validité :} normalité de $X_1$ et $X_2$.\\
-\end{enumerate}
-\item Comparaison de deux proportions théoriques
-\begin{enumerate}
-\item Soit $p_1$ (respectivement $p_2$) la proportion inconnue d'individus présentant un certain caractère dans une population $\mathcal P_1$ (respectivement $\mathcal P_2$). On désire comparer $p_1$ et $p_2$. Pour cela, on utilise les fréquences (notées $\hat P_1$ et $\hat P_2$) d'apparition de ce caractère dans deux échantillons représentatifs respectivement des deux populations de taille $n_1$ et $n_2$.
-\item Les deux hypothèses du test sont : $\mathcal H_0 : p_1=p_2$ vs $\mathcal H_1 : p_1 \not= p_2$ (respectivement $>$ ou $<$)
-\item La statistique de test sous $\mathcal H_0$ est :
-$$
-U = \frac{\hat P_1 - \hat P_2}
-{\sqrt{
-\frac{\hat P (1-\hat P)}{n_1}
-+ 
-\frac{\hat P (1-\hat P)}{n_2}
-}} \leadsto \mathcal N(0,1)
-$$
-avec $\hat P = \displaystyle\frac{n_1\hat P_1 + n_2 \hat P_2 }{n_1+n_2}$.
-\item {\bf Conditions de validité :} grands échantillons ($n_1 \hat p \geq 5$, $n_1 (1-\hat p) \geq 5$, $n_2 \hat p \geq 5$ et $n_2 (1-\hat p) \geq 5$).\\
-\end{enumerate}
-\item Comparaison d'un coefficient de corrélation à une valeur de référence
-\begin{enumerate}
-\item Soit $\rho$ le coefficient de corrélation entre deux variables quantitatives $X$ et $Y$.
-\item On souhaite tester les hypothèses $\mathcal H_0$ : $\rho =\rho_0$ vs $\mathcal H_1$ : $\rho \not=\rho_0$
-\item La statistique de test sous $\mathcal H_0$ est :
-$$
-U = \frac{Z-\mathbb E[Z]}{\sqrt{Var[Z]}} \leadsto \mathcal N(0,1)
-$$
-avec $Z=\frac12 \ln(\frac{1+R}{1-R})$, $\mathbb E[Z]= \frac12 \ln(\frac{1+\rho_0}{1-\rho_0})$ et $Var[Z]=\frac{1}{n-3}$.
-\item Dans le cas où l'on s'intéresse à l'association linéaire entre $X$ et $Y$ (testée en prenant $\rho_0=0$), la statistique de test sous $\mathcal H_0$ devient :
-$$
-T = \frac{R\sqrt{n-2}}{\sqrt{1-R^2}} \leadsto \mathcal T(n-2)
-$$
-\item {\bf Conditions de validité :} le couple $(X,Y)$ suit une loi binormale.\\
-\end{enumerate}
-\item Test du $\chi^2$ d'indépendance
-\begin{enumerate}
-\item On a deux variables aléatoires qualitatives $X_1$ et $X_2$ : $X_1$ a $l$ modalités et $X_2$ a $c$ modalités. On veut savoir si ces deux variables sont dépendantes. Les valeurs prises par ces variables sont données dans un tableau de contingence pour les $n$ individus constituant l'échantillon.
-\item Les hypothèses du test sont $\mathcal H_0$ : $X_1$ et $X_2$ sont indépendantes vs $\mathcal H_1$ : $X_1$ et $X_2$ ne sont pas indépendantes.
-\item La statistique de test sous $\mathcal H_0$ est :
-$$
-X^2 = \sum_{i=1}^{c} \sum_{j=1}^{l} \frac{(O_{ij} - E_{ij})^2}{E_{ij}^2} \leadsto \chi^2_{(c-1)(l-1)}  
-$$
-où $O_{ij}$ représente l'effectif observé et $E_{ij}$ l'effectif théorique sous l'hypothèse d'indépendance.
-\item {\bf Conditions de validité :} les effectifs théoriques $E_{ij}$ doivent être supérieurs à $5$, sinon on peut utiliser le $\chi^2$ de Yates (si les effectifs sont supérieurs à $2.5$) ou encore le test de Fisher exact.\\
-\end{enumerate}
-\item Test du $\chi^2$ de Yates
-\begin{enumerate}
-\item Le test du $\chi^2$ avec correction de Yates doit être utilisé lorsqu'on veut effectuer un $\chi^2$ d'indépendance à partir d'un tableau de contingence, mais que l'un au moins des effectifs théoriques est inférieur à $5$ ; il faut cependant que les effectifs théoriques ne soient pas trop petits ($>2.5$) et seulement pour des tableaux $2\times2$. Le cadre général est le même que celui du $\chi^2$ d'indépendance.
-\item La statistique de test sous $\mathcal H_0$ est :
-$$
-X^2 = \sum_{i=1}^{c} \sum_{j=1}^{l} \frac{(|O_{ij} - E_{ij}|-0.5)^2}{E_{ij}^2} \leadsto \chi^2_{1}  
-$$
-\end{enumerate}
-\end{enumerate}
-\section{Tests non paramétriques}
-\begin{enumerate}
-\item Test d'adéquation de Shapiro-Wilk
-\begin{enumerate}
-\item Le test de Shapiro-Wilk est conçu spécialement pour étudier la non-normalité d'une variable continue $X$. C'est le test le plus puissant pour tester la normalité d'une distribution.
-\item  Les hypothèses du test sont : $\mathcal H_0$ : $X$ suit une loi normale vs $\mathcal H_1$ : $X$ ne suit pas une loi normale.
-\item La statistique de test est :
-$$
-W = \frac{T^2}{\hat \sigma^2}
-$$
-où $\hat \sigma^2 = \frac{1}{n-1} \displaystyle\sum_{i=1}^{n} (X_i-\bar X)^2$ et $T^2 = \frac{1}{n-1}\left[ \displaystyle\sum_{i=1}^{[n/2]}a_i(X_{(n-i+1)} - X_{(i)}) \right] ^2$. Les $a_i$ sont des coefficients présents dans la table de Shapiro-Wilk que l'on trouve dans la plupart des recueils de tables statistiques.\\
-\end{enumerate}
-\item Test du $\chi^2$ d'ajustement
-\begin{enumerate}
-\item Ce test s'emploie lorsqu'on veut montrer qu'une variable qualitative ne suit pas une loi théorique donnée. Soit $X$ une variable qualitative à $k$ modalités, où chaque modalité a une probabilité $p_i$. A partir d'un échantillon de taille $n$, on teste la répartition de $X$ suivant la loi donnée par les $p_i$
-\item Les hypothèses de test sont : $\mathcal H_0$ : $X$ suit une loi théorique spécifiée par les $p_i$ vs $\mathcal H_1$ : $X$ ne suit pas la loi théorique.
-\item La statistique de test est :
-$$
-\sum_{i=1}^{k} \frac{(N_i - np_i)^2}{np_i} \leadsto \chi^2(k-1)
-$$
-où $N_i$ est l'effectif que l'on observe pour la modalité $i$.
-\item {\bf Condition de validité :} les effectifs théoriques $np_i$ sont supérieurs ou égaux à $5$.
-\item La fonction R à utiliser est chisq.test()\\
-\end{enumerate}
-\item Test de Kolmogorov-Smirnov pour un échantillon
-\begin{enumerate}
-\item Le but de ce test est le même que celui du $\chi^2$ d'ajustement. Il s'agit de comparer une distribution empirique à une distribution théorique. On note $F_0$ la fonction de répartition théorique et $F$ la fonction de répartition de $X$. On s'intéresse au point pour lequel la différence entre les deux fonctions de répartition est la plus grande en valeur absolue et on compare cette valeur à la valeur critique donnée par la table de Kolmogorov-Smirnov.
-\item Les hypothèses du test sont $\mathcal H_0$ : $F=F_0$ vs $\mathcal H_1$ : $F\not= F_0$ (respectivement $<$ et $>$).
-\item La statistique de test est :
-$$
-D = sup_x |\hat F_{X_n}(x) -F_0(x)|
-$$
-où $\hat F_{X_n}(x)$ est la fonction de répartition empirique de l'échantillon $X_n$.\\
-\end{enumerate}
-\item Test de Kolmogorov-Smirnov pour deux échantillons
-\begin{enumerate}
-\item Le but de ce test est de comparer deux distribution notées $F_1$ et $F_2$. On s'intéresse au point pour lequel la différence entre les deux fonctions de répartition empiriques (notées $\hat F_{X_{n,1}}$ et $\hat F_{X_{n,2}}$) est la plus grande.
-\item Les hypothèses du test sont $\mathcal H_0$ : $F_1=F_2$ vs $\mathcal H_1$ : $F_1\not= F_2$ (respectivement $<$ et $>$).
-\item La statistique de test est :
-$$
-D = sup_x |\hat F_{X_{n,1}}(x) -\hat F_{X_{n,2}}(x)|
-$$
-\end{enumerate}
-\end{enumerate}
-
-
-
-\bibliographystyle{amsplain}
-\bibliography{coursStat}
-
-
-\end{document}
-
-# Essai 
 
