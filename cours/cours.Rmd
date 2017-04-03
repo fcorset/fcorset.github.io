@@ -129,14 +129,14 @@ legend(4,0.3,legend=c("N(0,1)","N(0,4)","N(2,4)"),col = c("red","blue","green"),
 ## Théorème central limite
 Le théorème central limite dit que, si un grand nombre de variables aléatoires indépendantes ayant la même loi sont ajoutées, leur somme suit approximativement une loi normale.
 
-1. Pour des échantillons distribués suivant une loi binomiale, la loi binomiale $B(n,p)$ se comporte comme la loi normale $\N(np,np(1-p))$ pour $n$ grand.
+1. Pour des échantillons distribués suivant une loi binomiale, la loi binomiale $B(n,p)$ se comporte comme la loi normale $\mathcal N(np,np(1-p))$ pour $n$ grand.
 
 2. Si $\{X_i\}_{i=1}^{\infty}$ est une suite de variables aléatoires
 indépendantes de même loi et de moyenne $\mu$ et de variance $\sigma^2$, alors $\bar X_n=\frac{\displaystyle
-\sum_{i=1}^nX_i}{n}$ suit approximativement une loi normale $\N(\mu,\sigma^2/n)$ pour $n$ grand
+\sum_{i=1}^nX_i}{n}$ suit approximativement une loi normale $\mathcal N(\mu,\sigma^2/n)$ pour $n$ grand
 
 3. ou, $Z_n=\frac{\bar X_n-\mu}{\sigma/\sqrt{n}}$, variable centrée réduite issue de $\bar X_n$,
-suit approximativement une loi normale $\N(0,1)$ pour $n$ grand.
+suit approximativement une loi normale $\mathcal N(0,1)$ pour $n$ grand.
 
 # Estimation
 
@@ -249,7 +249,7 @@ en moyenne 100$\alpha$ fois sur 100.
 
 #### Cas d'un échantillon gaussien
 
-On suppose que $X$ suit une loi normale $\N(\mu,\sigma^2)$. On rappelle que la moyenne empirique et que la variance empirique sont données par
+On suppose que $X$ suit une loi normale $\mathcal N(\mu,\sigma^2)$. On rappelle que la moyenne empirique et que la variance empirique sont données par
 $$\bar X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i\quad{\rm and}\quad S^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2.$$
 
 1. Si $\sigma^2$ est connue, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est 
@@ -275,7 +275,7 @@ où $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $N(0
 
 ### Intervalle de confiance pour une variance
 
-On se place dans le cas où $X$ suit une loi normale, $\N(\mu,\sigma^2)$.
+On se place dans le cas où $X$ suit une loi normale, $\mathcal N(\mu,\sigma^2)$.
 
 Un intervalle de confiance de niveau $1-\alpha$ pour la variance $\sigma^2$ est
 

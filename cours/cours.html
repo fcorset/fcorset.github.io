@@ -264,9 +264,9 @@ legend(4,0.3,legend=c(&quot;N(0,1)&quot;,&quot;N(0,4)&quot;,&quot;N(2,4)&quot;),
 <h2><span class="header-section-number">3.4</span> Théorème central limite</h2>
 <p>Le théorème central limite dit que, si un grand nombre de variables aléatoires indépendantes ayant la même loi sont ajoutées, leur somme suit approximativement une loi normale.</p>
 <ol style="list-style-type: decimal">
-<li><p>Pour des échantillons distribués suivant une loi binomiale, la loi binomiale <span class="math inline">\(B(n,p)\)</span> se comporte comme la loi normale <span class="math inline">\(\N(np,np(1-p))\)</span> pour <span class="math inline">\(n\)</span> grand.</p></li>
-<li><p>Si <span class="math inline">\(\{X_i\}_{i=1}^{\infty}\)</span> est une suite de variables aléatoires indépendantes de même loi et de moyenne <span class="math inline">\(\mu\)</span> et de variance <span class="math inline">\(\sigma^2\)</span>, alors <span class="math inline">\(\bar X_n=\frac{\displaystyle \sum_{i=1}^nX_i}{n}\)</span> suit approximativement une loi normale <span class="math inline">\(\N(\mu,\sigma^2/n)\)</span> pour <span class="math inline">\(n\)</span> grand</p></li>
-<li><p>ou, <span class="math inline">\(Z_n=\frac{\bar X_n-\mu}{\sigma/\sqrt{n}}\)</span>, variable centrée réduite issue de <span class="math inline">\(\bar X_n\)</span>, suit approximativement une loi normale <span class="math inline">\(\N(0,1)\)</span> pour <span class="math inline">\(n\)</span> grand.</p></li>
+<li><p>Pour des échantillons distribués suivant une loi binomiale, la loi binomiale <span class="math inline">\(B(n,p)\)</span> se comporte comme la loi normale <span class="math inline">\(\mathcal N(np,np(1-p))\)</span> pour <span class="math inline">\(n\)</span> grand.</p></li>
+<li><p>Si <span class="math inline">\(\{X_i\}_{i=1}^{\infty}\)</span> est une suite de variables aléatoires indépendantes de même loi et de moyenne <span class="math inline">\(\mu\)</span> et de variance <span class="math inline">\(\sigma^2\)</span>, alors <span class="math inline">\(\bar X_n=\frac{\displaystyle \sum_{i=1}^nX_i}{n}\)</span> suit approximativement une loi normale <span class="math inline">\(\mathcal N(\mu,\sigma^2/n)\)</span> pour <span class="math inline">\(n\)</span> grand</p></li>
+<li><p>ou, <span class="math inline">\(Z_n=\frac{\bar X_n-\mu}{\sigma/\sqrt{n}}\)</span>, variable centrée réduite issue de <span class="math inline">\(\bar X_n\)</span>, suit approximativement une loi normale <span class="math inline">\(\mathcal N(0,1)\)</span> pour <span class="math inline">\(n\)</span> grand.</p></li>
 </ol>
 </div>
 </div>
@@ -345,7 +345,7 @@ S_n^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
 <h3><span class="header-section-number">4.3.1</span> Intervalles de confiance pour une moyenne</h3>
 <div id="cas-dun-echantillon-gaussien" class="section level4">
 <h4><span class="header-section-number">4.3.1.1</span> Cas d’un échantillon gaussien</h4>
-<p>On suppose que <span class="math inline">\(X\)</span> suit une loi normale <span class="math inline">\(\N(\mu,\sigma^2)\)</span>. On rappelle que la moyenne empirique et que la variance empirique sont données par <span class="math display">\[\bar X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i\quad{\rm and}\quad S^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2.\]</span></p>
+<p>On suppose que <span class="math inline">\(X\)</span> suit une loi normale <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span>. On rappelle que la moyenne empirique et que la variance empirique sont données par <span class="math display">\[\bar X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i\quad{\rm and}\quad S^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2.\]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Si <span class="math inline">\(\sigma^2\)</span> est connue, un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour la moyenne <span class="math inline">\(\mu\)</span> est <span class="math display">\[\left[ \bar X - u_{1-\alpha/2} \frac{\sigma}{\sqrt{n}};\bar X + u_{1-\alpha/2} \frac{\sigma}{\sqrt{n}} \right]\]</span> où <span class="math inline">\(u_{1-\alpha/2}\)</span> est le quantile d’ordre <span class="math inline">\(1-\alpha/2\)</span> de la loi normale <span class="math inline">\(N(0,1)\)</span>.</p></li>
 <li><p>Si <span class="math inline">\(\sigma^2\)</span> est inconnue, un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour la moyenne <span class="math inline">\(\mu\)</span> est</p></li>
@@ -365,7 +365,7 @@ S_n^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
 </div>
 <div id="intervalle-de-confiance-pour-une-variance" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Intervalle de confiance pour une variance</h3>
-<p>On se place dans le cas où <span class="math inline">\(X\)</span> suit une loi normale, <span class="math inline">\(\N(\mu,\sigma^2)\)</span>.</p>
+<p>On se place dans le cas où <span class="math inline">\(X\)</span> suit une loi normale, <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span>.</p>
 <p>Un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour la variance <span class="math inline">\(\sigma^2\)</span> est</p>
 <p><span class="math display">\[
 \left[ \frac{nS^2}{q^{n-1}_{1-\alpha/2}};\frac{nS^2}{q^{n-1}_{\alpha/2}}\right] = \left[ \frac{(n-1)(S^\prime)^2}{q^{n-1}_{1-\alpha/2}};\frac{(n-1)(S^\prime)^2}{q^{n-1}_{\alpha/2}}\right] 
