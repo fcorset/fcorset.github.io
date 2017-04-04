@@ -2,15 +2,13 @@
 title: "Cours de Statistique et Probabilités"
 author: "IUT Informatique S3d"
 output:
-  rmdformats::readthedown:
+  rmdformats::readthedown:    
     highlight: kate
   html_document: 
     toc: true
     toc_depth: 4
     number_section: true
-    theme: cosmo
     fig_caption: true
-    
 ---
 
 
