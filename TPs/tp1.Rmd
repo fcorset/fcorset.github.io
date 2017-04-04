@@ -2,6 +2,7 @@
 title: "TP 1 : Introduction au logiciel R"
 ---
 
+
 # Présentation de Rstudio
 
 RStudio est une interface du logiciel R. Il comprend 4 fenêtres : 

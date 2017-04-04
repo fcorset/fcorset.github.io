@@ -2,14 +2,17 @@
 title: "Cours de Statistique et Probabilités"
 author: "IUT Informatique S3d"
 output:
+  rmdformats::readthedown:
+    highlight: kate
   html_document: 
     toc: true
     toc_depth: 4
     number_section: true
     theme: cosmo
-    highlight: textmate
     fig_caption: true
+    
 ---
+
 
 # Préambule
 
@@ -81,7 +84,9 @@ La variable aléatoire $X$ associée à une fonction $f$ donnée et définie sur
 où $t$ est un réel fixé.
 
 Naturellement, cette écriture n'a de sens que si :
+
 1. $f$ est une fonction positive sur $\mathbb{R}$
+
 2. $\displaystyle\int_{-\infty}^{+\infty} f(x) dx=1$.
 
 $f$ est appelée "**densité**" de $X$.
