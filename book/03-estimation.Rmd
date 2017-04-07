@@ -1,0 +1,159 @@
+# Estimation
+
+
+## Introduction
+
+**En probabilités, on travaille avec une loi connue. En
+statistique, cette loi est inconnue.**
+
+Le statisticien travaille sur des données (notes de qualité de pièces produites dans une usine, données météorologiques, résultats d'expériences médicales ou physiques,...). Il le fait à la demande d'un interlocuteur qui a des attentes plus ou moins précises. Ces attentes peuvent être de plusieurs types :
+
+- extraire des résumés pertinents des données,
+- répondre à une question comme "le réchauffement climatique est-il réel ?",
+- prendre une décision comme la mise sur le marché d'un nouveau médicament,
+- effectuer une prévision, par exemple sur le résultat d'une élection qui aura lieu prochainement,...
+
+Il élabore un modèle et construit des outils pour répondre aux questions de son interlocuteur dans ce modèle. Il doit bien sûr garder un sens critique vis à vis du modèle qu'il a construit. Il est bien sûr crucial pour le statisticien d'estimer les paramètres au vu des données dont il dispose et d'avoir une idée de la précision de cette estimation. On introduit tout d'abord les estimateurs puis on verra enfin comment évaluer la précision des estimateurs au travers d'intervalles de confiance.
+
+En résumé, voici les étapes de la statistique inférentielle :
+
+1. Observation d'une variable $X$ sur un groupe
+d'individus choisis d'une façon aléatoire et indépendante dans la
+population totale.
+
+2. On obtient des observations $x_1, \ldots,x_n$, réalisations de
+variables aléatoires indépendantes et de même loi
+$X_1,\ldots,X_n$. On fait une étude descriptive de $x_1,
+\ldots,x_n$ (histogramme, moyenne, $\ldots$).
+
+3. Au vu de l'étude descriptive, trouver une loi de probabilité
+acceptable pour les variables $X_1, \ldots,X_n$.
+
+4. Inférence statistique : utiliser $x_1, \ldots,x_n$ pour
+estimer les paramètres du modèle et en déduire des propriétés sur
+la population totale.
+
+## Statistique et estimateur
+
+1. Pour un paramètre inconnu, un estimateur est une fonction des données, prenant des valeurs proches de ce paramètre.
+
+  1 Avant que les données ne soient collectées, l'estimateur est une variable aléatoire
+  2 Une fois les données collectées, l'estimation est la valeur de l'estimateur pour ces données.
+
+2. Estimer un paramètre $\theta$ inconnu, c'est donc trouver une
+statistique $T=\tau(X_1,\ldots,X_n)$ dont on pense que la valeur
+observée $\tau(x_1,\ldots,x_n)$ sera probablement "suffisamment
+proche" de la valeur inconnue $\theta$.
+
+Dans ce cas, $T$ sera appelé estimateur de $\theta$, et, $\tau(x_1,\ldots,x_n)$ sera une estimation de $\theta$.
+(valeur numérique).
+
+1. Le biais de $T$ est la différence entre l'espérance de $T$ et la vraie valeur (inconnue) de $\theta$ : Biais=$\mathbb E[T]-\theta$.
+2. L'erreur quadratique est l'espérance des carrés des différences : QE= $\mathbb E[(T-\theta)^2]$.
+
+L'estimateur $T$ est :
+
+- sans biais si le biais est nul (Les valeurs de $T$ sont centrées sur la vraie valeur)
+- asymptotiquement sans biais si le biais tend vers 0 quand la taille de l'échantillon tend vers l'infini.
+- consistant si la probabilité de s'éloigner de la valeur à estimer de plus de $\epsilon$ ($\epsilon$ petit) tend vers 0 quand la taille de l'échantillon augmente.
+
+Voici maintenant quelques exemples standards d'estimateurs
+
+1. La fréquence empirique d'un évènement est un estimateur sans biais consistant de la probabilité de cet évènement.
+
+2. La moyenne empirique d'un échantillon est un estimateur sans biais consistant de l'espérance théorique de ces variables :
+$$T(X_1,\ldots,X_n)=\bar
+X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i$$
+
+3. La variance empirique notée $S_n^2$ d'un échantillon (lorsque la moyenne est inconnue) est
+
+$$
+S_n^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
+$$
+
+Cet estimateur est biaisé. On peut montrer que 
+
+$$
+\mathbb E [S_n^2] = \frac{n-1}{n} \sigma^2
+$$
+
+Ainsi, on obtient un estimateur sans biais en multipliant la variance empirique par $n/(n-1)$ où $n$ désigne la taille de l'échantillon, noté ${S_n^\prime}^2$ :
+
+$$
+{S^\prime_n}^2=\frac{1}{n-1}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
+$$
+
+C'est cette dernière quantité qui est donnée dans le logiciel R via la fonction var(). Si l'on veut calculer la variance empirique d'un échantillon sous le logiciel R, il faudra donc faire le nécessaire : par exemple faire une nouvelle fonction que l'on pourra appeler var.pop().
+
+## Estimation par intervalle de confiance
+
+Lorsque l'on estime un paramètre $\theta$, on veut avoir une idée de la précision de l'estimation effectuée. C'est le rôle des intervalles de confiance.
+
+**Problème** :
+
+Peut-on trouver deux statistiques $T_1$ et $T_2$
+telles que $$p(T_1\leq \theta\leq T_2)=1-\alpha$$ avec
+$0<\alpha<1$ fixé ? ou encore peut-on trouver deux statistiques
+$T_1$ et $T_2$ de manière à ce qu'on ait beaucoup de chance de
+trouver le paramètre inconnu entre ces deux statistiques ?
+
+1. L'intervalle $[T_1, T_2]$ est un intervalle aléatoire appelé
+intervalle de confiance.
+2. $\alpha$ est le risque d'erreur. Le paramètre $\alpha$ représente la
+probabilité que l'intervalle $[T_1(X_1,\ldots,X_n),
+T_2(X_1,\ldots,X_n)]$ ne contienne pas le paramètre inconnu
+$\theta$. En affirmant que $[T_1, T_2]$ contient $\theta$, on se trompe
+en moyenne 100$\alpha$ fois sur 100.
+3. $(1-\alpha)$ est appelé niveau de confiance ou coefficient de sécurité.
+
+### Intervalles de confiance pour une moyenne
+
+#### Cas d'un échantillon gaussien
+
+On suppose que $X$ suit une loi normale $\mathcal N(\mu,\sigma^2)$. On rappelle que la moyenne empirique et que la variance empirique sont données par
+$$\bar X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i\quad{\rm and}\quad S^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2.$$
+
+1. Si $\sigma^2$ est connue, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est 
+$$\left[ \bar X - u_{1-\alpha/2} \frac{\sigma}{\sqrt{n}};\bar X + u_{1-\alpha/2} \frac{\sigma}{\sqrt{n}} \right]$$
+où $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $\mathcal N(0,1)$.
+
+2. Si $\sigma^2$ est inconnue, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est 
+
+$$
+\left[\bar X - t_{1-\alpha/2} \frac{S}{\sqrt{n}};\bar X + t_{1-\alpha/2} \frac{S}{\sqrt{n}} \right]
+$$
+
+où $t_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi de Student de paramètre $n-1$.
+
+#### Cas d'un échantillon non gaussien, mais de grande taille
+
+Pour de grands échantillons, sans hypothèse de normalité, un intervalle de confiance de niveau $1-\alpha$ pour la moyenne $\mu$ est
+
+$$
+\left[\bar X - u_{1-\alpha/2} \frac{S}{\sqrt{n}};\bar X + u_{1-\alpha/2} \frac{S}{\sqrt{n}} \right]
+$$
+où $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $\mathcal N(0,1)$.
+
+### Intervalle de confiance pour une variance
+
+On se place dans le cas où $X$ suit une loi normale, $\mathcal N(\mu,\sigma^2)$.
+
+Un intervalle de confiance de niveau $1-\alpha$ pour la variance $\sigma^2$ est
+
+$$
+\left[ \frac{nS^2}{q^{n-1}_{1-\alpha/2}};\frac{nS^2}{q^{n-1}_{\alpha/2}}\right] = \left[ \frac{(n-1)(S^\prime)^2}{q^{n-1}_{1-\alpha/2}};\frac{(n-1)(S^\prime)^2}{q^{n-1}_{\alpha/2}}\right] 
+$$
+
+où $q^{n-1}_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi du chi-2 de paramètre $n-1$ et $q^{n-1}_{\alpha/2}$ son quantile d'ordre $\alpha/2$.
+
+### Intervalle de confiance pour une proportion
+
+On suppose que l'on est en présence d'un échantillon de grande taille (en pratique $n\geq 30$). Un intervalle de confiance de niveau $(1-\alpha)$ pour une proportion $p$ inconnue est
+
+$$
+\left[\bar X - u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})};\hat X + u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})} \right].
+$$
+
+où $n$ est la taille de l'échantillon, $\bar X$ la fréquence empirique et $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $\mathcal N(0,1)$.
+
+

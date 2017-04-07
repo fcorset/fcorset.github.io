@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cours de Statistique et Probabilités</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Cours de Statistique et Probabilités">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Cours de Statistique et Probabilités" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cours de Statistique et Probabilités" />
+  
+  
+  
+
+<meta name="author" content="FC">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="probabilites.html">
+<link rel="next" href="tests.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Cours de Statistique et de Probabilités</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préambule</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Décrire une ou plusieurs séries de valeurs</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#les-graphiques"><i class="fa fa-check"></i><b>2.1</b> Les graphiques</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#resumes-numeriques"><i class="fa fa-check"></i><b>2.2</b> Résumés numériques</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#resumes-de-position-dune-distribution"><i class="fa fa-check"></i><b>2.2.1</b> Résumés de position d’une distribution</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#resume-de-dispersion-dune-distribution"><i class="fa fa-check"></i><b>2.2.2</b> Résumé de dispersion d’une distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probabilites.html"><a href="probabilites.html"><i class="fa fa-check"></i><b>3</b> Probabilités</a><ul>
+<li class="chapter" data-level="3.1" data-path="probabilites.html"><a href="probabilites.html#densite-et-fonction-de-repartition-dune-variable-quantitative-continue"><i class="fa fa-check"></i><b>3.1</b> Densité et fonction de répartition d’une variable quantitative continue</a></li>
+<li class="chapter" data-level="3.2" data-path="probabilites.html"><a href="probabilites.html#exemple-la-loi-normale"><i class="fa fa-check"></i><b>3.2</b> Exemple : la loi normale</a></li>
+<li class="chapter" data-level="3.3" data-path="probabilites.html"><a href="probabilites.html#loi-forte-des-grands-nombres"><i class="fa fa-check"></i><b>3.3</b> Loi forte des grands nombres</a></li>
+<li class="chapter" data-level="3.4" data-path="probabilites.html"><a href="probabilites.html#theoreme-central-limite"><i class="fa fa-check"></i><b>3.4</b> Théorème central limite</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>4</b> Estimation</a><ul>
+<li class="chapter" data-level="4.1" data-path="estimation.html"><a href="estimation.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="estimation.html"><a href="estimation.html#statistique-et-estimateur"><i class="fa fa-check"></i><b>4.2</b> Statistique et estimateur</a></li>
+<li class="chapter" data-level="4.3" data-path="estimation.html"><a href="estimation.html#estimation-par-intervalle-de-confiance"><i class="fa fa-check"></i><b>4.3</b> Estimation par intervalle de confiance</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="estimation.html"><a href="estimation.html#intervalles-de-confiance-pour-une-moyenne"><i class="fa fa-check"></i><b>4.3.1</b> Intervalles de confiance pour une moyenne</a></li>
+<li class="chapter" data-level="4.3.2" data-path="estimation.html"><a href="estimation.html#intervalle-de-confiance-pour-une-variance"><i class="fa fa-check"></i><b>4.3.2</b> Intervalle de confiance pour une variance</a></li>
+<li class="chapter" data-level="4.3.3" data-path="estimation.html"><a href="estimation.html#intervalle-de-confiance-pour-une-proportion"><i class="fa fa-check"></i><b>4.3.3</b> Intervalle de confiance pour une proportion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tests.html"><a href="tests.html"><i class="fa fa-check"></i><b>5</b> Tests</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://fcorset.github.io/cours" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cours de Statistique et Probabilités</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estimation" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Estimation</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p><strong>En probabilités, on travaille avec une loi connue. En statistique, cette loi est inconnue.</strong></p>
+<p>Le statisticien travaille sur des données (notes de qualité de pièces produites dans une usine, données météorologiques, résultats d’expériences médicales ou physiques,…). Il le fait à la demande d’un interlocuteur qui a des attentes plus ou moins précises. Ces attentes peuvent être de plusieurs types :</p>
+<ul>
+<li>extraire des résumés pertinents des données,</li>
+<li>répondre à une question comme “le réchauffement climatique est-il réel ?”,</li>
+<li>prendre une décision comme la mise sur le marché d’un nouveau médicament,</li>
+<li>effectuer une prévision, par exemple sur le résultat d’une élection qui aura lieu prochainement,…</li>
+</ul>
+<p>Il élabore un modèle et construit des outils pour répondre aux questions de son interlocuteur dans ce modèle. Il doit bien sûr garder un sens critique vis à vis du modèle qu’il a construit. Il est bien sûr crucial pour le statisticien d’estimer les paramètres au vu des données dont il dispose et d’avoir une idée de la précision de cette estimation. On introduit tout d’abord les estimateurs puis on verra enfin comment évaluer la précision des estimateurs au travers d’intervalles de confiance.</p>
+<p>En résumé, voici les étapes de la statistique inférentielle :</p>
+<ol style="list-style-type: decimal">
+<li><p>Observation d’une variable <span class="math inline">\(X\)</span> sur un groupe d’individus choisis d’une façon aléatoire et indépendante dans la population totale.</p></li>
+<li><p>On obtient des observations <span class="math inline">\(x_1, \ldots,x_n\)</span>, réalisations de variables aléatoires indépendantes et de même loi <span class="math inline">\(X_1,\ldots,X_n\)</span>. On fait une étude descriptive de <span class="math inline">\(x_1, \ldots,x_n\)</span> (histogramme, moyenne, <span class="math inline">\(\ldots\)</span>).</p></li>
+<li><p>Au vu de l’étude descriptive, trouver une loi de probabilité acceptable pour les variables <span class="math inline">\(X_1, \ldots,X_n\)</span>.</p></li>
+<li><p>Inférence statistique : utiliser <span class="math inline">\(x_1, \ldots,x_n\)</span> pour estimer les paramètres du modèle et en déduire des propriétés sur la population totale.</p></li>
+</ol>
+</div>
+<div id="statistique-et-estimateur" class="section level2">
+<h2><span class="header-section-number">4.2</span> Statistique et estimateur</h2>
+<ol style="list-style-type: decimal">
+<li>Pour un paramètre inconnu, un estimateur est une fonction des données, prenant des valeurs proches de ce paramètre.</li>
+</ol>
+<p>1 Avant que les données ne soient collectées, l’estimateur est une variable aléatoire 2 Une fois les données collectées, l’estimation est la valeur de l’estimateur pour ces données.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Estimer un paramètre <span class="math inline">\(\theta\)</span> inconnu, c’est donc trouver une statistique <span class="math inline">\(T=\tau(X_1,\ldots,X_n)\)</span> dont on pense que la valeur observée <span class="math inline">\(\tau(x_1,\ldots,x_n)\)</span> sera probablement “suffisamment proche” de la valeur inconnue <span class="math inline">\(\theta\)</span>.</li>
+</ol>
+<p>Dans ce cas, <span class="math inline">\(T\)</span> sera appelé estimateur de <span class="math inline">\(\theta\)</span>, et, <span class="math inline">\(\tau(x_1,\ldots,x_n)\)</span> sera une estimation de <span class="math inline">\(\theta\)</span>. (valeur numérique).</p>
+<ol style="list-style-type: decimal">
+<li>Le biais de <span class="math inline">\(T\)</span> est la différence entre l’espérance de <span class="math inline">\(T\)</span> et la vraie valeur (inconnue) de <span class="math inline">\(\theta\)</span> : Biais=<span class="math inline">\(\mathbb E[T]-\theta\)</span>.</li>
+<li>L’erreur quadratique est l’espérance des carrés des différences : QE= <span class="math inline">\(\mathbb E[(T-\theta)^2]\)</span>.</li>
+</ol>
+<p>L’estimateur <span class="math inline">\(T\)</span> est :</p>
+<ul>
+<li>sans biais si le biais est nul (Les valeurs de <span class="math inline">\(T\)</span> sont centrées sur la vraie valeur)</li>
+<li>asymptotiquement sans biais si le biais tend vers 0 quand la taille de l’échantillon tend vers l’infini.</li>
+<li>consistant si la probabilité de s’éloigner de la valeur à estimer de plus de <span class="math inline">\(\epsilon\)</span> (<span class="math inline">\(\epsilon\)</span> petit) tend vers 0 quand la taille de l’échantillon augmente.</li>
+</ul>
+<p>Voici maintenant quelques exemples standards d’estimateurs</p>
+<ol style="list-style-type: decimal">
+<li><p>La fréquence empirique d’un évènement est un estimateur sans biais consistant de la probabilité de cet évènement.</p></li>
+<li><p>La moyenne empirique d’un échantillon est un estimateur sans biais consistant de l’espérance théorique de ces variables : <span class="math display">\[T(X_1,\ldots,X_n)=\bar
+X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i\]</span></p></li>
+<li><p>La variance empirique notée <span class="math inline">\(S_n^2\)</span> d’un échantillon (lorsque la moyenne est inconnue) est</p></li>
+</ol>
+<p><span class="math display">\[
+S_n^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
+\]</span></p>
+<p>Cet estimateur est biaisé. On peut montrer que</p>
+<p><span class="math display">\[
+\mathbb E [S_n^2] = \frac{n-1}{n} \sigma^2
+\]</span></p>
+<p>Ainsi, on obtient un estimateur sans biais en multipliant la variance empirique par <span class="math inline">\(n/(n-1)\)</span> où <span class="math inline">\(n\)</span> désigne la taille de l’échantillon, noté <span class="math inline">\({S_n^\prime}^2\)</span> :</p>
+<p><span class="math display">\[
+{S^\prime_n}^2=\frac{1}{n-1}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2 .
+\]</span></p>
+<p>C’est cette dernière quantité qui est donnée dans le logiciel R via la fonction var(). Si l’on veut calculer la variance empirique d’un échantillon sous le logiciel R, il faudra donc faire le nécessaire : par exemple faire une nouvelle fonction que l’on pourra appeler var.pop().</p>
+</div>
+<div id="estimation-par-intervalle-de-confiance" class="section level2">
+<h2><span class="header-section-number">4.3</span> Estimation par intervalle de confiance</h2>
+<p>Lorsque l’on estime un paramètre <span class="math inline">\(\theta\)</span>, on veut avoir une idée de la précision de l’estimation effectuée. C’est le rôle des intervalles de confiance.</p>
+<p><strong>Problème</strong> :</p>
+<p>Peut-on trouver deux statistiques <span class="math inline">\(T_1\)</span> et <span class="math inline">\(T_2\)</span> telles que <span class="math display">\[p(T_1\leq \theta\leq T_2)=1-\alpha\]</span> avec <span class="math inline">\(0&lt;\alpha&lt;1\)</span> fixé ? ou encore peut-on trouver deux statistiques <span class="math inline">\(T_1\)</span> et <span class="math inline">\(T_2\)</span> de manière à ce qu’on ait beaucoup de chance de trouver le paramètre inconnu entre ces deux statistiques ?</p>
+<ol style="list-style-type: decimal">
+<li>L’intervalle <span class="math inline">\([T_1, T_2]\)</span> est un intervalle aléatoire appelé intervalle de confiance.</li>
+<li><span class="math inline">\(\alpha\)</span> est le risque d’erreur. Le paramètre <span class="math inline">\(\alpha\)</span> représente la probabilité que l’intervalle <span class="math inline">\([T_1(X_1,\ldots,X_n), T_2(X_1,\ldots,X_n)]\)</span> ne contienne pas le paramètre inconnu <span class="math inline">\(\theta\)</span>. En affirmant que <span class="math inline">\([T_1, T_2]\)</span> contient <span class="math inline">\(\theta\)</span>, on se trompe en moyenne 100<span class="math inline">\(\alpha\)</span> fois sur 100.</li>
+<li><span class="math inline">\((1-\alpha)\)</span> est appelé niveau de confiance ou coefficient de sécurité.</li>
+</ol>
+<div id="intervalles-de-confiance-pour-une-moyenne" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Intervalles de confiance pour une moyenne</h3>
+<div id="cas-dun-echantillon-gaussien" class="section level4">
+<h4><span class="header-section-number">4.3.1.1</span> Cas d’un échantillon gaussien</h4>
+<p>On suppose que <span class="math inline">\(X\)</span> suit une loi normale <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span>. On rappelle que la moyenne empirique et que la variance empirique sont données par <span class="math display">\[\bar X=\frac{1}{n}\displaystyle\sum_{i=1}^nX_i\quad{\rm and}\quad S^2=\frac{1}{n}\displaystyle\sum_{i=1}^n(X_i-\bar X)^2.\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si <span class="math inline">\(\sigma^2\)</span> est connue, un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour la moyenne <span class="math inline">\(\mu\)</span> est <span class="math display">\[\left[ \bar X - u_{1-\alpha/2} \frac{\sigma}{\sqrt{n}};\bar X + u_{1-\alpha/2} \frac{\sigma}{\sqrt{n}} \right]\]</span> où <span class="math inline">\(u_{1-\alpha/2}\)</span> est le quantile d’ordre <span class="math inline">\(1-\alpha/2\)</span> de la loi normale <span class="math inline">\(\mathcal N(0,1)\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(\sigma^2\)</span> est inconnue, un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour la moyenne <span class="math inline">\(\mu\)</span> est</p></li>
+</ol>
+<p><span class="math display">\[
+\left[\bar X - t_{1-\alpha/2} \frac{S}{\sqrt{n}};\bar X + t_{1-\alpha/2} \frac{S}{\sqrt{n}} \right]
+\]</span></p>
+<p>où <span class="math inline">\(t_{1-\alpha/2}\)</span> est le quantile d’ordre <span class="math inline">\(1-\alpha/2\)</span> de la loi de Student de paramètre <span class="math inline">\(n-1\)</span>.</p>
+</div>
+<div id="cas-dun-echantillon-non-gaussien-mais-de-grande-taille" class="section level4">
+<h4><span class="header-section-number">4.3.1.2</span> Cas d’un échantillon non gaussien, mais de grande taille</h4>
+<p>Pour de grands échantillons, sans hypothèse de normalité, un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour la moyenne <span class="math inline">\(\mu\)</span> est</p>
+<p><span class="math display">\[
+\left[\bar X - u_{1-\alpha/2} \frac{S}{\sqrt{n}};\bar X + u_{1-\alpha/2} \frac{S}{\sqrt{n}} \right]
+\]</span> où <span class="math inline">\(u_{1-\alpha/2}\)</span> est le quantile d’ordre <span class="math inline">\(1-\alpha/2\)</span> de la loi normale <span class="math inline">\(\mathcal N(0,1)\)</span>.</p>
+</div>
+</div>
+<div id="intervalle-de-confiance-pour-une-variance" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Intervalle de confiance pour une variance</h3>
+<p>On se place dans le cas où <span class="math inline">\(X\)</span> suit une loi normale, <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span>.</p>
+<p>Un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour la variance <span class="math inline">\(\sigma^2\)</span> est</p>
+<p><span class="math display">\[
+\left[ \frac{nS^2}{q^{n-1}_{1-\alpha/2}};\frac{nS^2}{q^{n-1}_{\alpha/2}}\right] = \left[ \frac{(n-1)(S^\prime)^2}{q^{n-1}_{1-\alpha/2}};\frac{(n-1)(S^\prime)^2}{q^{n-1}_{\alpha/2}}\right] 
+\]</span></p>
+<p>où <span class="math inline">\(q^{n-1}_{1-\alpha/2}\)</span> est le quantile d’ordre <span class="math inline">\(1-\alpha/2\)</span> de la loi du chi-2 de paramètre <span class="math inline">\(n-1\)</span> et <span class="math inline">\(q^{n-1}_{\alpha/2}\)</span> son quantile d’ordre <span class="math inline">\(\alpha/2\)</span>.</p>
+</div>
+<div id="intervalle-de-confiance-pour-une-proportion" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Intervalle de confiance pour une proportion</h3>
+<p>On suppose que l’on est en présence d’un échantillon de grande taille (en pratique <span class="math inline">\(n\geq 30\)</span>). Un intervalle de confiance de niveau <span class="math inline">\((1-\alpha)\)</span> pour une proportion <span class="math inline">\(p\)</span> inconnue est</p>
+<p><span class="math display">\[
+\left[\bar X - u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})};\hat X + u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})} \right].
+\]</span></p>
+<p>où <span class="math inline">\(n\)</span> est la taille de l’échantillon, <span class="math inline">\(\bar X\)</span> la fréquence empirique et <span class="math inline">\(u_{1-\alpha/2}\)</span> est le quantile d’ordre <span class="math inline">\(1-\alpha/2\)</span> de la loi normale <span class="math inline">\(\mathcal N(0,1)\)</span>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="probabilites.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tests.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://fcorset.github.io/cours/03-estimation.Rmd",
+"text": "Edit"
+},
+"download": ["cours.pdf", "cours.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

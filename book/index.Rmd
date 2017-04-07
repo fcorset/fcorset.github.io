@@ -1,0 +1,16 @@
+--- 
+title: "Cours de Statistique et Probabilités"
+author: "FC"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+---
+
+# Préambule
+
+
+Ce support de cours est largement inspiré du livre de Lafaye de Micheaux et al. \cite{LAF} ainsi que du cours de Statistique de Bernard Ycart de l'Université de Grenoble Alpes.
+
