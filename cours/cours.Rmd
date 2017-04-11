@@ -108,10 +108,9 @@ Si $\sigma^2=1$, on dit que $X$ est réduite.
 
 Une propriété importante sur la loi normale est la suivante :
 
-** Proposition **
-
+```{theorem}
 Si $X\leadsto \mathcal N(\mu,\sigma^2)$ alors $\displaystyle \frac{X-\mu}{\sigma} \leadsto \mathcal N(0,1)$.
-
+```
 
 Remarque : Attention ! Cette propriété nous dit que pour centrer et réduire une loi normale, il faut lui retrancher sa moyenne et **diviser par l'écart type (et non pas la variance)**.
 
@@ -127,7 +126,9 @@ legend(4,0.3,legend=c("N(0,1)","N(0,4)","N(2,4)"),col = c("red","blue","green"),
 
 ## Loi forte des grands nombres
 
-
+```{theorem}
+Soit $(X_n)_{n\geq 1}$ une suite
+```
 
 ## Théorème central limite
 Le théorème central limite dit que, si un grand nombre de variables aléatoires indépendantes ayant la même loi sont ajoutées, leur somme suit approximativement une loi normale.
