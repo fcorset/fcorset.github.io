@@ -210,8 +210,11 @@ Pour les variables quantitatives, on peut aussi représenter la fonction de rép
 <p>Si <span class="math inline">\(\mu=0\)</span>, on dit que <span class="math inline">\(X\)</span> est centrée.</p>
 <p>Si <span class="math inline">\(\sigma^2=1\)</span>, on dit que <span class="math inline">\(X\)</span> est réduite.</p>
 <p>Une propriété importante sur la loi normale est la suivante :</p>
-<p>** Proposition **</p>
-<p>Si <span class="math inline">\(X\leadsto \mathcal N(\mu,\sigma^2)\)</span> alors <span class="math inline">\(\displaystyle \frac{X-\mu}{\sigma} \leadsto \mathcal N(0,1)\)</span>.</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-1" class="theorem"><strong>(#thm:unnamed-chunk-1)</strong></span>Si <span class="math inline">\(X\leadsto \mathcal N(\mu,\sigma^2)\)</span> alors <span class="math inline">\(\displaystyle \frac{X-\mu}{\sigma} \leadsto \mathcal N(0,1)\)</span>.
+</div>
+<p></p>
 <p>Remarque : Attention ! Cette propriété nous dit que pour centrer et réduire une loi normale, il faut lui retrancher sa moyenne et <strong>diviser par l’écart type (et non pas la variance)</strong>.</p>
 <p>Les figures suivantes nous donnent des exemples de densité de différentes lois normales.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(<span class="kw">dnorm</span>(x,<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">from =</span> -<span class="dv">5</span>,<span class="dt">to =</span> <span class="dv">7</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Densités de lois normales&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;densité&quot;</span>)
@@ -222,6 +225,11 @@ Pour les variables quantitatives, on peut aussi représenter la fonction de rép
 </div>
 <div id="loi-forte-des-grands-nombres" class="section level2">
 <h2>Loi forte des grands nombres</h2>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-3" class="theorem"><strong>(#thm:unnamed-chunk-3)</strong></span>Soit <span class="math inline">\((X_n)_{n\geq 1}\)</span> une suite
+</div>
+<p></p>
 </div>
 <div id="theoreme-central-limite" class="section level2">
 <h2>Théorème central limite</h2>
