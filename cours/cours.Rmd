@@ -181,6 +181,24 @@ indépendantes de même loi et de moyenne $\mu$ et de variance $\sigma^2$, alors
 3. ou, $Z_n=\frac{\bar X_n-\mu}{\sigma/\sqrt{n}}$, variable centrée réduite issue de $\bar X_n$,
 suit approximativement une loi normale $\mathcal N(0,1)$ pour $n$ grand.
 
+*Application*
+
+
+Simulons une loi quelconque, par exemple la loi exponentielle. On suppose donc que $X_1,\ldots,X_n$ est un échantillon iid (de loi exponentielle de paramètre $\lambda= 1$). On va simuler ces $n$ variables aléatoires et calculer la moyenne. Pour avoir une distribution de cette moyenne, on va répéter cette opération $N$ fois et regarder la distribution de ces $N$ moyennes. Le théorème centrale limite nous dit que la distribution converge vers une loi normale d'espérance $\mu=1$ (moyenne de la loi exponentielle de paramètre $1$) et de variance $\sigma^2/n = 1/n$ (car la variance d'une loi exponentielle de paramètre $1$ est égale à $1$).
+
+```{r}
+n<-500
+N<-10000
+donnees<-replicate(N,rexp(n,1))
+hist(colMeans(donnees),freq=F,main="Distribution de la moyenne",xlab="x",nclass = 20)
+curve(dnorm(x,1,sqrt(1/n)),add = T,col="red")
+```
+
+
+Et vérifions que la moyenne de nos variables al
+
+
+
 # Estimation
 
 ## Introduction
