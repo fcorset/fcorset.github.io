@@ -138,6 +138,37 @@ $$
 \bar X_n \text{ converge vers }\mathbb E[X_1]
 $$
 
+Ce théorème peut nous permettre par exemple de calculer une intégrale. Imaginons que nous voulions calculer
+$$
+I=\int_0^1 f(x)\,dx
+$$
+où $f$ est une fonction continue sur $[0,1]$. On peut se servir de la loi uniforme sur cet intervalle pour calculer $I$. En effet, on a 
+$$
+I = \mathbb E[f(X)]
+$$
+où $X$ suit une loi uniforme sur $[0,1]$. Ainsi, d'après la loi forte des grands nombres, on sait que
+$$
+\frac{1}n \sum_{i=1}^n f(X_i) \text{ converge vers } \mathbb E[f(X_1)]=I
+$$
+où les $X_i$ sont i.i.d. de loi uniforme sur $[0,1]$.
+
+*Application*
+
+On souhaite calculer l'intégrale suivante
+$$
+I = \int_0^1 \sqrt{1-x^2} \,dx
+$$
+On sait que cette intégrale vaut $\pi/4$. On se propose ici de retrouver cette valeur par la simulation. Ainsi, on peut être en mesure de proposer une approximation de $\pi$. Ces méthodes sont appelés méthodes de Monte Carlo.
+
+```{r}
+N<- 10000  # nombre de simulations
+x<-runif(N) # échantillon iid de loi Uniforme sur [0,1]
+res<-mean(sqrt(1-x^2))
+4*res # Approximation de Pi
+
+```
+
+
 ## Théorème central limite
 Le théorème central limite dit que, si un grand nombre de variables aléatoires indépendantes ayant la même loi sont ajoutées, leur somme suit approximativement une loi normale.
 
