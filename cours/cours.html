@@ -191,7 +191,7 @@ Pour les variables quantitatives, on peut aussi représenter la fonction de rép
 <h1>Probabilités</h1>
 <div id="densite-et-fonction-de-repartition-dune-variable-quantitative-continue" class="section level2">
 <h2>Densité et fonction de répartition d’une variable quantitative continue</h2>
-<p>La variable aléatoire <span class="math inline">\(X\)</span> associée à une fonction <span class="math inline">\(f\)</span> donnée et définie sur <span class="math inline">\(\mathbb{R}\)</span> représente le fait de tirer un nombre au hasard avec la probabilité suivante :<span class="math display">\[{\rm Proba}(X\leq t)=\int_{-\infty}^{t} f(x) dx = F(t)\]</span> où <span class="math inline">\(t\)</span> est un réel fixé.</p>
+<p>La variable aléatoire <span class="math inline">\(X\)</span> associée à une fonction <span class="math inline">\(f\)</span> donnée et définie sur <span class="math inline">\(\mathbb{R}\)</span>, continue par morceaux, représente le fait de tirer un nombre au hasard avec la probabilité suivante :<span class="math display">\[{\rm Proba}(X\leq t)=\int_{-\infty}^{t} f(x) dx = F(t)\]</span> où <span class="math inline">\(t\)</span> est un réel fixé.</p>
 <p>Naturellement, cette écriture n’a de sens que si :</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(f\)</span> est une fonction positive sur <span class="math inline">\(\mathbb{R}\)</span></p></li>
@@ -265,8 +265,8 @@ Pour les variables quantitatives, on peut aussi représenter la fonction de rép
 </ol>
 <p>Dans ce cas, <span class="math inline">\(T\)</span> sera appelé estimateur de <span class="math inline">\(\theta\)</span>, et, <span class="math inline">\(\tau(x_1,\ldots,x_n)\)</span> sera une estimation de <span class="math inline">\(\theta\)</span>. (valeur numérique).</p>
 <ol style="list-style-type: decimal">
-<li>Le biais de <span class="math inline">\(T\)</span> est la différence entre l’espérance de <span class="math inline">\(T\)</span> et la vraie valeur (inconnue) de <span class="math inline">\(\theta\)</span> : Biais=<span class="math inline">\(\E[T]-\theta\)</span>.</li>
-<li>L’erreur quadratique est l’espérance des carrés des différences : QE= <span class="math inline">\(\E[(T-\theta)^2]\)</span>.</li>
+<li>Le biais de <span class="math inline">\(T\)</span> est la différence entre l’espérance de <span class="math inline">\(T\)</span> et la vraie valeur (inconnue) de <span class="math inline">\(\theta\)</span> : Biais=<span class="math inline">\(\mathbb E[T]-\theta\)</span>.</li>
+<li>L’erreur quadratique est l’espérance des carrés des différences : QE= <span class="math inline">\(\mathbb E[(T-\theta)^2]\)</span>.</li>
 </ol>
 <p>L’estimateur <span class="math inline">\(T\)</span> est :</p>
 <ul>

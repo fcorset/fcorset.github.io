@@ -78,7 +78,7 @@ Ces résumés peuvent être calculés uniquement pour des variables quantitative
 
 ## Densité et fonction de répartition d'une variable quantitative continue
 
-La variable aléatoire $X$ associée à une fonction $f$ donnée et définie sur $\mathbb{R}$ représente le fait de tirer un nombre au hasard avec la probabilité suivante :$${\rm Proba}(X\leq t)=\int_{-\infty}^{t} f(x) dx = F(t)$$
+La variable aléatoire $X$ associée à une fonction $f$ donnée et définie sur $\mathbb{R}$, continue par morceaux, représente le fait de tirer un nombre au hasard avec la probabilité suivante :$${\rm Proba}(X\leq t)=\int_{-\infty}^{t} f(x) dx = F(t)$$
 où $t$ est un réel fixé.
 
 Naturellement, cette écriture n'a de sens que si :
@@ -190,8 +190,8 @@ proche" de la valeur inconnue $\theta$.
 Dans ce cas, $T$ sera appelé estimateur de $\theta$, et, $\tau(x_1,\ldots,x_n)$ sera une estimation de $\theta$.
 (valeur numérique).
 
-1. Le biais de $T$ est la différence entre l'espérance de $T$ et la vraie valeur (inconnue) de $\theta$ : Biais=$\E[T]-\theta$.
-2. L'erreur quadratique est l'espérance des carrés des différences : QE= $\E[(T-\theta)^2]$.
+1. Le biais de $T$ est la différence entre l'espérance de $T$ et la vraie valeur (inconnue) de $\theta$ : Biais=$\mathbb E[T]-\theta$.
+2. L'erreur quadratique est l'espérance des carrés des différences : QE= $\mathbb E[(T-\theta)^2]$.
 
 L'estimateur $T$ est :
 
