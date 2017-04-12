@@ -53,7 +53,7 @@ abline(h=1/10,col="red")
 
 ## Loi de Bernoulli
 
-Cette loi est notée $\mathcal B(p)$. On dit que $X\leadsto \mathcal B(p)$ si et seulement si $X$ est une variable binaire telle que :
+Cette loi est notée $\mathcal B(p)$. On dit que $X\leadsto \mathcal B(p)$ si et seulement si $X$ est une variable binaire telle que (on parle de loi succès/échec) :
 $$
 P(X=1)=p
 $$
@@ -81,4 +81,38 @@ paste("La variance de l'échantillon est ",round(var(ech),2),", sachant que la v
 
 On dit que $X$ suit une loi binomiale, notée $\mathcal B(n,p)$. 
 
+On dit que cette loi est la somme de lois de Bernoulli indépendantes et de même paramètre, ce qui revient à compter le nombre de succès (nombre de $1$) parmi les $n$ expériences. Cela revient donc à faire $n$ fois une expérience (qui a une probabilité $p$ de réussir) identique, de façon indépendante. $X$ représente donc le nombre de succès.
 
+Pour résumer, soit $Y_i\leadsto \mathcal B(p)$ pour $i=1,\ldots,n$, où les $Y_i$ sont indépendants. On note 
+$$
+X = \sum_{i=1}^n Y_i \leadsto \mathcal B(n,p)
+$$
+
+
+
+
+Les valeurs possibles pour la variable $X$ sont $\{0,\ldots,n\}$ et 
+$$
+\forall k\in\{0,\ldots,n\},\, p(X=k)=C_n^k p^k (1-p)^{n-k}
+$$
+
+L'espérance de cette loi est (grâce à la **linéarité de l'espérance**)
+$$
+\mathbb E[X] = \sum_{i=1}^n \mathbb E[Y_i] = \sum_{i=1}^n p  = np
+$$
+La variance de cette loi est
+$$
+\mathbb V[X] = \sum_{i=1}^n \mathbb V[Y_i] = \sum_{i=1}^n p(1-p)  = np(1-p)
+$$
+Attention, dans cette dernière formule, il ne faut pas croire que nous utilisons la linéarité de la variance ! **La variance n'est pas linéaire**. Pour rappel :
+$$
+\mathbb V[aX] = a^2 \mathbb V[X]
+$$
+et
+$$
+\mathbb V[X_1+X_2] = \mathbb V[X_1] + \mathbb V[X_2] + 2*\mathrm{cov}(X_1,X_2)
+$$
+Enfin, si $X_1$ et $X_2$ sont indépendantes, alors
+$$
+\mathrm{cov}(X_1,X_2)=0
+$$
