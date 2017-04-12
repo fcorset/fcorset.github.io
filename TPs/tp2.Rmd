@@ -1,0 +1,84 @@
+---
+title: "TP 2 : Simulation de lois de probabilités"
+---
+
+
+# Introduction
+
+Dans le logiciel R, on peut simuler très simplement à peu près toutes les lois classiques. Dans ce TP, on se propose, pour chaque loi usuelle, de simuler des échantillons, et de calculer la moyenne et la variance de ces échantillons, ainsi que faire des graphiques représentant ces lois. Il y a quatre commandes à connaître pour chaque loi :
+
+- rmaloi : permet de simuler selon maloi 
+- dmaloi : permet de calculer la densité de maloi
+- pmaloi : permet de calculer la fonction de répartition de maloi
+- qmaloi : permet de calculer le quantile de maloi
+
+*Exemple*
+
+Pour la loi normale :
+
+```{r}
+n<-30
+ech<-rnorm(n,mean = 0,sd = 2) # simulation d'un échantillon d'une loi normale d'espérance 1 et de variance 4 (écart-type = 2)
+head(ech,n = 20)
+hist(ech, freq=F)
+curve(dnorm(x,mean = 0,sd = 2),from = -6,to = 6,ylab="densité",add=T,col="red")
+plot(ecdf(ech))
+curve(pnorm(x,mean = 0,sd = 2),from = -6,to = 6,ylab="Fonction de répartition",add=T,col="red")
+quantile.normale<-qnorm(p = c(0.05,0.1,0.25,0.5,0.75,0.9,0.95),mean = 0,sd = 2)
+quantile.echantillon<-quantile(x = ech,probs = c(0.05,0.1,0.25,0.5,0.75,0.9,0.95))
+(rbind(quantile.echantillon,quantile.normale))
+```
+
+
+# Lois discrètes
+
+## Loi uniforme discrète
+
+Soit $X$ une variable aléatoire distribuées selon une loi uniforme discrète sur $\{1,\ldots,n\}$.
+
+La distribution est définie comme suit :
+$$
+\forall k\in \{1,\ldots,n\}, \, p(X=k)=\frac 1n
+$$
+
+En R,
+
+```{r}
+n<-30
+ech<-sample(1:10,n,replace=T)
+table(ech)/n
+barplot(table(ech)/n)
+abline(h=1/10,col="red")
+```
+
+## Loi de Bernoulli
+
+Cette loi est notée $\mathcal B(p)$. On dit que $X\leadsto \mathcal B(p)$ si et seulement si $X$ est une variable binaire telle que :
+$$
+P(X=1)=p
+$$
+et
+$$
+P(X=0)=1-p=q
+$$
+
+C'est un cas particulier de la loi binomiale avec $n=1$.
+
+On peut vérifier facilement par le calcul que $\mathbb E[X]=p$ et $\mathbb V[X] = pq = p(1-p)$.
+
+```{r}
+n<- 30  # taille de l'échantillon
+p<-0.3   # paramètre de la loi de Bernoulli
+esp<-p
+var<-p*(1-p)
+ech<-rbinom(n,size = 1,prob = p) # size = 1 correspond à la loi de Bernoulli
+table(ech)/n
+paste("La moyenne de l'échantillon est ",mean(ech),", sachant que l'espérance vaut",esp)
+paste("La variance de l'échantillon est ",round(var(ech),2),", sachant que la variance de la loi vaut",p*(1-p))
+```
+
+## Loi binomiale
+
+On dit que $X$ suit une loi binomiale, notée $\mathcal B(n,p)$. 
+
+
