@@ -116,3 +116,18 @@ Enfin, si $X_1$ et $X_2$ sont indépendantes, alors
 $$
 \mathrm{cov}(X_1,X_2)=0
 $$
+
+En R, cela donne
+```{r}
+N<- 100 # taille de l'échantillon
+n<- 10L  # premier paramètre de la loi
+p<- 0.8 # deuxième paramètre de la loi
+
+ech<-rbinom(N,n,p)
+table(ech)/N
+
+dbinom(x=0:n,size = n,prob = p)
+
+```
+
+
