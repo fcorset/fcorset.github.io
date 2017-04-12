@@ -189,8 +189,8 @@ Simulons une loi quelconque, par exemple la loi exponentielle. On suppose donc q
 
 
 ```{r}
-n<-500
-N<-100000
+n<-500  # taille de l'échantillon i.i.d.
+N<-100000   # Nombre de répétitions
 donnees<-replicate(N,rexp(n,1))
 hist(colMeans(donnees),freq=F,main="Distribution de la moyenne",xlab="x",nclass = 20)
 curve(dnorm(x,1,sqrt(1/n)),add = T,col="red")
