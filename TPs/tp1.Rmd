@@ -381,10 +381,6 @@ La fonction attach() permet d'avoir accès aux variables du data.frame directeme
 attach(donnees)
 ```
 
-```{r}
-rnorm(10)
-```
-
 
 ## Importer depuis RStudio
 
