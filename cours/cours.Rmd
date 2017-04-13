@@ -121,16 +121,16 @@ $$
 
 On suppose que $X$ suit une loi de Poisson de paramètre $\lambda>0$ : $X\leadsto \mathcal P(\lambda)$. On rappelle que $X(\Omega)=\mathbb N$ et
 $$
-\forall k\in\mathbb N,\, P(X=k) = \exp(-\lambda) \frac{\lambda^k}{k!}
+\forall k\in\mathbb N,\, P(X=k) = e^{-\lambda} \frac{\lambda^k}{k!}
 $$
 
 On peut vérifier que la somme des probabilités est égale à $1$ :
 $$
-\sum_{k=0}^{+\infty} p_k = \sum_{k=0}^{+\infty} \exp(-\lambda) \frac{\lambda^k}{k!} = \exp(-\lambda) \sum_{k=0}^{+\infty}  \frac{\lambda^k}{k!} = \exp(-\lambda) * \exp(\lambda) = 1
+\sum_{k=0}^{+\infty} p_k = \sum_{k=0}^{+\infty} e^{-\lambda} \frac{\lambda^k}{k!} = e^{-\lambda} \sum_{k=0}^{+\infty}  \frac{\lambda^k}{k!} = e^{-\lambda} *e^{-\lambda} = 1
 $$
 L'espérance de $X$ vaut :
 $$
-\mathbb E[X] = \sum_{k=0}^{+\infty} k p_k = \exp(-\lambda) \sum_{k=1}^{+\infty} k \frac{\lambda^k}{k!} = \exp(-\lambda) \sum_{k=1}^{+\infty} \frac{\lambda^k}{(k-1)!} = \lambda \exp(-\lambda) \sum_{k=1}^{+\infty} \frac{\lambda^{k-1}}{(k-1)!}= \lambda \exp(-\lambda) * \exp(\lambda) = \lambda
+\mathbb E[X] = \sum_{k=0}^{+\infty} k p_k = e^{-\lambda} \sum_{k=1}^{+\infty} k \frac{\lambda^k}{k!} = e^{-\lambda} \sum_{k=1}^{+\infty} \frac{\lambda^k}{(k-1)!} = \lambda e^{-\lambda} \sum_{k=1}^{+\infty} \frac{\lambda^{k-1}}{(k-1)!}= \lambda e^{-\lambda} * e^{\lambda} = \lambda
 $$
 
 **Variance**
@@ -160,7 +160,7 @@ $$
 
 En reprenant la loi de Poisson, on peut calculer le moment d'ordre $2$ :
 $$
-\mathbb E[X^2] = \sum_{k=0}^{+\infty} k^2 p_k = \exp(-\lambda) \sum_{k=1}^{+\infty}k^2 \frac{\lambda^k}{k!} = \exp(-\lambda) \sum_{k=1}^{+\infty}k \frac{\lambda^k}{(k-1)!} = \exp(-\lambda) \sum_{k=1}^{+\infty}(k-1+1) \frac{\lambda^k}{(k-1)!} =\exp(-\lambda) \left [ \sum_{k=2}^{+\infty}(k-1) \frac{\lambda^k}{(k-1)!} + \sum_{k=1}^{+\infty}\frac{\lambda^k}{(k-1)!} \right ] = \exp(-\lambda) \left [ \lambda^2\sum_{k=2}^{+\infty} \frac{\lambda^{k-2}}{(k-2)!} + \lambda \sum_{k=1}^{+\infty}\frac{\lambda^{k-1}}{(k-1)!} \right ]  = \lambda^2+\lambda
+\mathbb E[X^2] = \sum_{k=0}^{+\infty} k^2 p_k = e^{-\lambda} \sum_{k=1}^{+\infty}k^2 \frac{\lambda^k}{k!} = e^{-\lambda} \sum_{k=1}^{+\infty}k \frac{\lambda^k}{(k-1)!} = e^{-\lambda} \sum_{k=1}^{+\infty}(k-1+1) \frac{\lambda^k}{(k-1)!} =e^{-\lambda} \left [ \sum_{k=2}^{+\infty}(k-1) \frac{\lambda^k}{(k-1)!} + \sum_{k=1}^{+\infty}\frac{\lambda^k}{(k-1)!} \right ] = e^{-\lambda} \left [ \lambda^2\sum_{k=2}^{+\infty} \frac{\lambda^{k-2}}{(k-2)!} + \lambda \sum_{k=1}^{+\infty}\frac{\lambda^{k-1}}{(k-1)!} \right ]  = \lambda^2+\lambda
 $$
 et donc
 $$
