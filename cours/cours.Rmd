@@ -101,6 +101,7 @@ Remarquez que cette fonction est définie sur $\mathbb R$.
 ### Espérance et variance
 
 **Espérance de $X$**
+
 Soit $X$ une variable aléatoire discrète de fonction de masse de probabilité $\forall k\in X(\Omega),\, f(k)=p_k$. On appelle espérance de $X$, que l'on note $\mathbb E[X]$, la quantité suivante :
 $$
 \mathbb E[X] = \sum_{k\in X(\Omega)} k p_k
@@ -132,6 +133,39 @@ $$
 \mathbb E[X] = \sum_{k=0}^{+\infty} k p_k = \exp(-\lambda) \sum_{k=1}^{+\infty} k \frac{\lambda^k}{k!} = \exp(-\lambda) \sum_{k=1}^{+\infty} \frac{\lambda^k}{(k-1)!} = \lambda \exp(-\lambda) \sum_{k=1}^{+\infty} \frac{\lambda^{k-1}}{(k-1)!}= \lambda \exp(-\lambda) * \exp(\lambda) = \lambda
 $$
 
+**Variance**
+
+Soit $X$ une variable aléatoire discrète de fonction de masse de probabilité $\forall k\in X(\Omega),\, f(k)=p_k$. On appelle variance de $X$, que l'on note $\mathbb V[X]$, la quantité suivante :
+$$
+\mathbb V[X] = \mathbb E[(X-\mathbb E[X])^2] =\mathbb E[X^2]-\mathbb E[X]^2 
+$$ 
+où 
+$$
+\mathbb E[X^2] = \sum_{k\in X(\Omega)} k^2 p_k 
+$$
+en supposant que cette dernière somme est finie.
+
+*Exemple 1*
+
+En reprenant la loi de Bernoulli, on peut calculer le moment d'ordre $2$ :
+$$
+\mathbb E[X^2] =  \sum_{k\in X(\Omega)} k^2 p_k = \sum_{k=0}^1 k^2 p_k = 0^2*(1-p) + 1^2*p = p
+$$
+La variance de $X$ est donc :
+$$
+\mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = p - p^2 = p(1-p)
+$$
+
+*Exemple 2*
+
+En reprenant la loi de Poisson, on peut calculer le moment d'ordre $2$ :
+$$
+\mathbb E[X^2] = \sum_{k=0}^{+\infty} k^2 p_k = \exp(-\lambda) \sum_{k=1}^{+\infty}k^2 \frac{\lambda^k}{k!} = \exp(-\lambda) \sum_{k=1}^{+\infty}k \frac{\lambda^k}{(k-1)!} = \exp(-\lambda) \sum_{k=1}^{+\infty}(k-1+1) \frac{\lambda^k}{(k-1)!} =\exp(-\lambda) \left [ \sum_{k=2}^{+\infty}(k-1) \frac{\lambda^k}{(k-1)!} + \sum_{k=1}^{+\infty}\frac{\lambda^k}{(k-1)!} \right ] = \exp(-\lambda) \left [ \lambda^2\sum_{k=2}^{+\infty} \frac{\lambda^{k-2}}{(k-2)!} + \lambda \sum_{k=1}^{+\infty}\frac{\lambda^{k-1}}{(k-1)!} \right ]  = \lambda^2+\lambda
+$$
+et donc
+$$
+\mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = \lambda^2+\lambda - \lambda^2 = \lambda
+$$
 
 
 
