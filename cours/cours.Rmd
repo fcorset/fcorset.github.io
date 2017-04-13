@@ -76,6 +76,65 @@ Ces résumés peuvent être calculés uniquement pour des variables quantitative
 
 # Probabilités
 
+## Variable aléatoire discrète
+
+
+### Introduction
+
+La variable aléatoire $X$ est discrète si et seulement si elle prend ses valeurs dans un ensemble dénombrable (pour faire simple, un ensemble fini ou $\mathbb N$).
+
+On note $X(\Omega)$, l'ensemble des valeurs prises par la variable aléatoire discrète. On appelle fonction de masse (de probabilités), la fonction suivante :
+$$
+\forall k\in X(\Omega), \, P(X=k)=p_k
+$$
+
+On a les propriétés suivantes :
+- $\forall k\in X(\Omega), \, 0\leq p_k \leq 1$.
+- $\displaystyle\sum_{k\in  X(\Omega)} p_k = 1$.
+
+On appelle *fonction de répartition* de $X$ (f.d.r en français, c.d.f. en anglais pour cumulative density function) la fonction suivante $F_X$ :
+$$
+\forall x \in \mathbb R,\, F_X(x) = P(X\leq x) = \displaystyle \sum_{k:x_k\leq x} p_k
+$$
+Remarquez que cette fonction est définie sur $\mathbb R$.
+
+### Espérance et variance
+
+**Espérance de $X$**
+Soit $X$ une variable aléatoire discrète de fonction de masse de probabilité $\forall k\in X(\Omega),\, f(k)=p_k$. On appelle espérance de $X$, que l'on note $\mathbb E[X]$, la quantité suivante :
+$$
+\mathbb E[X] = \sum_{k\in X(\Omega)} k p_k
+$$
+Dans cette définition, on suppose que cette espérance est finie.
+
+*Exemple 1* 
+
+On suppose que $X$ suit une loi de Bernoulli de paramètre $p$ : $X\leadsto \mathcal B(p)$. On rappelle que $X(\Omega)=\{0,1\}$ et $P(X=1)=p$ et $P(X=0)=1-p$.
+
+L'espérance de $X$ est :
+$$
+\mathbb E[X] = \sum_{k\in X(\Omega)} k p_k = \sum_{k=0}^1 k p_k = 0*(1-p) + 1*p = p
+$$
+
+*Exemple 2*
+
+On suppose que $X$ suit une loi de Poisson de paramètre $\lambda>0$ : $X\leadsto \mathcal P(\lambda)$. On rappelle que $X(\Omega)=\mathbb N$ et
+$$
+\forall k\in\mathbb N,\, P(X=k) = \exp(-\lambda) \frac{\lambda^k}{k!}
+$$
+
+On peut vérifier que la somme des probabilités est égale à $1$ :
+$$
+\sum_{k=0}^{+\infty} p_k = \sum_{k=0}^{+\infty} \exp(-\lambda) \frac{\lambda^k}{k!} = \exp(-\lambda) \sum_{k=0}^{+\infty}  \frac{\lambda^k}{k!} = \exp(-\lambda) * \exp(\lambda) = 1
+$$
+L'espérance de $X$ vaut :
+$$
+\mathbb E[X] = \sum_{k=0}^{+\infty} k p_k = \exp(-\lambda) \sum_{k=1}^{+\infty} k \frac{\lambda^k}{k!} = \exp(-\lambda) \sum_{k=1}^{+\infty} \frac{\lambda^k}{(k-1)!} = \lambda \exp(-\lambda) \sum_{k=1}^{+\infty} \frac{\lambda^{k-1}}{(k-1)!}= \lambda \exp(-\lambda) * \exp(\lambda) = \lambda
+$$
+
+
+
+
 ## Densité et fonction de répartition d'une variable quantitative continue
 
 La variable aléatoire $X$ associée à une fonction $f$ donnée et définie sur $\mathbb{R}$, continue par morceaux, représente le fait de tirer un nombre au hasard avec la probabilité suivante :$${\rm Proba}(X\leq t)=\int_{-\infty}^{t} f(x) dx = F(t)$$
