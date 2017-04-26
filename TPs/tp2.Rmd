@@ -174,6 +174,48 @@ $$
 \mathbb E[X^2] = \sum_{k=1}^{+\infty} k^2p_k = p\sum_{k=1}^{+\infty}k(k-1+1)q^{k-1} = pq\sum_{k=1}^{+\infty} k(k-1)q^{k-2} + p\sum_{k=1}^{+\infty}kq^{k-1} = pq\dfrac{2}{(1-q)^3}+1/p = \dfrac{2(1-p)+p}{p^2}= \dfrac{1+q}{p^2}
 $$
 La variance vaut
+
 $$
 \mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = \dfrac{1+q}{p^2}-\dfrac{1}{p^2}=\dfrac{q}{p^2}
+$$
+
+En R, il faut faire attention car il y a un décalage d'une unité. La définition dans R pour une loi géométrique est le nombre d'échecs avant la première réussite. Ainsi, les valeurs prises pour cette variable sont dans $\mathbb N$ et non pas $\mathbb N^\star$.
+
+```{r}
+n <- 25 # taille de l'échantillon
+p <- 0.3 # paramètre de la loi 
+ech<-rgeom(n,p) # simulation de la loi
+barplot(table(ech))
+```
+
+**Redéfinir une nouvelle variable ou une nouvelle fonction qui correspond à notre paramétrisation de la loi géométrique**
+
+## Loi de Poisson
+
+On dit que $X$ suit une loi de Poisson, notée $\mathcal P(\lambda)$ avec $\lambda>0$.
+
+On peut voir cette loi comme la loi des événements rares. Cette loi est une approximation de la loi binomiale, $\mathcal B(n,p)$ lorsque $n$ est grand et $p$ petit (i.e. pour des événements rares). On pose alors $\lambda=np$. En pratique, on dit que cette approximation est bonne dès que $n>20$ et $p\leq 0.1$ et $np\leq 5$.
+
+**A l'aide de simulation, vérifier que la loi binomiale peut être approchée par la loi de poisson.**
+
+Les valeurs possibles pour $X$ sont dans $\mathbb N$ et les probabilités associées :
+$$
+\forall k\in \mathbb N,\, p_k=P(X=k)=e^{-\lambda}\dfrac{\lambda^k}{k!}
+$$
+On pourra vérifier (grâce à la définition de l'exponentielle $e^x=\displaystyle\sum_{k=0}^{+\infty}\dfrac{x^k}{k!}$) que
+$$
+\sum_{k=0}^{+\infty} p_k = 1
+$$
+
+L'espérance d'une loi de Poisson de paramètre $\lambda$ est :
+$$
+\mathbb E[X] = \sum_{k=0}^{+\infty}kp_k = \sum_{k=1}^{+\infty}k p_k =\lambda e^{-\lambda}\sum_{k=1}^{+\infty}\dfrac{\lambda^{k-1}}{(k-1)!}=\lambda
+$$
+Le moment d'ordre 2 vaut
+$$
+\mathbb E[X^2] = \sum_{k=0}^{+\infty}k^2p_k = \sum_{k=1}^{+\infty}k^2 p_k =\lambda e^{-\lambda}\sum_{k=1}^{+\infty}(k-1+1)\dfrac{\lambda^{k-1}}{(k-1)!}=\lambda^2 e^{-\lambda}\sum_{k=2}^{+\infty}\dfrac{\lambda^{k-2}}{(k-2)!}+\lambda e^{-\lambda}\sum_{k=1}^{+\infty}\dfrac{\lambda^{k-1}}{(k-1)!}=\lambda^2+\lambda
+$$
+et donc la variance est égale à
+$$
+\mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = \lambda^2+\lambda - \lambda^2 = \lambda
 $$
