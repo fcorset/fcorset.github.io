@@ -138,6 +138,8 @@ table(ech)/N
 dbinom(x=0:n,size = n,prob = p)
 ```
 
+**Faites varier les différents paramètres de la loi binomiale et étudier ses proriétés.**
+
 
 ## Loi Géométrique
 
@@ -219,3 +221,491 @@ et donc la variance est égale à
 $$
 \mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = \lambda^2+\lambda - \lambda^2 = \lambda
 $$
+
+En R, cela donne
+```{r}
+lambda <- 3 # paramètre de la loi de Poisson
+n <- 25 # taille de l'échantillon
+ech <- rpois(n,lambda) # simulation de la loi de Poisson
+mean(ech)
+var(ech)
+barplot(table(ech))
+```
+
+**Simulez différentes lois de Poisson en faisant varier $\lambda$ ainsi que la taille de l'échantillon.**
+
+**Pour toutes ces lois, comparer la fonction de répartition empirique avec la théorique.**
+
+# Lois continues
+
+## Introduction
+
+Lisez la partie du cours relative aux lois continues.
+
+## Loi uniforme sur $[0,1]$, notée $U_{[0,1]}$
+
+On dit que $X$ suit une loi uniforme sur $[0,1]$ ssi sa fonction densité est :
+$$
+\forall x\in\mathbb R,\,f(x)= \left \lbrace \begin{array}{cl}
+1 & \text{si } x \in [0,1]  \\
+0 & \text {sinon}
+\end{array}
+\right.
+$$
+
+La fonction de répartition d'une loi uniforme sur $[0,1]$ est
+$$
+\forall x\in\mathbb R,\, F(x)=\int_{-\infty}^x f(t)\,dt = \left \lbrace 
+\begin{array}{cl}
+0 & \text{si } x<0  \\
+x & \text{si } x \in [0,1]  \\
+1 & \text{si } x > 1
+\end{array}
+\right.
+$$
+
+L'espérance de la loi uniforme $U_{[0,1]}$ est 
+$$
+\mathbb E[X] = \int_{-\infty}^{+\infty} xf(x)\,dx = \int_{0}^{1} x\,dx = \left[ \dfrac{x^2}{2}\right]_0^1= \dfrac{1}{2}
+$$
+
+Le moment d'ordre 2 est
+$$
+\mathbb E[X^2] = \int_{-\infty}^{+\infty} x^2f(x)\,dx = \int_{0}^{1} x^2\,dx=\left[ \dfrac{x^3}{3}\right]_0^1= \dfrac{1}{3},
+$$
+et donc la variance vaut
+$$
+\mathbb V[X] = \mathbb E[X^2]- \mathbb E[X]^2 = 1/3 - 1/4 = 1/12.
+$$
+
+```{r}
+n <- 30
+ech <- runif(n)
+mean(ech)
+var(ech)
+hist(ech,freq=F)
+```
+
+
+## Loi uniforme sur $[a,b]$, notée $U_{[a,b]}$, avec ($a<b$)
+
+On dit que $X\leadsto U_{[a,b]}$ ssi sa fonction densité est
+$$
+\forall x\in\mathbb R,\,f(x)= \left \lbrace \begin{array}{cl}
+\dfrac{1}{b-a} & \text{si } x \in [a,b]  \\
+0 & \text {sinon}
+\end{array}
+\right.
+$$
+
+La fonction de répartition d'une loi uniforme sur $[a,b]$ est
+$$
+\forall x\in\mathbb R,\, F(x)=\int_{-\infty}^x f(t)\,dt = \left \lbrace 
+\begin{array}{cl}
+0 & \text{si } x<a  \\
+\dfrac{x-a}{b-a} & \text{si } x \in [a,b]  \\
+1 & \text{si } x > b
+\end{array}
+\right.
+$$
+
+L'espérance vaut
+$$
+\mathbb E[X] = \int_{-\infty}^{+\infty} xf(x)\,dx = \int_{a}^{b} \dfrac{x}{b-a}\,dx = \dfrac{1}{b-a} \left[ \dfrac{x^2}{2}\right]_a^b= \dfrac{b^2-a^2}{2(b-a)} = \dfrac{a+b}2
+$$
+
+Le moment d'ordre 2 est 
+$$
+\mathbb E[X^2] = \int_{-\infty}^{+\infty} x^2f(x)\,dx = \int_{a}^{b} \dfrac{x^2}{b-a}\,dx=\dfrac{1}{b-a}\left[ \dfrac{x^3}{3}\right]_0^1= \dfrac{b^3-a^3}{3(b-a)} = \dfrac{a^2 + ab+b^2}{3},
+$$
+et donc la variance vaut
+$$
+\mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = \dfrac{a^2 + ab+b^2}{3} - \dfrac{a^2+2ab+b^2}{4} = \dfrac{a^2-2ab+b^2}{12} = \dfrac{(b-a)^2}{12} 
+$$
+
+**Théorème : Si $\mathbf{X\leadsto U_{[0,1]}}$ alors $\mathbf{Y=(b-a)X+a \leadsto U_{[a,b]}}$.**
+
+En R, il n'est pas utile de connaître ce théorème car la fonction *runif* permet de passer les bornes $a$ et $b$ en arguments.
+
+```{r}
+n<-30
+ech<-runif(n,2,5) # simualtion d'un échantillon d'une loi uniforme sur [2,5]
+mean(ech)
+var(ech)
+hist(ech,freq=F)
+```
+
+
+## Loi Normale centrée réduite, notée $\mathcal N(0,1)$
+
+Si $X\leadsto \mathcal N(0,1)$ alors la fonction densité de $X$ est
+$$
+\forall x\in\mathbb R,\, f(x)= \dfrac{1}{\sqrt{2\pi}}e^{\frac{x^2}{2}}
+$$
+
+Le premier paramètre de la loi normale est l'espérance de la loi et le second correspond à la variance de la loi. On peut remarquer que cette fonction est paire, i.e. $\forall x\in\mathbb R,\,f(-x)=f(x)$, ce qui implique une symétrie par rapport à l'axe des ordonnées.
+
+```{r}
+curve(dnorm,from = -4,to = 4,col="red",main="Densité de la loi Normale centrée réduite")
+```
+
+On peut également remarquer que la courbe s'approche très rapidement de l'axe des abscisses dès lors que l'on séloigne de l'espérance (ici 0).
+
+
+
+
+## Exercices sur la loi normale
+
+
+### Distribution des valeurs
+
+Pour simuler $n$ valeurs aléatoirement suivant la loi normale de moyenne $m$ et d'écart-type $s$ on utilise sous R la commande 
+```{r}
+rnorm(20,0,1) # simulation d'un échantillon de taille 20 d'une loi N(0,1)
+rnorm(20,1,1) # simulation d'un échantillon de taille 20 d'une loi N(1,1)
+rnorm(20,2,1) # simulation d'un échantillon de taille 20 d'une loi N(2,1)
+rnorm(20,0,2) # simulation d'un échantillon de taille 20 d'une loi N(0,1)
+rnorm(20,0,4)
+```
+
+Pour chacun des échantillons ci-dessus remplir le tableau suivant :
+
+| $n=20$             | $m=0$ et $s=1$ | $m=1$ et $s=1$ | $m=2$ et $s=1$ | $m=0$ et $s=2$ | $m=0$ et $s=4$ |
+|--------------------|----------------|----------------|----------------|----------------|----------------|
+| nb de valeurs < -2 |                |                |                |                |                |
+| nb de valeurs < 0  |                |                |                |                |                |
+| nb de valeurs = 0  |                |                |                |                |                |
+| nb de valeurs >2   |                |                |                |                |                |
+
+**Pour toute la suite du TP**, voici un script R qui vous guidera pour répondre aux questions posées.
+
+```{r}
+oldpar<-par()          # mise en memoire des param?tres graphiques par d?faut
+par(xaxs="i",yaxs="i") # re-d?finition des styles d'axes pour les graphiques de ce TP3
+
+##########################
+# QUESTION 1
+##########################
+# Echantillons de taille n=2000 individus avec diff?rents param?tres
+n<-2000
+nd1<-rnorm(n,0,1)
+nd2<-rnorm(n,1,1)
+nd3<-rnorm(n,2,1)
+nd4<-rnorm(n,0,2)
+nd5<-rnorm(n,0,4)
+
+nd_en_col<-cbind(nd1,nd2,nd3,nd4,nd5) # les echantillons sont mis en ensemble, colonne par colonne
+colSums(nd_en_col< -2)/n           # pour chaque colonne on compte le nombre de valeurs qui est en dessous de -2 et on ramène cela à un pourcentage
+
+```
+
+**Question 1 :** avec les mêmes valeurs des moyennes et des écart-types, on simule maintenant des échantillons de taille $n=2000$ individus. 
+
+Pour chacun de ces échantillons remplir le tableau suivant en utilisant les commandes R dans le script :
+
+| $n=2000$             | $m=0$ et $s=1$ | $m=1$ et $s=1$ | $m=2$ et $s=1$ | $m=0$ et $s=2$ | $m=0$ et $s=4$ |
+|--------------------|----------------|----------------|----------------|----------------|----------------|
+| nb de valeurs < -2 |                |                |                |                |                |
+| nb de valeurs < 0  |                |                |                |                |                |
+| nb de valeurs = 0  |                |                |                |                |                |
+| nb de valeurs >2   |                |                |                |                |                |
+
+```{r}
+##########################
+# QUESTION 2
+##########################
+# Tracer les valeurs
+plot(nd1,type="l")
+
+# Executer les commandes ci dessous et quelles sont les différences ?
+hist(nd1)
+hist(nd1,freq=TRUE,breaks=40)
+hist(nd1,freq=TRUE,breaks=50)
+```
+
+
+**Question 2 :** on considère uniquement le premier échantillon *nd1*. Que trace la fonction *plot* dans le script ? (axe des $x=$ ? et axe des $y=$ ?)
+Pour dessiner la répartition des valeurs on trace un histogramme.
+
+
+```{r}
+##########################
+# QUESTION 3
+##########################
+# On trace plusieurs histogrammes pour comparer la répartition des valeurs
+par(mfrow=c(2,3))   # 6 graphes dans une seule fenetre 
+                    # sur 2 lignes et 3 colonnes
+
+infx<- -5           # valeur min sur l'axe des x
+supx<- 5            # valeur max sur l'axe des x
+x<-seq(infx,supx,0.1) # creation d'un vecteur du min au max par pas de 0.1
+
+hist(nd1,freq=FALSE,breaks=40,xlim=c(infx,supx))
+lines(x,dnorm(x,0,1),col="red") # on ajoute a l'histogramme des valeurs 
+                                # la courbe theorique de la densite
+
+hist(nd2,freq=FALSE,breaks=40,xlim=c(infx,supx))
+lines(x,dnorm(x,1,1),col="red")
+hist(nd3,freq=FALSE,breaks=40,xlim=c(infx,supx))
+lines(x,dnorm(x,2,1),col="red")
+
+# seconde ligne de graphiques
+infx<- -10
+supx<- 10
+x<-seq(infx,supx,0.1)
+hist(nd1,freq=FALSE,breaks=40,xlim=c(infx,supx))
+lines(x,dnorm(x,0,1),col="red")
+hist(nd4,freq=FALSE,breaks=40,xlim=c(infx,supx))
+lines(x,dnorm(x,0,2),col="red")
+hist(nd5,freq=FALSE,breaks=40,xlim=c(infx,supx))
+lines(x,dnorm(x,0,4),col="red")
+
+```
+
+
+
+**Question 3 :** on veut comparer les histogrammes des $5$ échantillons. Lancer les commandes de la question 3 qui permettent d'afficher les histogrammes et de superposer en rouge la densité théorique associée (pour mieux voir les graphiques cliquer sur *zoom* dans le menu *Plots*).
+Comparer les graphiques des échantillons *nd1*, *nd2* et *nd3* : qu'est-ce qui change ?
+
+Comparer les graphiques des échantillons *nd1*, *nd4* et *nd5* : qu'est-ce qui change ?
+
+
+
+```{r}
+##########################
+# QUESTION 4
+##########################
+# On trace les fonctions de répartition des différents
+# échantillons pour comparer la répartition des valeurs
+par(mfrow=c(2,3))
+infx<- -3
+supx<- 3
+x<-seq(infx,supx,0.1)
+plot(ecdf(nd1),xlim=c(infx,supx))
+lines(x,pnorm(x,0,1),col="red")
+plot(ecdf(nd2),xlim=c(infx,supx))
+lines(x,pnorm(x,1,1),col="red")
+plot(ecdf(nd3),xlim=c(infx,supx))
+lines(x,pnorm(x,2,1),col="red")
+infx<- -10
+supx<- 10
+x<-seq(infx,supx,0.1)
+plot(ecdf(nd1),xlim=c(infx,supx))
+lines(x,pnorm(x,0,1),col="red")
+plot(ecdf(nd4),xlim=c(infx,supx))
+lines(x,pnorm(x,0,2),col="red")
+plot(ecdf(nd5),xlim=c(infx,supx))
+lines(x,pnorm(x,0,4),col="red")
+
+par(mfrow=c(1,1))
+```
+
+
+**Question 4 :** on veut maintenant comparer les fonctions de répartition des $5$ échantillons. La fonction *plot(ecdf(x))* permet de tracer la fonction de répartition empirique associée aux valeurs du vecteur *x*. Lancer les commandes de la question 4; sur chaque fonction de répartition empirique (en noir) on trace la fonction de répartition théorique en rouge.
+
+Comparer les graphiques des échantillons *nd1*, *nd2* et *nd3* : qu'est-ce qui change ?
+
+Comparer les graphiques des échantillons *nd1*, *nd4* et *nd5* : qu'est-ce qui change ?
+
+```{r}
+##########################
+# QUESTION 5
+##########################
+curve(dnorm,from=-4,to=+4)
+# creation d'une fonction pour colorier l'aire sous la courbe d'une
+# fonction <fun> entre <xmin> et <xmax>
+shade_under_curve <- function(fun, xmin, xmax, length=100){
+  xvals <- seq(xmin, xmax, length=length)
+  dvals <- match.fun(fun)(xvals)
+  polygon(c(xvals,rev(xvals)),c(rep(0,length),rev(dvals)),col="gray")
+}
+shade_under_curve(dnorm,-5,-1)
+##### valeur de l'aire sous la courbe
+integrate(dnorm,-Inf,-1)
+##### valeur de F(-1) à lire sur le graphe
+curve(pnorm,from=-3,to=3,xaxs="i",yaxs="i")
+grid(NA,40,lwd=1)
+segments(-1,0,-1,pnorm(-1))
+segments(-1,pnorm(-1),-3,pnorm(-1))
+##### valeur de F(-1) par la fonction pnorm
+pnorm(-1)
+
+```
+
+
+**Question 5 :** on veut montrer le lien entre la densité et la fonction de répartition.
+
+Donner ci-dessous la densité de la loi normale de moyenne $0$ et de variance $1$ :
+
+$$
+f(x)=
+$$
+Quel est le lien entre la densité et la fonction de répartition ?
+
+$$
+f(x)=
+$$
+$$
+F(t)=
+$$
+
+La valeur au point $t$ de la fonction de répartition (théorique) $F(t)$ d'une loi gaussienne de moyenne $m$ et d'écart-type $s$ est donnée par la commande *pnorm(t,m,s)* de R.
+
+Lancer le script de la question 5 et décrire ce qu'il permet d'observer.
+
+
+**Question 6 :** on a tracé ci dessous la courbe de densité d'une loi gaussienne centrée (de moyenne 0) et de variance $4$ et l'on a hachuré différentes aires sous la courbe.
+
+```{r}
+par(mfrow=c(2,2))
+N04<-function(x) dnorm(x,0,2)
+curve(N04,from = -8,to = 8,ylab="y")
+shade_under_curve(N04,-8,-1)
+curve(N04,from = -8,to = 8,ylab="y")
+shade_under_curve(N04,-8,2)
+curve(N04,from = -8,to = 8,ylab="y")
+shade_under_curve(N04,2,8)
+curve(N04,from = -8,to = 8,ylab="y")
+shade_under_curve(N04,-1,2)
+```
+
+
+Compléter le tableau ci-dessous :
+| Aire de    | Proba représentée | Ecriture avec | Valeur numérique |
+| la figure  | par l'aire        |    $F(t)$     |    pnorm         |
+|------------|-------------------|---------------|------------------|
+|     1      |    $P(X<-1)$      |    $F(-1)$    |                  |
+|     2      |                   |               |                  |
+|     3      |                   |               |                  |
+|     4      |                   |               |                  |
+
+
+**Question 6 :** soit $X$ une variable aléatoire gaussienne de moyenne $15$ et de variance $9$. 
+
+Quelle est la probabilité que $X\leqslant 17$ ? (utiliser la fonction *pnorm*) 
+
+Quelle est la probabilité que $X>7$ ? Enfin quelle est la probabilité que $7<X<15$ ?
+
+## Lien entre lois normales
+
+Soit $X$ une variable aléatoire distribuée suivant la loi normale d'espérance $0$ et d'écart-type $1$. 
+
+On souhaite montrer que les variables $X_1=X+1$, $X_2=X-1$, $X_3=2X$ et $X_4=X/2$ suivent aussi une loi normale. 
+Pour cela on simule un grand nombre de valeurs suivant la loi normale $N(0,1)$ et l'on construit les nouvelles variables. 
+Étudier la distribution de ces nouvelles variables.
+```{r}
+x<-rnorm(10000,0,1)
+x1<-x+1
+x2<-x-1
+x3<-x*2
+x4<-x/2
+```
+
+Soit maintenant $Y$ une variable aléatoire de moyenne $4$ et de variance $3$, quelle est la distribution de la variable $Z=\frac{Y-2}{\sqrt{3}}$ ?
+
+
+## Sommes de variables aléatoires gaussiennes
+
+En vous aidant des résultats du script suivant, donner la loi de $X+Y$ et de $X-Y$ si $X\leadsto N(m_1,\sigma_1^2)$ et $Y\leadsto N(m_2,\sigma_2^2)$.
+
+```{r}
+old_par<-par()
+par(xaxs="i",yaxs="i")
+
+# Deux variables gaussiennes de m?me loi
+x<-rnorm(10000,0,1)
+y<-rnorm(10000,0,1)
+
+z<-x+y
+hist(z,breaks=20,freq=FALSE,ylim=c(0,0.5))
+curve(dnorm,from= -4,to=4,add=TRUE,col="red") # la loi N(0,1)
+
+x<-seq(-5,5,0.1)
+lines(x,dnorm(x,0,sqrt(2)),col="green4") #la loi propos?e
+
+# Deux variables gaussiennes de meme ecart type mais pas de meme esperance
+x<-rnorm(10000,0,1)
+y<-rnorm(10000,1,1)
+
+z<-x+y
+hist(z,breaks=20,freq=FALSE,ylim=c(0,0.5))
+curve(dnorm,from= -4,to=4,add=TRUE,col="red") # la loi N(0,1)
+
+x<-seq(-5,5,0.1)
+lines(x,dnorm(x,0,sqrt(2)),col="green4") #la 1ere loi propos?e
+
+x<-seq(-5,5,0.1)
+#   lines(x,dnorm(x,###### a vous de trouver######),col="blue4") # la loi que vous proposez (pensez à décommentez la ligne...)
+
+# Deux variables gaussiennes de meme esperance mais pas de meme ecart type
+x<-rnorm(10000,0,1)
+y<-rnorm(10000,0,2)
+
+z<-x+y
+hist(z,breaks=20,freq=FALSE,ylim=c(0,0.5))
+curve(dnorm,from= -4,to=4,add=TRUE,col="red")
+
+x<-seq(-5,5,0.1)
+#lines(x,dnorm(x,###### a vous de trouver######),col="green4") #la loi que vous proposez
+```
+
+
+$$
+X+Y\leadsto 
+$$
+
+$$
+X-Y\leadsto 
+$$
+
+Déduire de ce qui précède la loi de la variable $\bar{X}=\frac{1}{n}(X_1+X_2+X_3+...+X_n)$ où toutes les variables $X_i$ sont gaussiennes centrées réduites. Écrire un script pour l'illustrer.
+
+```{r}
+############################################################################
+# Ecrire un script pour expliquer la loi d'une moyenne de lois gaussiennes #
+############################################################################     
+
+```
+
+Pour une somme de *carrés* de variables gaussiennes centrées réduites regarder la suite du script. Trouver le nom de la nouvelle loi des carrés et comment on choisit ses paramètres. (consulter l'aide de *R*)
+
+```{r}
+#################################################################
+## Somme des carrés de loi gaussiennes                        ###
+#################################################################
+v1<-rnorm(10000,0,1)^2
+v2<-rnorm(10000,0,1)^2+rnorm(10000,0,1)^2
+v3<-rnorm(10000,0,1)^2+rnorm(10000,0,1)^2+rnorm(10000,0,1)^2
+v4<-rnorm(10000,0,1)^2+rnorm(10000,0,1)^2+rnorm(10000,0,1)^2+rnorm(10000,0,1)^2
+
+hist(v1,breaks=40,prob=TRUE,xlim=c(0,10),ylim=c(0,1.5))
+curve(dchisq(x,1),from= 0,to= 10,add=TRUE,col="red")
+hist(v2,breaks=40,prob=TRUE,xlim=c(0,10),ylim=c(0,0.5))
+curve(dchisq(x,2),from= 0,to= 10,add=TRUE,col="red")
+hist(v3,breaks=40,prob=TRUE,xlim=c(0,10),ylim=c(0,0.3))
+curve(dchisq(x,3),from= 0,to= 10,add=TRUE,col="red")
+hist(v4,breaks=40,prob=TRUE,xlim=c(0,20),ylim=c(0,0.20))
+curve(dchisq(x,4),from= 0,to= 10,add=TRUE,col="red")      
+```
+
+
+$$
+X_1^2+X_2^2+X_3^2+...+X_n^2\leadsto 
+$$
+
+## Exercice
+
+La taille $X$ d'un homme français tiré au sort dans la population est supposée suivre une loi normale de moyenne $172$cm et de variance $196$ :
+
+1. quelle est la probabilité que $X$ soit inférieure à $160$cm ?
+
+2. quelle est la probabilité qu'un homme tiré au sort mesure plus de deux mètres ?
+
+3. Que vaut $P(165<X<185)$ ?
+
+4. La taille des femmes françaises est modéliser par une loi gaussienne de moyenne $162$cm et de variance $144$. Quelle est la probabilité qu'un homme tiré au sort soit plus grand qu'une femme choisie au hasard ?
+
+
+
+
+
