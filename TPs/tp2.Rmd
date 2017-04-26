@@ -93,7 +93,16 @@ $$
 
 Les valeurs possibles pour la variable $X$ sont $\{0,\ldots,n\}$ et 
 $$
-\forall k\in\{0,\ldots,n\},\, p(X=k)=C_n^k p^k (1-p)^{n-k}
+\forall k\in\{0,\ldots,n\},\, p_k=p(X=k)=C_n^k p^k (1-p)^{n-k}
+$$
+
+On peut remarquer que la somme des probabilités est bien égale à 1 grace à la formule du binôme de Newton :
+$$
+(a+b)^n = \sum_{k=0}^n C_n^k a^kb^{n-k}
+$$
+En prenant $a=p$ et $b=q=1-p$ on trouve :
+$$
+\sum_{k=0}^n p_k= \sum_{k=0}^nC_n^k p^k (1-p)^{n-k} = (p+1-p)^n=1^n=1
 $$
 
 L'espérance de cette loi est (grâce à la **linéarité de l'espérance**)
@@ -127,7 +136,44 @@ ech<-rbinom(N,n,p)
 table(ech)/N
 
 dbinom(x=0:n,size = n,prob = p)
-
 ```
 
 
+## Loi Géométrique
+
+On dit que $X$ suit une loi géométrique, notée $\mathcal G(p)$ avec $0<p<1$.
+
+Cette loi correspond au shéma suivant. On répète, de façon indépendante, une même expérience (qui a une probabilité $p$ de réussite et une probabilité $q=1-p$ d'échec) et on note $X$ le rang du premier succès.
+
+Les valeurs prises par $X$ sont donc $X(\Omega)=\mathbb N^\star$ et les probabilités associées sont :
+$$
+\forall k\in\mathbb N^\star,\, p_k=P(X=k) = (1-p)^{k-1}p = q^{k-1}p
+$$
+On remarque que ces probabilités $p_k$ définissent une suite géométrique de raison $q$.
+
+Pour rappel, si $0<q<1$ alors 
+$$
+\sum_{k=n_0}^n q^k = q^{n_0}\dfrac{1-q^{n-n_0+1}}{1-q}
+$$
+et donc par passage à la limite
+$$
+\sum_{k=n_0}^{+\infty} q^k = \dfrac{q^{n_0}}{1-q}
+$$
+En appliquant cette formule pour calculer la somme des probabilités, on trouve
+
+$$
+\sum_{k=1}^{+\infty} p_k = \sum_{k=1}^{+\infty} q^{k-1}p=p\sum_{k=0}^{+\infty}q^k=p/(1-q) = 1
+$$
+
+L'espérance de cette loi est :
+$$
+\mathbb E[X] = \sum_{k=1}^{+\infty} kp_k = p\sum_{k=1}^{+\infty}kq^{k-1} = p/(1-q)^2 = 1/p
+$$
+Le moment d'ordre 2 de cette loi est :
+$$
+\mathbb E[X^2] = \sum_{k=1}^{+\infty} k^2p_k = p\sum_{k=1}^{+\infty}k(k-1+1)q^{k-1} = pq\sum_{k=1}^{+\infty} k(k-1)q^{k-2} + p\sum_{k=1}^{+\infty}kq^{k-1} = pq\dfrac{2}{(1-q)^3}+1/p = \dfrac{2(1-p)+p}{p^2}= \dfrac{1+q}{p^2}
+$$
+La variance vaut
+$$
+\mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = \dfrac{1+q}{p^2}-\dfrac{1}{p^2}=\dfrac{q}{p^2}
+$$
