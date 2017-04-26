@@ -340,19 +340,74 @@ hist(ech,freq=F)
 
 Si $X\leadsto \mathcal N(0,1)$ alors la fonction densité de $X$ est
 $$
-\forall x\in\mathbb R,\, f(x)= \dfrac{1}{\sqrt{2\pi}}e^{\frac{x^2}{2}}
+\forall x\in\mathbb R,\, f(x)= \dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
 $$
 
 Le premier paramètre de la loi normale est l'espérance de la loi et le second correspond à la variance de la loi. On peut remarquer que cette fonction est paire, i.e. $\forall x\in\mathbb R,\,f(-x)=f(x)$, ce qui implique une symétrie par rapport à l'axe des ordonnées.
 
 ```{r}
-curve(dnorm,from = -4,to = 4,col="red",main="Densité de la loi Normale centrée réduite")
+curve(dnorm,from = -4,to = 4,col="red",main="Densité de la loi Normale centrée réduite",ylab="",axes=F)
+axis(1,xaxp=c(-4,4,8))
+axis(2,pos=0,c(-1,1))
 ```
 
 On peut également remarquer que la courbe s'approche très rapidement de l'axe des abscisses dès lors que l'on séloigne de l'espérance (ici 0).
 
+```{r}
+n<-100
+ech<-rnorm(n) # simulation d'une loi normale centrée réduite
+mean(ech)
+var(ech)
+hist(ech,freq=F,breaks=10,xlim = c(-3,3))
+```
+
+**Vérifier de plusieurs manières que** 
+$$
+\mathbf{\int_{-\infty}^{+\infty}e^{-\dfrac{x^2}{2}}\,dx=\sqrt{2\pi}}.
+$$
 
 
+
+
+L'espérance de la loi normale centrée réduite vaut
+$$
+\mathbb E[X] = \int_{-\infty}^{+\infty}xf(x)\,dx = \dfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}xe^{-\dfrac{x^2}{2}}\,dx =0
+$$
+
+Le moment d'ordre 2 (qui est aussi la variance car l'espérance est nulle) se calcule par une intégration par parties
+$$
+\mathbb V[X]=\mathbb E[X^2] = \int_{-\infty}^{+\infty}x^2f(x)\,dx = \dfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}x^2e^{-\dfrac{x^2}{2}}\,dx =\dfrac{2}{\sqrt{2\pi}}\int_{0}^{+\infty}x^2e^{-\dfrac{x^2}{2}}\,dx
+$$
+Or
+$$
+\int_{0}^{t}x^2e^{-\dfrac{x^2}{2}}\,dx = \left[ -xe^{-\frac{x^2}{2}}\right]_0^t+\int_0^te^{-\frac{x^2}{2}}\,dx  \underset{t \to \infty}{\longrightarrow}  \int_0^{+\infty}e^{-\frac{x^2}{2}}\,dx = \sqrt{\frac{\pi}{2}}
+$$
+et donc
+$$
+\mathbb V[X] = 1
+$$
+
+## Loi Normale $\mathcal N(\mu,\sigma^2)$
+
+On dit que $X\leadsto\mathcal N(\mu,\sigma^2)$ si sa fonction densité est :
+$$
+\forall x\in\mathbb R,\, f(x)= \dfrac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+On pourra vérifier que l'intégrale de cette fonction sur $\mathbb R$ vaut bien 1. $\mu$ représente l'espérance de la loi et $\sigma^2$ la variance.
+
+```{r}
+curve(dnorm(x,mean=1,sd=2),from = -5,to = 7,col="red",main="Densité de la loi N(1,4)",axes=F,ylab="") # Attention, on rentre l'écart-type et non la variance !!!
+axis(1,xaxp = c(-5,7,12))
+axis(2,pos=0,c(-1,1))
+```
+
+Que remarquez-vous ?
+
+**Théorème : Si** $\mathbf{X\leadsto\mathcal N(\mu,\sigma^2)}$ **alors** $\mathbf{\dfrac{X-\mu}\sigma\leadsto\mathcal N(0,1)}$
+
+Ce théorème est extrêmement important car il dit qu'on est toujours capable de se ramener à une loi normale centrée réduite (encore faut-il connaître l'espérance et la variance de la loi).
+
+**Mettre en oeuvre un programme permettant de vérifier ce théorème par la simulation.**
 
 ## Exercices sur la loi normale
 
@@ -559,18 +614,31 @@ Lancer le script de la question 5 et décrire ce qu'il permet d'observer.
 ```{r}
 par(mfrow=c(2,2))
 N04<-function(x) dnorm(x,0,2)
-curve(N04,from = -8,to = 8,ylab="y")
+curve(N04,from = -8,to = 8,ylab="",axes=FALSE,main="Densité N(0,4)")
 shade_under_curve(N04,-8,-1)
-curve(N04,from = -8,to = 8,ylab="y")
+axis(1,xaxp=c(-6,6,12))
+axis(2,pos=0,c(-1,1))
+
+curve(N04,from = -8,to = 8,ylab="",axes=F,main="Densité N(0,4)")
 shade_under_curve(N04,-8,2)
-curve(N04,from = -8,to = 8,ylab="y")
+axis(1,xaxp=c(-6,6,12))
+axis(2,pos=0,c(-1,1))
+
+curve(N04,from = -8,to = 8,ylab="",axes=F,main="Densité N(0,4)")
 shade_under_curve(N04,2,8)
-curve(N04,from = -8,to = 8,ylab="y")
+axis(1,xaxp=c(-6,6,12))
+axis(2,pos=0,c(-1,1))
+
+curve(N04,from = -8,to = 8,ylab="",axes=F,main="Densité N(0,4)")
 shade_under_curve(N04,-1,2)
+axis(1,xaxp=c(-6,6,12))
+axis(2,pos=0,c(-1,1))
+
 ```
 
 
 Compléter le tableau ci-dessous :
+
 | Aire de    | Proba représentée | Ecriture avec | Valeur numérique |
 | la figure  | par l'aire        |    $F(t)$     |    pnorm         |
 |------------|-------------------|---------------|------------------|
@@ -582,7 +650,7 @@ Compléter le tableau ci-dessous :
 
 **Question 6 :** soit $X$ une variable aléatoire gaussienne de moyenne $15$ et de variance $9$. 
 
-Quelle est la probabilité que $X\leqslant 17$ ? (utiliser la fonction *pnorm*) 
+Quelle est la probabilité que $X\leq 17$ ? (utiliser la fonction *pnorm*) 
 
 Quelle est la probabilité que $X>7$ ? Enfin quelle est la probabilité que $7<X<15$ ?
 
