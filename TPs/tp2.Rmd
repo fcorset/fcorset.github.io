@@ -458,7 +458,7 @@ colSums(nd_en_col< -2)/n           # pour chaque colonne on compte le nombre de 
 
 Pour chacun de ces échantillons remplir le tableau suivant en utilisant les commandes R dans le script :
 
-| $n=2000$             | $m=0$ et $s=1$ | $m=1$ et $s=1$ | $m=2$ et $s=1$ | $m=0$ et $s=2$ | $m=0$ et $s=4$ |
+| $n=2000$           | $m=0$ et $s=1$ | $m=1$ et $s=1$ | $m=2$ et $s=1$ | $m=0$ et $s=2$ | $m=0$ et $s=4$ |
 |--------------------|----------------|----------------|----------------|----------------|----------------|
 | nb de valeurs < -2 |                |                |                |                |                |
 | nb de valeurs < 0  |                |                |                |                |                |
@@ -639,8 +639,7 @@ axis(2,pos=0,c(-1,1))
 
 Compléter le tableau ci-dessous :
 
-| Aire de    | Proba représentée | Ecriture avec | Valeur numérique |
-| la figure  | par l'aire        |    $F(t)$     |    pnorm         |
+| Aire de la figure   | Proba représentée par l'aire | Ecriture avec $F(t)$| Valeur numérique pnorm |
 |------------|-------------------|---------------|------------------|
 |     1      |    $P(X<-1)$      |    $F(-1)$    |                  |
 |     2      |                   |               |                  |
