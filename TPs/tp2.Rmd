@@ -773,6 +773,50 @@ La taille $X$ d'un homme français tiré au sort dans la population est supposé
 4. La taille des femmes françaises est modéliser par une loi gaussienne de moyenne $162$cm et de variance $144$. Quelle est la probabilité qu'un homme tiré au sort soit plus grand qu'une femme choisie au hasard ?
 
 
+## Loi Exponentielle
 
+On dit que $X$ suit une loi exponentielle de paramètre $\lambda>0$, ce que l'on note $X\leadsto \mathcal E(\lambda)$ ssi sa fonction densité est :
+$$
+\forall x\in \mathbb R,\,f(x)=\left \lbrace \begin{array}{cl}
+\lambda \exp(-\lambda x) & \text{si } x \geq 0 \\
+0 & \text {sinon}
+\end{array}
+\right.
+$$
 
+**Question : Vérifier que $f$ est bien une fonction densité.**
+
+La fonction de répartition de $X$ est 
+$$
+\forall x\in \mathbb R,\,F(x)= \int_{-\infty}^x f(t)\,dt = \left \lbrace \begin{array}{cl}
+1- \exp(-\lambda x) & \text{si } x \geq 0 \\
+0 & \text {sinon}
+\end{array}
+\right.
+$$
+
+L'espérance d'une loi exponentielle est
+$$
+\mathbb E[X] = \int_{-\infty}^{+\infty} xf(x)\,dx = \frac 1\lambda 
+$$
+Le moment d'ordre 2 d'une loi exponentielle est
+$$
+\mathbb E[X^2] = \int_{-\infty}^{+\infty} x^2f(x)\,dx =\frac{2}{\lambda^2} 
+$$
+et donc la variance vaut
+$$
+\mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = \frac{1}{\lambda^2}
+$$
+
+On peut mettre en oeuvre cela en R
+
+```{r}
+n <- 30              # taille de l'échantillon
+lambda <- 10^{-3}    # paramètre de la loi exponentielle
+ech<- rexp(n,rate = lambda)
+mean(ech)
+var(ech)
+hist(ech,freq=F)
+plot(ecdf(ech))
+```
 
