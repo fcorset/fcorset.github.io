@@ -1,0 +1,33 @@
+---
+title: "TP 2 : Loi forte des grands nombres et théorème centrale limite"
+---
+
+
+# Introduction
+
+Pour commencer, liser la partie du cours relative à ces deux théorèmes fondamentaux.
+
+## Loi forte des grands nombres
+
+Pour chacune des lois suivantes :
+- $\mathcal N(0,1)$
+
+- $\mathcal N(4,9)$
+
+- $\mathcal B(1/3)$
+
+- $\mathcal B(5,1/4)$
+
+- $\mathcal E(2)$
+
+- $\mathcal P(2)$
+
+1. Ecrire une fonction en R permettant de générer ces lois de taille $N$.
+
+2. Vérifiez pour chaque distribution la loi forte des grands nombres.
+
+3. On veut maintenant simuler $M$ échantillons de taille $N$. Ecrire une fonction permettant de le faire.
+
+4. Vérifiez pour chaque distribution le théorème centrale limite.
+
+
