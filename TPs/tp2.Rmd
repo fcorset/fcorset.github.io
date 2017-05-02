@@ -734,6 +734,8 @@ Déduire de ce qui précède la loi de la variable $\bar{X}=\frac{1}{n}(X_1+X_2+
 
 ```
 
+## Somme de carrés de variables gaussiennes centrées réduites
+
 Pour une somme de *carrés* de variables gaussiennes centrées réduites regarder la suite du script. Trouver le nom de la nouvelle loi des carrés et comment on choisit ses paramètres. (consulter l'aide de *R*)
 
 ```{r}
