@@ -10,6 +10,7 @@ Pour commencer, liser la partie du cours relative à ces deux théorèmes fondam
 ## Loi forte des grands nombres
 
 Pour chacune des lois suivantes :
+
 - $\mathcal N(0,1)$
 
 - $\mathcal N(4,9)$
