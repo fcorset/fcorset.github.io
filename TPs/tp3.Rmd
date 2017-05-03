@@ -5,7 +5,7 @@ title: "TP 3 : Loi forte des grands nombres et théorème centrale limite"
 
 # Introduction
 
-Pour commencer, liser la partie du cours relative à ces deux théorèmes fondamentaux.
+Pour commencer, lisez la partie du cours relative à ces deux théorèmes fondamentaux.
 
 ## Loi forte des grands nombres
 
