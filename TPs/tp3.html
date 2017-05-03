@@ -123,8 +123,9 @@ $(document).ready(function () {
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Pour commencer, lisez la partie du cours relative à ces deux théorèmes fondamentaux.</p>
-<div id="loi-forte-des-grands-nombres" class="section level2">
-<h2>Loi forte des grands nombres</h2>
+</div>
+<div id="loi-forte-des-grands-nombres-et-theoreme-centrale-limite" class="section level1">
+<h1>Loi forte des grands nombres et Théorème Centrale Limite</h1>
 <p>Pour chacune des lois suivantes :</p>
 <ul>
 <li><p><span class="math inline">\(\mathcal N(0,1)\)</span></p></li>
@@ -139,6 +140,72 @@ $(document).ready(function () {
 <li><p>Vérifiez pour chaque distribution la loi forte des grands nombres.</p></li>
 <li><p>On veut maintenant simuler <span class="math inline">\(M\)</span> échantillons de taille <span class="math inline">\(N\)</span>. Ecrire une fonction permettant de le faire.</p></li>
 <li><p>Vérifiez pour chaque distribution le théorème centrale limite.</p></li>
+</ol>
+</div>
+<div id="methodes-de-monte-carlo" class="section level1">
+<h1>Méthodes de Monte Carlo</h1>
+<p>Ces méthodes visent à calculer une intégrale par des simulations de variables aléatoires : <span class="math display">\[
+I = \int g(x)f(x)\,dx
+\]</span> où <span class="math inline">\(f\)</span> est la fonction densité d’une variable aléaoire <span class="math inline">\(X\)</span>. Ainsi, on a <span class="math display">\[
+I=\mathbb E[g(X)]
+\]</span> D’après la loi forte des grands nombres, il suffit de simuler un échantillon i.i.d <span class="math inline">\(X_1,\ldots,X_n\)</span>, de loi à densité <span class="math inline">\(f\)</span> et de calculer <span class="math display">\[
+\frac 1n \sum_{i=1}^n g(X_i),
+\]</span> cette quantité tendant vers <span class="math inline">\(I=\mathbb E[g(X)]\)</span> quand <span class="math inline">\(n\to +\infty\)</span>.</p>
+<p><em>exemple :</em></p>
+<p>On cherche à calculer <span class="math display">\[
+I=\int_{0}^1 \frac{\ln(1+x)}{\sqrt{1-x^2}}\,dx
+\]</span></p>
+<p>En R, cela donne</p>
+<pre class="r"><code>n&lt;-1000000
+ech&lt;-runif(n)
+mean(log(1+ech)/sqrt(1-ech^2))</code></pre>
+<pre><code>## [1] 0.7403595</code></pre>
+<pre class="r"><code>integrate(function(x) log(1+x)/sqrt(1-x^2),0,1)</code></pre>
+<pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
+<p>On peut également utiliser une autre loi que la loi uniforme : par exemple la loi beta, notée <span class="math inline">\(\mathcal B(a,b)\)</span>. La densité de cette loi est <span class="math display">\[
+\forall x\in [0,1],\, f(x) = \frac{1}{B(a,b)} x^{a-1}(1-x)^{b-1}
+\]</span> où <span class="math inline">\(B(a,b)=\dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}\)</span>. Pour rappel, la fonction gamma, notée <span class="math inline">\(Gamma(x)\)</span> vaut <span class="math display">\[
+\Gamma(x) = \int_0^{+\infty} x^{t-1}\exp(-t)\,dt
+\]</span></p>
+<p>On peut donc écrire <span class="math inline">\(I\)</span> sous la forme <span class="math display">\[
+I = \int_0^1 \frac{g(x)}{f(x)}f(x)\,dx
+\]</span> où <span class="math inline">\(f\)</span> est la fonction densité de la loi Beta.</p>
+<p>En R, cela donne</p>
+<pre class="r"><code>n&lt;-1000000
+a&lt;-5 # 1er paramètre de la loi Beta
+b&lt;-1 # 2ème paramètre de la loi Beta
+ech&lt;-rbeta(n,a,b)
+g&lt;-function(x) log(1+x)/sqrt(1-x^2)
+mean(g(ech)/dbeta(ech,a,b))</code></pre>
+<pre><code>## [1] 0.7416603</code></pre>
+<pre class="r"><code>integrate(g,0,1)</code></pre>
+<pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
+</div>
+<div id="tp" class="section level1">
+<h1>TP</h1>
+<div id="approximation-de-pi" class="section level2">
+<h2>Approximation de <span class="math inline">\(\pi\)</span></h2>
+<p>Soit <span class="math inline">\(f\)</span> la fonction définie sur <span class="math inline">\([0,1]\)</span> par <span class="math display">\[
+\forall x\in [0,1],\, f(x) = \sqrt{1-x^2}
+\]</span> Faire une procédure permettant de calculer <span class="math display">\[
+I=\int_0^1 f(x)\,dx
+\]</span> En déduire une approximation de <span class="math inline">\(\pi\)</span>.</p>
+<p>Une autre façon d’approcher <span class="math inline">\(\pi\)</span> est de simuler des points dans le carré unité et de compter le nombre de points qui sont à une distance de l’origine plus petite que <span class="math inline">\(1\)</span>.</p>
+<p>Calculer également par Monte Carlo l’intégrale suivante : <span class="math display">\[
+\int_0^1 \dfrac{1}{1+x^2}\,dx
+\]</span></p>
+</div>
+<div id="calcul-dintegrales" class="section level2">
+<h2>Calcul d’intégrales</h2>
+<p>Nous considérons une variable aléatoire <span class="math inline">\(X\)</span> de loi <span class="math inline">\(\Gamma(a,b)\)</span> de densité de probabilité : <span class="math display">\[
+f(x) = \frac{b^a}{\Gamma(a)}x^{a-1}\exp(-bx)
+\]</span> Dans la suite, on prend <span class="math inline">\(a= 4\)</span> et <span class="math inline">\(b= 1\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Simuler un échantillon de 1000 réalisations de <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Déterminer par la méthode de Monte-Carlo des approximations de l’espérance et de la variance de <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Calculer l’intégrale suivante par Monte Carlo <span class="math display">\[
+\int_0^{+\infty} \cos(2x)x^{7/3}\exp(-3.2x)\,dx
+\]</span></p></li>
 </ol>
 </div>
 </div>

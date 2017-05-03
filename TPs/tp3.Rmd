@@ -7,7 +7,7 @@ title: "TP 3 : Loi forte des grands nombres et théorème centrale limite"
 
 Pour commencer, lisez la partie du cours relative à ces deux théorèmes fondamentaux.
 
-## Loi forte des grands nombres
+# Loi forte des grands nombres et Théorème Centrale Limite
 
 Pour chacune des lois suivantes :
 
@@ -30,5 +30,101 @@ Pour chacune des lois suivantes :
 3. On veut maintenant simuler $M$ échantillons de taille $N$. Ecrire une fonction permettant de le faire.
 
 4. Vérifiez pour chaque distribution le théorème centrale limite.
+
+# Méthodes de Monte Carlo
+
+Ces méthodes visent à calculer une intégrale par des simulations de variables aléatoires :
+$$
+I = \int g(x)f(x)\,dx
+$$
+où $f$ est la fonction densité d'une variable aléaoire $X$. Ainsi, on a 
+$$
+I=\mathbb E[g(X)]
+$$
+D'après la loi forte des grands nombres, il suffit de simuler un échantillon i.i.d $X_1,\ldots,X_n$, de loi à densité $f$ et de calculer
+$$
+\frac 1n \sum_{i=1}^n g(X_i),
+$$
+cette quantité tendant vers $I=\mathbb E[g(X)]$ quand $n\to +\infty$.
+
+*exemple :*
+
+On cherche à calculer
+$$
+I=\int_{0}^1 \frac{\ln(1+x)}{\sqrt{1-x^2}}\,dx
+$$
+
+En R, cela donne
+```{r}
+n<-1000000
+ech<-runif(n)
+mean(log(1+ech)/sqrt(1-ech^2))
+integrate(function(x) log(1+x)/sqrt(1-x^2),0,1)
+```
+
+On peut également utiliser une autre loi que la loi uniforme : par exemple la loi beta, notée $\mathcal B(a,b)$. La densité de cette loi est
+$$
+\forall x\in [0,1],\, f(x) = \frac{1}{B(a,b)} x^{a-1}(1-x)^{b-1}
+$$
+où $B(a,b)=\dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$. Pour rappel, la fonction gamma, notée $Gamma(x)$ vaut
+$$
+\Gamma(x) = \int_0^{+\infty} x^{t-1}\exp(-t)\,dt
+$$
+
+On peut donc écrire $I$ sous la forme
+$$
+I = \int_0^1 \frac{g(x)}{f(x)}f(x)\,dx
+$$
+où $f$ est la fonction densité de la loi Beta.
+
+En R, cela donne
+```{r}
+n<-1000000
+a<-5 # 1er paramètre de la loi Beta
+b<-1 # 2ème paramètre de la loi Beta
+ech<-rbeta(n,a,b)
+g<-function(x) log(1+x)/sqrt(1-x^2)
+mean(g(ech)/dbeta(ech,a,b))
+integrate(g,0,1)
+```
+
+# TP
+
+## Approximation de $\pi$
+
+Soit $f$ la fonction définie sur $[0,1]$ par
+$$
+\forall x\in [0,1],\, f(x) = \sqrt{1-x^2}
+$$
+Faire une procédure permettant de calculer
+$$
+I=\int_0^1 f(x)\,dx
+$$
+En déduire une approximation de $\pi$.
+
+Une autre façon d'approcher $\pi$ est de simuler des points dans le carré unité et de compter le nombre de points qui sont à une distance de l'origine plus petite que $1$.
+
+Calculer également par Monte Carlo l'intégrale suivante :
+$$
+\int_0^1 \dfrac{1}{1+x^2}\,dx
+$$
+
+## Calcul d'intégrales
+
+Nous considérons une variable aléatoire $X$ de loi $\Gamma(a,b)$ de densité de probabilité :
+$$
+f(x) = \frac{b^a}{\Gamma(a)}x^{a-1}\exp(-bx)
+$$
+Dans la suite, on prend $a= 4$ et $b= 1$.
+
+1. Simuler un échantillon de 1000 réalisations de $X$.
+
+2. Déterminer par la méthode de Monte-Carlo des approximations de l'espérance et de la variance de $X$.
+
+3. Calculer l'intégrale suivante par Monte Carlo
+$$
+\int_0^{+\infty} \cos(2x)x^{7/3}\exp(-3.2x)\,dx
+$$
+
 
 
