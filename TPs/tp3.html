@@ -159,7 +159,7 @@ I=\int_{0}^1 \frac{\ln(1+x)}{\sqrt{1-x^2}}\,dx
 <pre class="r"><code>n&lt;-1000000
 ech&lt;-runif(n)
 mean(log(1+ech)/sqrt(1-ech^2))</code></pre>
-<pre><code>## [1] 0.7403595</code></pre>
+<pre><code>## [1] 0.7452083</code></pre>
 <pre class="r"><code>integrate(function(x) log(1+x)/sqrt(1-x^2),0,1)</code></pre>
 <pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
 <p>On peut également utiliser une autre loi que la loi uniforme : par exemple la loi beta, notée <span class="math inline">\(\mathcal B(a,b)\)</span>. La densité de cette loi est <span class="math display">\[
@@ -177,7 +177,7 @@ b&lt;-1 # 2ème paramètre de la loi Beta
 ech&lt;-rbeta(n,a,b)
 g&lt;-function(x) log(1+x)/sqrt(1-x^2)
 mean(g(ech)/dbeta(ech,a,b))</code></pre>
-<pre><code>## [1] 0.7416603</code></pre>
+<pre><code>## [1] 0.7454624</code></pre>
 <pre class="r"><code>integrate(g,0,1)</code></pre>
 <pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
 </div>
@@ -197,6 +197,8 @@ I=\int_0^1 f(x)\,dx
 </div>
 <div id="calcul-dintegrales" class="section level2">
 <h2>Calcul d’intégrales</h2>
+<div id="exercice-1" class="section level3">
+<h3>Exercice 1</h3>
 <p>Nous considérons une variable aléatoire <span class="math inline">\(X\)</span> de loi <span class="math inline">\(\Gamma(a,b)\)</span> de densité de probabilité : <span class="math display">\[
 f(x) = \frac{b^a}{\Gamma(a)}x^{a-1}\exp(-bx)
 \]</span> Dans la suite, on prend <span class="math inline">\(a= 4\)</span> et <span class="math inline">\(b= 1\)</span>.</p>
@@ -207,6 +209,28 @@ f(x) = \frac{b^a}{\Gamma(a)}x^{a-1}\exp(-bx)
 \int_0^{+\infty} \cos(2x)x^{7/3}\exp(-3.2x)\,dx
 \]</span></p></li>
 </ol>
+</div>
+<div id="exercice-2" class="section level3">
+<h3>Exercice 2</h3>
+<p>On cherche à calculer <span class="math display">\[
+I = \int_0^{+\infty} \exp(-x^2/2)\,dx
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Montrer grâce à la loi normal et par le calcul que <span class="math inline">\(I=\sqrt{\dfrac{\pi}{2}}\)</span>.</p></li>
+<li><p>En effectuant un changement de variables <span class="math inline">\(y=x^2/2\)</span> dans l’intégrale, prouvez que <span class="math display">\[
+I= \int_0^{+\infty} \frac{1}{\sqrt{2y}}\exp(-y)\,dy
+\]</span></p></li>
+<li><p>Montrer que cette intégrale peut être vue comme l’espérance d’une fonction d’une variable aléatoire <span class="math inline">\(X\)</span> qui suit une loi exponentielle. Donner le paramètre de cette loi exponentielle.</p></li>
+<li><p>Mettre en oeuvre un programme permettant de calculer cette intégrale par la Monte Carlo. Comparer avec la fonction integrate.</p></li>
+</ol>
+</div>
+<div id="exercice-3-en-dimension-3" class="section level3">
+<h3>Exercice 3 : En dimension 3</h3>
+<p>On s’intéresse à l’intégrale <span class="math display">\[
+\iint_{\mathcal D} \sqrt{r^2-x^2-y^2}\,dxdy
+\]</span> où <span class="math inline">\(r&gt;0\)</span> et <span class="math inline">\(\mathcal D=\{(x,y)\in \mathbb R^2,\, x^2+y^2\leq r^2\}\)</span>.</p>
+<p>Mettre en oeuvre un programme permettant de calculer cette intégrale double (qui n’est rien d’autre que le volume de la demi-sphère de rayon r).</p>
+</div>
 </div>
 </div>
 

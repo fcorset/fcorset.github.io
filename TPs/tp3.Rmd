@@ -111,6 +111,8 @@ $$
 
 ## Calcul d'intégrales
 
+### Exercice 1
+
 Nous considérons une variable aléatoire $X$ de loi $\Gamma(a,b)$ de densité de probabilité :
 $$
 f(x) = \frac{b^a}{\Gamma(a)}x^{a-1}\exp(-bx)
@@ -125,6 +127,36 @@ Dans la suite, on prend $a= 4$ et $b= 1$.
 $$
 \int_0^{+\infty} \cos(2x)x^{7/3}\exp(-3.2x)\,dx
 $$
+
+### Exercice 2
+
+On cherche à calculer
+$$
+I = \int_0^{+\infty} \exp(-x^2/2)\,dx
+$$
+
+1. Montrer grâce à la loi normal et par le calcul que $I=\sqrt{\dfrac{\pi}{2}}$.
+
+2. En effectuant un changement de variables $y=x^2/2$ dans l'intégrale, prouvez que
+$$
+I= \int_0^{+\infty} \frac{1}{\sqrt{2y}}\exp(-y)\,dy
+$$
+
+3. Montrer que cette intégrale peut être vue comme l'espérance d'une fonction d'une variable aléatoire $X$ qui suit une loi exponentielle. Donner le paramètre de cette loi exponentielle.
+
+4. Mettre en oeuvre un programme permettant de calculer cette intégrale par la Monte Carlo. Comparer avec la fonction integrate.
+
+### Exercice 3 : En dimension 3
+
+On s'intéresse à l'intégrale
+$$
+\iint_{\mathcal D} \sqrt{r^2-x^2-y^2}\,dxdy
+$$
+où $r>0$ et $\mathcal D=\{(x,y)\in \mathbb R^2,\, x^2+y^2\leq r^2\}$.
+
+Mettre en oeuvre un programme permettant de calculer cette intégrale double (qui n'est rien d'autre que le volume de la demi-sphère de rayon r).
+
+
 
 
 
