@@ -775,7 +775,7 @@ La taille $X$ d'un homme français tiré au sort dans la population est supposé
 
 3. Que vaut $P(165<X<185)$ ?
 
-4. La taille des femmes françaises est modéliser par une loi gaussienne de moyenne $162$cm et de variance $144$. Quelle est la probabilité qu'un homme tiré au sort soit plus grand qu'une femme choisie au hasard ?
+4. La taille des femmes françaises est modélisée par une loi gaussienne de moyenne $162$cm et de variance $144$. Quelle est la probabilité qu'un homme tiré au sort soit plus grand qu'une femme choisie au hasard ?
 
 
 ## Loi Exponentielle
