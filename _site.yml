@@ -16,6 +16,8 @@ navbar:
           href: ./TPs/tp1.html
         - text: "TP2"
           href: ./TPs/tp2.html
+        - text: "TP3"
+          href: ./TPs/tp3.html
     - text: "Shiny"
       href: shiny.html
 #    - text: "CV"
