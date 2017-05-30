@@ -135,7 +135,7 @@ $$
 I = \int_0^{+\infty} \exp(-x^2/2)\,dx
 $$
 
-1. Montrer grâce à la loi normal et par le calcul que $I=\sqrt{\dfrac{\pi}{2}}$.
+1. Montrer grâce à la loi normale et par le calcul que $I=\sqrt{\dfrac{\pi}{2}}$.
 
 2. En effectuant un changement de variables $y=x^2/2$ dans l'intégrale, prouvez que
 $$

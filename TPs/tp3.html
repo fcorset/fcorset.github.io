@@ -159,7 +159,7 @@ I=\int_{0}^1 \frac{\ln(1+x)}{\sqrt{1-x^2}}\,dx
 <pre class="r"><code>n&lt;-1000000
 ech&lt;-runif(n)
 mean(log(1+ech)/sqrt(1-ech^2))</code></pre>
-<pre><code>## [1] 0.7432001</code></pre>
+<pre><code>## [1] 0.7424021</code></pre>
 <pre class="r"><code>integrate(function(x) log(1+x)/sqrt(1-x^2),0,1)</code></pre>
 <pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
 <p>On peut également utiliser une autre loi que la loi uniforme : par exemple la loi beta, notée <span class="math inline">\(\mathcal B(a,b)\)</span>. La densité de cette loi est <span class="math display">\[
@@ -177,7 +177,7 @@ b&lt;-1 # 2ème paramètre de la loi Beta
 ech&lt;-rbeta(n,a,b)
 g&lt;-function(x) log(1+x)/sqrt(1-x^2)
 mean(g(ech)/dbeta(ech,a,b))</code></pre>
-<pre><code>## [1] 0.7401204</code></pre>
+<pre><code>## [1] 0.7473091</code></pre>
 <pre class="r"><code>integrate(g,0,1)</code></pre>
 <pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
 </div>
@@ -216,7 +216,7 @@ f(x) = \frac{b^a}{\Gamma(a)}x^{a-1}\exp(-bx)
 I = \int_0^{+\infty} \exp(-x^2/2)\,dx
 \]</span></p>
 <ol style="list-style-type: decimal">
-<li><p>Montrer grâce à la loi normal et par le calcul que <span class="math inline">\(I=\sqrt{\dfrac{\pi}{2}}\)</span>.</p></li>
+<li><p>Montrer grâce à la loi normale et par le calcul que <span class="math inline">\(I=\sqrt{\dfrac{\pi}{2}}\)</span>.</p></li>
 <li><p>En effectuant un changement de variables <span class="math inline">\(y=x^2/2\)</span> dans l’intégrale, prouvez que <span class="math display">\[
 I= \int_0^{+\infty} \frac{1}{\sqrt{2y}}\exp(-y)\,dy
 \]</span></p></li>
