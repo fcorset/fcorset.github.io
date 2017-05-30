@@ -68,7 +68,7 @@ $$
 $$
 où $B(a,b)=\dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$. Pour rappel, la fonction gamma, notée $Gamma(x)$ vaut
 $$
-\Gamma(x) = \int_0^{+\infty} x^{t-1}\exp(-t)\,dt
+\Gamma(x) = \int_0^{+\infty} t^{x-1}\exp(-t)\,dt
 $$
 
 On peut donc écrire $I$ sous la forme

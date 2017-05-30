@@ -159,13 +159,13 @@ I=\int_{0}^1 \frac{\ln(1+x)}{\sqrt{1-x^2}}\,dx
 <pre class="r"><code>n&lt;-1000000
 ech&lt;-runif(n)
 mean(log(1+ech)/sqrt(1-ech^2))</code></pre>
-<pre><code>## [1] 0.7452083</code></pre>
+<pre><code>## [1] 0.7404541</code></pre>
 <pre class="r"><code>integrate(function(x) log(1+x)/sqrt(1-x^2),0,1)</code></pre>
 <pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
 <p>On peut également utiliser une autre loi que la loi uniforme : par exemple la loi beta, notée <span class="math inline">\(\mathcal B(a,b)\)</span>. La densité de cette loi est <span class="math display">\[
 \forall x\in [0,1],\, f(x) = \frac{1}{B(a,b)} x^{a-1}(1-x)^{b-1}
 \]</span> où <span class="math inline">\(B(a,b)=\dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}\)</span>. Pour rappel, la fonction gamma, notée <span class="math inline">\(Gamma(x)\)</span> vaut <span class="math display">\[
-\Gamma(x) = \int_0^{+\infty} x^{t-1}\exp(-t)\,dt
+\Gamma(x) = \int_0^{+\infty} t^{x-1}\exp(-t)\,dt
 \]</span></p>
 <p>On peut donc écrire <span class="math inline">\(I\)</span> sous la forme <span class="math display">\[
 I = \int_0^1 \frac{g(x)}{f(x)}f(x)\,dx
@@ -177,7 +177,7 @@ b&lt;-1 # 2ème paramètre de la loi Beta
 ech&lt;-rbeta(n,a,b)
 g&lt;-function(x) log(1+x)/sqrt(1-x^2)
 mean(g(ech)/dbeta(ech,a,b))</code></pre>
-<pre><code>## [1] 0.7454624</code></pre>
+<pre><code>## [1] 0.7430956</code></pre>
 <pre class="r"><code>integrate(g,0,1)</code></pre>
 <pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
 </div>
@@ -257,7 +257,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
