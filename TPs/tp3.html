@@ -159,7 +159,7 @@ I=\int_{0}^1 \frac{\ln(1+x)}{\sqrt{1-x^2}}\,dx
 <pre class="r"><code>n&lt;-1000000
 ech&lt;-runif(n)
 mean(log(1+ech)/sqrt(1-ech^2))</code></pre>
-<pre><code>## [1] 0.7404541</code></pre>
+<pre><code>## [1] 0.7432001</code></pre>
 <pre class="r"><code>integrate(function(x) log(1+x)/sqrt(1-x^2),0,1)</code></pre>
 <pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
 <p>On peut également utiliser une autre loi que la loi uniforme : par exemple la loi beta, notée <span class="math inline">\(\mathcal B(a,b)\)</span>. La densité de cette loi est <span class="math display">\[
@@ -177,7 +177,7 @@ b&lt;-1 # 2ème paramètre de la loi Beta
 ech&lt;-rbeta(n,a,b)
 g&lt;-function(x) log(1+x)/sqrt(1-x^2)
 mean(g(ech)/dbeta(ech,a,b))</code></pre>
-<pre><code>## [1] 0.7430956</code></pre>
+<pre><code>## [1] 0.7401204</code></pre>
 <pre class="r"><code>integrate(g,0,1)</code></pre>
 <pre><code>## 0.7431381 with absolute error &lt; 2.2e-06</code></pre>
 </div>
@@ -204,7 +204,7 @@ f(x) = \frac{b^a}{\Gamma(a)}x^{a-1}\exp(-bx)
 \]</span> Dans la suite, on prend <span class="math inline">\(a= 4\)</span> et <span class="math inline">\(b= 1\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li><p>Simuler un échantillon de 1000 réalisations de <span class="math inline">\(X\)</span>.</p></li>
-<li><p>Déterminer par la méthode de Monte-Carlo des approximations de l’espérance et de la variance de <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Donner, par des simulations, des approximations de l’espérance et de la variance de <span class="math inline">\(X\)</span>.</p></li>
 <li><p>Calculer l’intégrale suivante par Monte Carlo <span class="math display">\[
 \int_0^{+\infty} \cos(2x)x^{7/3}\exp(-3.2x)\,dx
 \]</span></p></li>

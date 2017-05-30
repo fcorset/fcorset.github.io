@@ -121,7 +121,7 @@ Dans la suite, on prend $a= 4$ et $b= 1$.
 
 1. Simuler un échantillon de 1000 réalisations de $X$.
 
-2. Déterminer par la méthode de Monte-Carlo des approximations de l'espérance et de la variance de $X$.
+2. Donner, par des simulations, des approximations de l'espérance et de la variance de $X$.
 
 3. Calculer l'intégrale suivante par Monte Carlo
 $$
