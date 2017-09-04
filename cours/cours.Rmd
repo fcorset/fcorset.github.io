@@ -125,7 +125,7 @@ $$
 C_n^k = \dfrac{n!}{k!(n-k)!}
 $$
 
-où $n!=n\times(n-1)\times(n-2)\times\ldots\times 2\times 1$ et $0!=1$.
+avec $n!=n\times(n-1)\times(n-2)\times\ldots\times 2\times 1$ et par convention $0!=1$.
 
 ### Fonction de répartition
 
@@ -140,8 +140,8 @@ Remarquez que cette fonction est définie sur $\mathbb R$.
 En reprenant l'exemple de la loi binomiale avec les paramètres, $n=10$ et $p=0.3$, on obtient :
 
 ```{r}
-curve(pbinom(x,size=10,prob = 0.3),type="S",from = -1,to=11,ylab="y", 
-      main=" Fonction de répartition de la loi binomiale B(10,0.3)")
+curve(pbinom(x,size=10,prob = 0.3),type="S",from = -1,to=11,ylab="y",
+main=" Fonction de répartition de la loi binomiale B(10,0.3)")
 ```
 
 Remarque : Dans la figure ci-dessus, la représentation de la fonction de répartition laisse croire que cette fonction est continue, ce qui n'est pas du tout le cas. Par définition, cette fonction est une fonction en escalier, continue à gauche, mais présentant des discontinuités en les modalités de la variable aléatoire.
