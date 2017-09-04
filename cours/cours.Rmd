@@ -89,8 +89,11 @@ $$
 $$
 
 On a les propriétés suivantes :
-- $\forall k\in X(\Omega), \, 0\leq p_k \leq 1$.
-- $\displaystyle\sum_{k\in  X(\Omega)} p_k = 1$.
+
+$$\forall k\in X(\Omega), \, 0\leq p_k \leq 1$$
+et
+
+$$\displaystyle\sum_{k\in  X(\Omega)} p_k = 1$$
 
 On appelle *fonction de répartition* de $X$ (f.d.r en français, c.d.f. en anglais pour cumulative density function) la fonction suivante $F_X$ :
 $$
