@@ -774,15 +774,15 @@ $$
 
 ## Exercice
 
-La taille $X$ d'un homme français tiré au sort dans la population est supposée suivre une loi normale de moyenne $172$cm et de variance $196$ :
+La taille $X$ d'un homme français tiré au sort dans la population est supposée suivre une loi normale de moyenne $172\,cm$ et de variance $196\,cm^2$ :
 
-1. quelle est la probabilité que $X$ soit inférieure à $160$cm ?
+1. quelle est la probabilité que $X$ soit inférieure à $160\,cm$ ?
 
 2. quelle est la probabilité qu'un homme tiré au sort mesure plus de deux mètres ?
 
 3. Que vaut $P(165<X<185)$ ?
 
-4. La taille des femmes françaises est modélisée par une loi gaussienne de moyenne $162$cm et de variance $144$. Quelle est la probabilité qu'un homme tiré au sort soit plus grand qu'une femme choisie au hasard ?
+4. La taille des femmes françaises est modélisée par une loi gaussienne de moyenne $162\,cm$ et de variance $144\,cm^2$. Quelle est la probabilité qu'un homme tiré au sort soit plus grand qu'une femme choisie au hasard ?
 
 
 ## Loi Exponentielle
