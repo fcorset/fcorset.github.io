@@ -467,7 +467,7 @@ Pour chacun de ces échantillons remplir le tableau suivant en utilisant les com
 
 ```{r}
 ##########################
-# QUESTION 2
+# QUELQUES COMMANDES
 ##########################
 # Tracer les valeurs
 plot(nd1,type="l")
