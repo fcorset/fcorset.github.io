@@ -241,6 +241,41 @@ $$E(X)=\int_{-\infty}^{+\infty} xf(x)\,dx.$$
 - La variance de $X$ est :
 $${\rm Var}(X)=\mathbb E\left[ (X-\mathbb E[X])^2 \right]  = \mathbb E[X^2] - \mathbb E[X]^2 =  \int_{-\infty}^{+\infty}x^2f(x)\,dx-\mathbb E[X]^2.$$
 
+
+## Exemple : La loi uniforme sur $[0,1]$
+
+La fonction densité est :
+$$
+\begin{array}{lrcl}
+f : & \mathbb R & \longrightarrow & \mathbb R\\
+    & x & \longmapsto & \left \lbrace \begin{array}{cl}
+ 1 &  \text{ si }x\in[0,1]  \\
+ 0 &  \text{ sinon}
+\end{array}
+\right. \end{array}
+$$
+
+```{r}
+n<-10000
+ech<-runif(n)
+hist(ech,probability = T,main="Comparaison histogramme et densité")
+curve(dunif,from = 0,to = 1,add = T,col ="red")
+```
+
+La fonction de répartition de cette loi est :
+$$
+\begin{array}{lrcl}
+F : & \mathbb R & \longrightarrow & [0,1] \\
+    & x & \longmapsto & \left \lbrace \begin{array}{cl}
+ 0 &  \text{ si }x<0  \\
+ x &  \text{ si }x\in[0,1]\\
+ 1 & \text{ si }x>1
+\end{array}
+\right. \end{array}
+$$
+
+
+
 ## Exemple : la loi normale
 
 On appelle loi normale la loi d'une variable aléatoire réelle continue $X$ dont la densité s'écrit :
