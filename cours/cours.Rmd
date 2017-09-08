@@ -275,7 +275,7 @@ F : & \mathbb R & \longrightarrow & [0,1] \\
 $$
 
 ```{r}
-n<-10000
+n<-1000
 ech<-runif(n)
 plot(ecdf(ech),main="Comparaison Fonction de répartition empirique et théorique")
 curve(punif,from = 0,to = 1,add = T,col ="red")
