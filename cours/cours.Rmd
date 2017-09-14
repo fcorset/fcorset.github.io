@@ -1,6 +1,10 @@
 ---
 title: "Cours de Statistique et Probabilités"
-author: "IUT Informatique S3d"
+author: "IUT Informatique S3"
+header_includes:
+- \usepackage{amsmath}
+- \usepackage{amssymb}
+- \usepackage{amsthm}
 output:
   rmdformats::readthedown:    
     highlight: kate
@@ -11,11 +15,11 @@ output:
     fig_caption: true
 ---
 
+\newtheorem{theo}{Théorème}
 
 # Préambule
 
 Ce support de cours est largement inspiré du livre de Lafaye de Micheaux et al. \cite{LAF} ainsi que du cours de Statistique de Bernard Ycart de l'Université de Grenoble Alpes.
-
 
 # Décrire une ou plusieurs séries de valeurs
 
@@ -84,9 +88,9 @@ Ces résumés peuvent être calculés uniquement pour des variables quantitative
 La variable aléatoire $X$ est discrète si et seulement si elle prend ses valeurs dans un ensemble dénombrable (pour faire simple, un ensemble fini ou $\mathbb N$).
 
 On note $X(\Omega)$, l'ensemble des valeurs prises par la variable aléatoire discrète. On appelle fonction de masse (de probabilités), la fonction suivante :
-$$
+\begin{equation}
 \forall k\in X(\Omega), \, P(X=k)=p_k
-$$
+\end{equation}
 
 On a les propriétés suivantes :
 
@@ -215,13 +219,24 @@ $$
 \mathbb E[X^2]=e^{-\lambda} \left [ \sum_{k=2}^{+\infty}(k-1) \frac{\lambda^k}{(k-1)!} + \sum_{k=1}^{+\infty}\frac{\lambda^k}{(k-1)!} \right ] = e^{-\lambda} \left [ \lambda^2\sum_{k=2}^{+\infty} \frac{\lambda^{k-2}}{(k-2)!} + \lambda \sum_{k=1}^{+\infty}\frac{\lambda^{k-1}}{(k-1)!} \right ]  = \lambda^2+\lambda
 $$
 et donc
-$$
+\begin{equation}
 \mathbb V[X] = \mathbb E[X^2] - \mathbb E[X]^2 = \lambda^2+\lambda - \lambda^2 = \lambda
+\end{equation}
+
+## Couple de variables aléatoires discrètes
+
+Soient $X$ et $Y$ deux variables aléatoires discrètes. On appelle covariance de $X$ et $Y$, notée $cov(X,Y)$, la quantité suivante :
+$$
+cov(X,Y)=\mathbb E[(X-\mathbb E[X])(Y-\mathbb E[Y]) ]
 $$
 
 
 
-## Densité et fonction de répartition d'une variable quantitative continue
+
+
+## Variable aléaoire continue
+
+### Densité et fonction de répartition d'une variable quantitative continue
 
 La variable aléatoire $X$ associée à une fonction $f$ donnée et définie sur $\mathbb{R}$, continue par morceaux, représente le fait de tirer un nombre au hasard avec la probabilité suivante :$${\rm Proba}(X\leq t)=\int_{-\infty}^{t} f(x) dx = F(t)$$
 où $t$ est un réel fixé.
@@ -242,7 +257,7 @@ $$E(X)=\int_{-\infty}^{+\infty} xf(x)\,dx.$$
 $${\rm Var}(X)=\mathbb E\left[ (X-\mathbb E[X])^2 \right]  = \mathbb E[X^2] - \mathbb E[X]^2 =  \int_{-\infty}^{+\infty}x^2f(x)\,dx-\mathbb E[X]^2.$$
 
 
-## Exemple : La loi uniforme sur $[0,1]$
+#### Exemple : La loi uniforme sur $[0,1]$
 
 La fonction densité est :
 $$
@@ -281,7 +296,7 @@ plot(ecdf(ech),main="Comparaison Fonction de répartition empirique et théoriqu
 curve(punif,from = 0,to = 1,add = T,col ="red")
 ```
 
-## Exemple : la loi normale
+#### Exemple : la loi normale
 
 On appelle loi normale la loi d'une variable aléatoire réelle continue $X$ dont la densité s'écrit :
 $$f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\displaystyle\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}$$
@@ -294,9 +309,7 @@ Si $\sigma^2=1$, on dit que $X$ est réduite.
 Une propriété importante sur la loi normale est la suivante :
 
 **Proposition**
-
 Si $X\leadsto \mathcal N(\mu,\sigma^2)$ alors $\displaystyle \frac{X-\mu}{\sigma} \leadsto \mathcal N(0,1)$.
-
 
 Remarque : Attention ! Cette propriété nous dit que pour centrer et réduire une loi normale, il faut lui retrancher sa moyenne et **diviser par l'écart type (et non pas la variance)**.
 

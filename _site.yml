@@ -37,3 +37,4 @@ output:
   html_document:
     theme: cosmo
     highlight: textmate
+    css: css/mycss.css
