@@ -146,7 +146,7 @@ $$
 
 4. Mettre en oeuvre un programme permettant de calculer cette intégrale par la Monte Carlo. Comparer avec la fonction integrate.
 
-### Exercice 3 : En dimension 3
+### Exercice 3 : En dimension 2
 
 On s'intéresse à l'intégrale
 $$
