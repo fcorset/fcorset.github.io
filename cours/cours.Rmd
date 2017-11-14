@@ -1,18 +1,14 @@
 ---
 title: "Cours de Statistique et Probabilités"
 author: "IUT Informatique S3"
-header_includes:
-- \usepackage{amsmath}
-- \usepackage{amssymb}
-- \usepackage{amsthm}
 output:
-  rmdformats::readthedown:    
-    highlight: kate
-  html_document: 
+  html_document:
+    fig_caption: true
+    number_section: true
     toc: true
     toc_depth: 4
-    number_section: true
-    fig_caption: true
+  rmdformats::readthedown:
+    highlight: kate
 ---
 
 

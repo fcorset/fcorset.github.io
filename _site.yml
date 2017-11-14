@@ -2,7 +2,6 @@ name: "Franck Corset"
 output_dir: "."
 navbar:
   title: "Franck Corset"                               
-  type: inverse
   left:
     - text: "Home"
       icon: fa-home
@@ -34,6 +33,6 @@ navbar:
       icon: fa-github
       href: https://github.com/fcorset          
 output:
-prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
+  html_document:
+    theme: cosmo
+    highlight: textmate

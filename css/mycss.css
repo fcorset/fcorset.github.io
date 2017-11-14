@@ -18,7 +18,6 @@ blockquote{
   line-height: 130%;
 }
 
-
 *{
    font-family: arial, serif;
 }
@@ -37,7 +36,7 @@ h2{
 
 h2, h3{
   padding:20px 0 0 0;
- 
+
 }
 
 h3{
@@ -52,5 +51,3 @@ h3{
 </style>
 </head>
 </html>
-
-
