@@ -16,7 +16,7 @@ output:
 ---
 
 
-# Préambule
+# Préambules
 
 Ce support de cours est largement inspiré du livre de Lafaye de Micheaux et al. \cite{LAF} ainsi que du cours de Statistique de Bernard Ycart de l'Université de Grenoble Alpes.
 
