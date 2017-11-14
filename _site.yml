@@ -34,6 +34,6 @@ navbar:
       icon: fa-github
       href: https://github.com/fcorset          
 output:
-  html_document:
-    theme: cosmo
-    highlight: textmate
+prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
