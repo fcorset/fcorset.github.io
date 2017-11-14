@@ -1,6 +1,7 @@
 ---
 title: "Cours de Statistique et Probabilités"
 author: "IUT Informatique S3"
+bibliography: coursStat.bib
 output:
   html_document:
     fig_caption: true
@@ -14,7 +15,7 @@ output:
 
 # Préambule
 
-Ce support de cours est largement inspiré du livre de Lafaye de Micheaux et al. \cite{LAF} ainsi que du cours de Statistique de Bernard Ycart de l'Université de Grenoble Alpes.
+Ce support de cours est largement inspiré du livre de Lafaye de Micheaux et al. [@lafaye] ainsi que du cours de Statistique de Bernard Ycart de l'Université de Grenoble Alpes.
 
 # Décrire une ou plusieurs séries de valeurs
 
@@ -128,10 +129,11 @@ avec $n!=n\times(n-1)\times(n-2)\times\ldots\times 2\times 1$ et par convention 
 
 ### Fonction de répartition
 
-On appelle *fonction de répartition* de $X$ (f.d.r en français, c.d.f. en anglais pour cumulative density function) la fonction suivante $F_X$ :
+> On appelle *fonction de répartition* de $X$ (f.d.r en français, c.d.f. en anglais pour cumulative density function) la fonction suivante $F_X$ :
 $$
 \forall x \in \mathbb R,\, F_X(x) = P(X\leq x) = \displaystyle \sum_{k:x_k\leq x} p_k
 $$
+
 Remarquez que cette fonction est définie sur $\mathbb R$.
 
 *Exemple*
@@ -147,12 +149,13 @@ Remarque : Dans la figure ci-dessus, la représentation de la fonction de répar
 
 ### Espérance et variance
 
-**Espérance de $X$**
-
-Soit $X$ une variable aléatoire discrète de fonction de masse de probabilité $\forall k\in X(\Omega),\, f(k)=p_k$. On appelle espérance de $X$, que l'on note $\mathbb E[X]$, la quantité suivante :
+> **Espérance de $X$**
+> 
+> Soit $X$ une variable aléatoire discrète de fonction de masse de probabilité $\forall k\in X(\Omega),\, f(k)=p_k$. On appelle espérance de $X$, que l'on note $\mathbb E[X]$, la quantité suivante :
 $$
 \mathbb E[X] = \sum_{k\in X(\Omega)} k p_k
 $$
+
 Dans cette définition, on suppose que cette espérance est finie.
 
 *Exemple 1* 
@@ -180,9 +183,9 @@ $$
 \mathbb E[X] = \sum_{k=0}^{+\infty} k p_k = e^{-\lambda} \sum_{k=1}^{+\infty} k \frac{\lambda^k}{k!} = e^{-\lambda} \sum_{k=1}^{+\infty} \frac{\lambda^k}{(k-1)!} = \lambda e^{-\lambda} \sum_{k=1}^{+\infty} \frac{\lambda^{k-1}}{(k-1)!}= \lambda e^{-\lambda} * e^{\lambda} = \lambda
 $$
 
-**Variance**
-
-Soit $X$ une variable aléatoire discrète de fonction de masse de probabilité $\forall k\in X(\Omega),\, f(k)=p_k$. On appelle variance de $X$, que l'on note $\mathbb V[X]$, la quantité suivante :
+> **Variance**
+> 
+> Soit $X$ une variable aléatoire discrète de fonction de masse de probabilité $\forall k\in X(\Omega),\, f(k)=p_k$. On appelle variance de $X$, que l'on note $\mathbb V[X]$, la quantité suivante :
 $$
 \mathbb V[X] = \mathbb E[(X-\mathbb E[X])^2] =\mathbb E[X^2]-\mathbb E[X]^2 
 $$ 
@@ -220,16 +223,120 @@ et donc
 
 ## Couple de variables aléatoires discrètes
 
-Soient $X$ et $Y$ deux variables aléatoires discrètes. On appelle covariance de $X$ et $Y$, notée $cov(X,Y)$, la quantité suivante :
+> **Définition de la loi jointe**
+>
+> On appelle la loi jointe, la loi du couple $(X,Y)$ définie par
+$$
+P(X=x,Y=y)
+$$
+
+> **Définition de la loi conditionnelle** de $Y$ sachant un évenement $X=x$
+>
+> On appelle loi conditionnelle de $Y$ sachant un évènement $X=x$ (de probabilité non nulle), la loi suivante
+$$
+P(Y=y|X=x) = \dfrac{P(X=x,Y=y)}{P(X=x)}
+$$
+
+> **Définition de la loi marginale**
+> 
+> On appelle loi marginale de $X$, la loi de $X$ que l'on peut calculer à partir de la loi jointe :
+$$
+\forall x,\,P(X=x) = \sum_y P(X=x,Y=y)
+$$
+
+
+> **Définition de la covariance**
+>
+> Soient $X$ et $Y$ deux variables aléatoires discrètes. On appelle covariance de $X$ et $Y$, notée $cov(X,Y)$, la quantité suivante :
 $$
 cov(X,Y)=\mathbb E[(X-\mathbb E[X])(Y-\mathbb E[Y]) ]
 $$
 
+D'après la définition, on peut remarquer que la covariance est un opérateur bilinéaire. Voici les principales propriétés à connaître :
+
+> **Propriétés de la covariance**
+> 
+> - $cov(X,a) = 0$
+> - $cov(X,Y) = cov(Y,X)$
+> - $cov(X,X) = var(X)$
+> - $cov(aX+bY,cZ+dT)=ac\, cov(X,Z)+ad \,cov(X,T) + bc \,cov(Y,Z) + bd \,cov(Y,T)$
+
+De ces propriétés, on peut en déduire que 
+$$
+var(X+Y) = var(X) + var(Y) + 2cov(X,Y)
+$$
+
+> **Définition de l'indépendance en probabilités**
+>
+> On dit que $X$ et $Y$ sont indépendantes si $\forall (x,y)\in \mathbb R^2$, $P(X\leq x,Y\leq y) =P(X\leq x)P(Y\leq y)$
+
+Ainsi, si $X$ et $Y$ sont deux variables aléatoires indépendantes alors :
+$$
+cov(X,Y)=0
+$$
+Attention, la réciproque est fausse ! Un contre exemple facile est le suivant :
+
+> *Exemple*
+>
+> Soit $X$ une loi uniforme discrète sur $\{-1,0,1\}$ :
+$$
+P(X=-1)=P(X=0)=P(X=1)=1/3
+$$
+L'espérance de $X$ vaut
+$$
+\mathbb E[X] = -1/3 + 0 + 1/3 = 0
+$$
+Prenons maintenant $Y=X^2$. On remarque facilement que $Y$ suit une loi de Bernoulli de paramètre $2/3$ :
+$$
+P(Y=1) = P(\{X=-1\}\cup \{X=1\}) = P(X=-1)+P(X=1) = 2/3
+$$
+et 
+$$
+P(Y=0) = P(X=0) = 1/3
+$$
+L'espérance de $Y$ est donc 
+$$
+\mathbb E[Y] = 2/3
+$$
+La loi jointe de $(X,Y)$ est donnée par le tableau suivant (à faire vous même) :
+
+(X,Y)   | 0   | 1
+------- | --- | - 
+-1      | 0   | 1/3
+0       | 1/3 | 0
+1       | 0   | 1/3
+>
+> Ainsi, on peut calculer l'espérance de $XY$ :
+$$
+\mathbb E[XY] = \sum_i \sum_j ij P(X=i,Y=j)= -1*1*1/3 +0*0*1/3+1*1*1/3 = 0 
+$$
+Ainsi, la covariance entre $X$ et $Y$ est nulle :
+$$
+cov(X,Y)= \mathbb E[XY]-\mathbb E[X]\mathbb E[Y] = 0 - 0*2/3 =0 
+$$
+et pourtant les deux variables ne sont pas indépendantes :
+$$
+P(X=1,Y=1) = 1/3 \not= P(X=1)P(Y=1)=1/3*2/3=2/9
+$$
+
+
+
+> **Proposition**
+>
+> si $X$ et $Y$ sont deux variables aléatoires indépendantes, on a
+$$
+\mathbb E[XY] = \mathbb E[X] \mathbb E[Y]
+$$
+et
+$$
+var(X+Y)=var(X)+var(Y)
+$$
 
 
 
 
-## Variable aléaoire continue
+
+## Variable aléatoire continue
 
 ### Densité et fonction de répartition d'une variable quantitative continue
 
@@ -554,3 +661,8 @@ $$
 $$
 
 où $n$ est la taille de l'échantillon, $\bar X$ la fréquence empirique et $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $\mathcal N(0,1)$.
+
+
+# References
+
+
