@@ -1,5 +1,5 @@
 ---
-title: "Bienvenue sur mon site web !"
+title: "Bienvenue sur mon site web dédié à l'enseignement !"
 ---
 
 Ce site web a été créé avec Rmarkdown et Rstudio 
