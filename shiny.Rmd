@@ -2,4 +2,9 @@
 title: "Quelques liens vers des applications shiny"
 ---
 
-En savoir plus
+- Une application pour calculer et vérifier comment fonctionnent les intervalles de confiance :
+
+http://im2ag-shiny.univ-grenoble-alpes.fr/fcorset/IC_mu/
+
+
+- 

@@ -6,15 +6,14 @@ header_includes:
 - \usepackage{amssymb}
 - \usepackage{amsthm}
 output:
-  rmdformats::readthedown:    
-    highlight: kate
   html_document: 
     toc: true
     toc_depth: 4
     number_section: true
     fig_caption: true
+  rmdformats::material:    
+    highlight: kate
 ---
-
 
 # Préambule
 
@@ -233,7 +232,7 @@ $$
 
 
 
-## Variable aléaoire continue
+## Variable aléatoire continue
 
 ### Densité et fonction de répartition d'une variable quantitative continue
 
