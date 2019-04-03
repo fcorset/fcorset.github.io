@@ -2,7 +2,6 @@ name: "Franck Corset"
 output_dir: "."
 navbar:
   title: "Franck Corset"                               
-  type: inverse
   left:
     - text: "Home"
       icon: fa-home
@@ -25,9 +24,9 @@ navbar:
 #    - text: "CV"
 #      icon: fa-file-pdf-o
 #      href: cv.html
-    - text: "Blog"
-      icon: fa-rss
-      href: https://fcorset.github.io/blog/     
+#    - text: "Blog"
+#      icon: fa-rss
+#      href: https://fcorset.github.io/blog/     
   right:
     - text: "Contact me"
       icon: fa-envelope-o

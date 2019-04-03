@@ -1,0 +1,53 @@
+---
+title: "TP 4 : Estimateur et Estimation"
+---
+
+
+# Introduction
+
+Pour commencer, lisez la partie du cours relative aux estimateurs et à l'estimation. 
+
+# Exercices
+
+## Exercice 1
+
+1. On souhaite tirer aléatoirement N échantillons de taille n suivant une loi normale $\mathcal N(\mu,1)$. Choisir une valeur de $\mu$. On choisit $N=10000$ et $n=100$. Calculer les $N$ moyennes et médianes empiriques. Comparer les deux estimateurs.
+
+2. On choisit maintenant la loi $\mathcal N(0,\sigma^2)$. Choisir une valeur de $\sigma^2$. On souhaite estimer l'écart type, c'est-à-dire $\sigma$. On choisit trois estimateurs :
+- L'estimateur $\sqrt{\displaystyle \frac{1}{n-1} \displaystyle \sum_{k=1}^{n} (X_k-\bar X_n)^2}$.
+- La racine carrée de la variance empirique $\sqrt{\displaystyle \frac{1}{n} \displaystyle \sum_{k=1}^{n} (X_k-\bar X_n)^2}$.
+- La distance interquartile divisée par qnorm(0.75)-qnorm(0.25) : $\displaystyle\frac{Q_3-Q_1}{1.34898}$.
+
+Comparer ces trois estimateurs, par exemple en dessinant le boxplot pour chaque échantillon d'estimations.
+
+## Exercice 2
+
+Soit $X_1,\ldots,X_n$, $n$ variables aléatoires indépendantes suivants la loi uniforme sur l'intervalle $[0,\theta]$, où $\theta$ est le paramètre inconnu que l'on cherche à estimer. On propose trois estimateurs de $\theta$ :
+
+- $T_1= 2 \bar X_n$
+
+- $T_2 = \max_{i=1,...,n} (X_i)$
+
+- $T_3 = \displaystyle \frac{n+1}{n} T_2$
+
+Pour chaque estimateur, calculer l'espérance et la variance, ainsi que l'erreur quadratique moyenne. Mettre en oeuvre un programme pour illustrer vos calculs.
+
+## Exercice 3
+
+Un Sériciculteur a pesé 100 cocons de son élevage de vers à soie. Il a obtenu les résultats suivants :
+
+```{r}
+donnees <- read.table(file="cocons.txt",header=F,dec=".")
+library(DT)
+datatable(donnees, options = list(pageLength = 5))
+table(donnees)
+```
+
+On appelle $mu$ la moyenne de tous les cocons de l'élevage et on suppose que le poids d'un cocon suit une loi normale, $\mathcal N(\mu,\sigma^2)$, avec $\sigma^2 = 0.0016 g^2$. On suppose que $X_i$ est le poids du i-ème cocon de cet échantillon. On suppose que ces $n$ variables aléatoires sont indépendantes et identiquement distribuées.
+
+1. Donner la loi de $\bar X_n = \displaystyle \frac 1n X_i$. Centrez et réduisez cette variable aléatoire. On notera $Z_n$, cette variable centrée réduite. Donner la loi de $Z_n$.
+
+2. Déterminer un réel $t$ tel que $P(-t\leq Z_n\leq t)\geq 0.95$.
+
+3. Montrer que $P(\bar X_n-0.00784\leq \mu \leq \bar X_n + 0.00784) \geq 0.95$
+
