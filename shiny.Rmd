@@ -6,5 +6,3 @@ title: "Quelques liens vers des applications shiny"
 
 http://im2ag-shiny.univ-grenoble-alpes.fr/fcorset/IC_mu/
 
-
-- 
