@@ -3,21 +3,12 @@ title: "Cours de Statistique et Probabilités"
 author: "IUT Informatique S3"
 bibliography: coursStat.bib
 output:
-<<<<<<< HEAD
   html_document: 
     toc: true
     toc_depth: 4
     number_section: true
     fig_caption: true
   rmdformats::material:    
-=======
-  html_document:
-    fig_caption: true
-    number_section: true
-    toc: true
-    toc_depth: 4
-  rmdformats::readthedown:
->>>>>>> c2dd5dc4128f47541cdd821cd450f6bd1b5fbd00
     highlight: kate
 ---
 
