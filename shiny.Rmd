@@ -6,3 +6,8 @@ title: "Quelques liens vers des applications shiny"
 
 http://im2ag-shiny.univ-grenoble-alpes.fr/fcorset/IC_mu/
 
+- Une application autour du théorème centrale limite :
+
+http://im2ag-shiny.univ-grenoble-alpes.fr/fcorset/TCL/
+
+

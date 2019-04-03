@@ -329,7 +329,7 @@ En R, il n'est pas utile de connaître ce théorème car la fonction *runif* per
 
 ```{r}
 n<-30
-ech<-runif(n,2,5) # simualtion d'un échantillon d'une loi uniforme sur [2,5]
+ech<-runif(n,2,5) # simulation d'un échantillon d'une loi uniforme sur [2,5]
 mean(ech)
 var(ech)
 hist(ech,freq=F)
