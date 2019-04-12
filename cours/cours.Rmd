@@ -337,7 +337,6 @@ $$
 
 
 
->>>>>>> c2dd5dc4128f47541cdd821cd450f6bd1b5fbd00
 ## Variable aléatoire continue
 
 ### Densité et fonction de répartition d'une variable quantitative continue

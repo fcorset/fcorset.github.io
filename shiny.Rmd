@@ -2,12 +2,24 @@
 title: "Quelques liens vers des applications shiny"
 ---
 
+Vous pouvez visiter la page web du serveur shiny de l'UGA :
+
+http://im2ag-shiny.univ-grenoble-alpes.fr/
+
+Sur ce serveur, vous trouverez en autre :
+
 - Une application pour calculer et vérifier comment fonctionnent les intervalles de confiance :
 
-http://im2ag-shiny.univ-grenoble-alpes.fr/fcorset/IC_mu/
+http://im2ag-shiny.univ-grenoble-alpes.fr/IC_mu
 
 - Une application autour du théorème centrale limite :
 
 http://im2ag-shiny.univ-grenoble-alpes.fr/fcorset/TCL/
+
+- Une application pour calculer l'intervalle de confiance de la variance dans le cas gaussien :
+
+http://im2ag-shiny.univ-grenoble-alpes.fr/fcorset/IC_var
+
+
 
 
