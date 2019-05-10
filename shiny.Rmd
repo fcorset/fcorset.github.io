@@ -10,7 +10,7 @@ Sur ce serveur, vous trouverez en autre :
 
 - Une application pour calculer et vérifier comment fonctionnent les intervalles de confiance :
 
-http://im2ag-shiny.univ-grenoble-alpes.fr/IC_mu
+http://im2ag-shiny.univ-grenoble-alpes.fr/fcorset/IC_mu
 
 - Une application autour du théorème centrale limite :
 
