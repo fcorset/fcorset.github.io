@@ -1,53 +1,63 @@
 ---
-title: "TP 5 : Loi Normale"
+title: "TP 5 : Intervalle de confiance"
 ---
 
 
 # Introduction
 
-Pour commencer, lisez la partie du cours relative aux estimateurs et à l'estimation. 
+Pour commencer, lisez la partie du cours relative aux intervalles de confiance. 
+
+# Préambule
+
+Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, $\mathcal N(\mu,\sigma^2)$ (par défaut mu=0, sigma = 1, p=0.1 ) avec une proportion $p$ de données polluées (issues d'un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut)
 
 # Exercices
 
 ## Exercice 1
 
-1. On souhaite tirer aléatoirement N échantillons de taille n suivant une loi normale $\mathcal N(\mu,1)$. Choisir une valeur de $\mu$. On choisit $N=10000$ et $n=100$. Calculer les $N$ moyennes et médianes empiriques. Comparer les deux estimateurs.
+### Première Partie
 
-2. On choisit maintenant la loi $\mathcal N(0,\sigma^2)$. Choisir une valeur de $\sigma^2$. On souhaite estimer l'écart type, c'est-à-dire $\sigma$. On choisit trois estimateurs :
-- L'estimateur $\sqrt{\displaystyle \frac{1}{n-1} \displaystyle \sum_{k=1}^{n} (X_k-\bar X_n)^2}$.
-- La racine carrée de la variance empirique $\sqrt{\displaystyle \frac{1}{n} \displaystyle \sum_{k=1}^{n} (X_k-\bar X_n)^2}$.
-- La distance interquartile divisée par qnorm(0.75)-qnorm(0.25) : $\displaystyle\frac{Q_3-Q_1}{1.34898}$.
+On considère $N$ échantillons de taille $n$ tirés d'une loi normale, $\mathcal N(\mu,\sigma^2)$. On s'intéresse à l'intervalle de confiance de la moyenne. Pour cela, nous allons donner les trois intervalles suivants :
+- En considérant que la variance est connue et égale à $1$.
+- En considérant que la variance est inconnue et donc en se servant du quantile de la loi de Student.
+- En considérant que la variance est inconnue mais en remplaçant le quantile de la loi de Student par celui de la loi normale.
 
-Comparer ces trois estimateurs, par exemple en dessinant le boxplot pour chaque échantillon d'estimations.
+Remplir le tableau suivant :
+
+
+### Deuxième partie
+
+
+On souhaite refaire la même chose mais cette fois-ci les échantillons sont pollués (comme c'est souvent le cas dans la vie réelle) par des données extrêmes. On suppose ici qu'il y a 1% de données polluées par échantillon.
 
 ## Exercice 2
 
-Soit $X_1,\ldots,X_n$, $n$ variables aléatoires indépendantes suivants la loi uniforme sur l'intervalle $[0,\theta]$, où $\theta$ est le paramètre inconnu que l'on cherche à estimer. On propose trois estimateurs de $\theta$ :
+Dans cet exercice, on suppose que $X$ suit une loi gaussienne, avec une variance connue et une espérance inconnue.
 
-- $T_1= 2 \bar X_n$
-
-- $T_2 = \max_{i=1,...,n} (X_i)$
-
-- $T_3 = \displaystyle \frac{n+1}{n} T_2$
-
-Pour chaque estimateur, calculer l'espérance et la variance, ainsi que l'erreur quadratique moyenne. Mettre en oeuvre un programme pour illustrer vos calculs.
+1) Simuler un échantillon de taille $n=50$ avec une espérance $\mu=1$ et un écart-type $\sigma=1$. Calculer la moyenne empirique $\bar x$. Calculer l'intervalle de confiance de $\mu$ au niveau $0.95\%$.
+	
+2)  Ecrire une fonction \textsf{confint.mean} qui prend comme arguments, l'échantillon, l'écart-type (connu) et le niveau de confiance, et retourne les deux bornes de l'intervalle de confiance. Tester cette fonction avec l'échantillon simulé avec des niveaux de confiance $0.90$, $0.95$ et $0.99$. Commenter.
+	
+3) Un intervalle de confiance ne contient pas toujours la vraie valeur. Simuler 100 échantillons de taille $n=50$ avec une espérance $\mu=1$ et un écart-type $\sigma=1$ et mettre cela dans une matrice notée $X100$. Calculer les 100 intervalles de confiance au niveau $0.95$ en utilisant votre fonction \textsf{confint.mean}. Faire une figure avec les 100 intervalles de confiance avec les vraies valeurs. On utilisera la fonction \textsf{matplot()}. Tracer sur le même graphique la droite d'équation $x=\mu$.
+	
+4) Répéter la même procédure avec $N=1000$, $N=10000$ et $N=100000$ et compter le nombre d'intervalles de confiance ne contenant pas la vraie valeur $\mu$. Commenter.
+	
+5) Simuler un échantillon de taille $n=1000$. Pour chaque $i=1,\ldots,n$, calculer les intervalles de confiance au niveau $0.95\%$ pour la moyenne de l'échantillon. Représenter avec des points rouges les moyennes successives calculées et en bleus les bornes des intervalles de confiance. Commenter.
 
 ## Exercice 3
 
-Un Sériciculteur a pesé 100 cocons de son élevage de vers à soie. Il a obtenu les résultats suivants :
 
-```{r}
-donnees <- read.table(file="cocons.txt",header=F,dec=".")
-library(DT)
-datatable(donnees, options = list(pageLength = 5))
-table(donnees)
-```
+Afin d’évaluer l’impact d’une campagne média anti-tabac, on s’est intéressé à la proportion de fumeurs menant des actions pour essayer d’arrêter de fumer (diminution de la consommation, achat de patchs anti-tabac, consultations médicales, ...), c’est-à-dire à la proportion de fumeurs "actifs" pour arrêter. 
 
-On appelle $mu$ la moyenne de tous les cocons de l'élevage et on suppose que le poids d'un cocon suit une loi normale, $\mathcal N(\mu,\sigma^2)$, avec $\sigma^2 = 0.0016 g^2$. On suppose que $X_i$ est le poids du i-ème cocon de cet échantillon. On suppose que ces $n$ variables aléatoires sont indépendantes et identiquement distribuées.
+Un sondage "avant campagne" a été effectué auprès de $n_1=1000$ fumeurs, et un sondage "après campagne" a été effectué auprès d’un autre échantillon de $n_2=1000$ fumeurs ; les deux échantillons sont donc indépendants. Le premier sondage donne une proportion de $p_1=0,15$ de fumeurs "actifs", alors que le deuxième sondage donne une proportion de $p_2=0,17$ de fumeurs "actifs". On veut savoir si la campagne a été efficace ; autrement dit si la proportion de fumeurs "actifs" a augmenté après la campagne.
 
-1. Donner la loi de $\bar X_n = \displaystyle \frac 1n X_i$. Centrez et réduisez cette variable aléatoire. On notera $Z_n$, cette variable centrée réduite. Donner la loi de $Z_n$.
+1) Déterminer un intervalle de confiance au niveau 95\% de la proportion de fumeurs "actifs" avant la campagne.
+	
+2) De façon analogue, donner un intervalle de confiance au niveau 95\% de la proportion de fumeurs "actifs" après la campagne.
+	
+3) Peut-on déduire de ces deux intervalles que la campagne a été efficace ?
 
-2. Déterminer un réel $t$ tel que $P(-t\leq Z_n\leq t)\geq 0.95$.
-
-3. Montrer que $P(\bar X_n-0.00784\leq \mu \leq \bar X_n + 0.00784) \geq 0.95$
+4) On suppose maintenant que $p_2=0,20$. Que pouvez-vous conclure ?
+	
+5) On suppose encore que $p_2=0,20$ mais que cette proportion a été calculée sur un échantillon de $n_2=500$ personnes. Que peut-on en conclure ?
 

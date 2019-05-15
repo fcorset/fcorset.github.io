@@ -43,9 +43,9 @@ datatable(donnees, options = list(pageLength = 5))
 table(donnees)
 ```
 
-On appelle $mu$ la moyenne de tous les cocons de l'élevage et on suppose que le poids d'un cocon suit une loi normale, $\mathcal N(\mu,\sigma^2)$, avec $\sigma^2 = 0.0016 g^2$. On suppose que $X_i$ est le poids du i-ème cocon de cet échantillon. On suppose que ces $n$ variables aléatoires sont indépendantes et identiquement distribuées.
+On appelle $\mu$ la moyenne de tous les cocons de l'élevage et on suppose que le poids d'un cocon suit une loi normale, $\mathcal N(\mu,\sigma^2)$, avec $\sigma^2 = 0.0016 g^2$. On suppose que $X_i$ est le poids du i-ème cocon de cet échantillon. On suppose que ces $n$ variables aléatoires sont indépendantes et identiquement distribuées.
 
-1. Donner la loi de $\bar X_n = \displaystyle \frac 1n X_i$. Centrez et réduisez cette variable aléatoire. On notera $Z_n$, cette variable centrée réduite. Donner la loi de $Z_n$.
+1. Donner la loi de $\bar X_n = \displaystyle \frac 1n \sum_{i=1}^n X_i$. Centrez et réduisez cette variable aléatoire. On notera $Z_n$, cette variable centrée réduite. Donner la loi de $Z_n$.
 
 2. Déterminer un réel $t$ tel que $P(-t\leq Z_n\leq t)\geq 0.95$.
 
