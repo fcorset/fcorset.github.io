@@ -17,6 +17,7 @@ ech.pollue<-function(n,mu=0,sigma2=1,sigma2pollue=50,p=0.1){
   tmp<-rbinom(n,1,p)
   return(tmp*rnorm(n,mu,sqrt(sigma2pollue))+(1-tmp)*rnorm(n,mu,sqrt(sigma2)))
 }
+ech.pollue(25)
 ```
 
 

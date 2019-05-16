@@ -388,7 +388,13 @@ $(document).ready(function () {
 <pre class="r"><code>ech.pollue&lt;-function(n,mu=0,sigma2=1,sigma2pollue=50,p=0.1){
   tmp&lt;-rbinom(n,1,p)
   return(tmp*rnorm(n,mu,sqrt(sigma2pollue))+(1-tmp)*rnorm(n,mu,sqrt(sigma2)))
-}</code></pre>
+}
+ech.pollue(25)</code></pre>
+<pre><code>##  [1] -0.70995890  0.88715914 -1.21281506 -0.29306470  0.80564670
+##  [6] -0.63645754 -0.66458962 -0.52007077  1.56686720 -0.48935393
+## [11] -1.41836211  0.19923518 -0.15432813 -1.27556246 -0.22780411
+## [16]  0.27950227  0.90101757 -0.20177975  0.64088068  0.14648030
+## [21]  2.97045731  0.05400143  0.48036163  1.12594053  1.01348051</code></pre>
 </div>
 <div id="exercices" class="section level1">
 <h1>Exercices</h1>
