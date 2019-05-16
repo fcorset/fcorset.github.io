@@ -384,7 +384,11 @@ $(document).ready(function () {
 </div>
 <div id="preambule" class="section level1">
 <h1>Préambule</h1>
-<p>Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span> (par défaut mu=0, sigma = 1, p=0.1 ) avec une proportion <span class="math inline">\(p\)</span> de données polluées (issues d’un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut)</p>
+<p>Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span> (par défaut mu=0, sigma = 1, p=0.1 ) avec une proportion <span class="math inline">\(p\)</span> de données polluées (issues d’un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut) :</p>
+<pre class="r"><code>ech.pollue&lt;-function(n,mu=0,sigma2=1,sigma2pollue=50,p=0.1){
+  tmp&lt;-rbinom(n,1,p)
+  return(tmp*rnorm(n,mu,sqrt(sigma2pollue))+(1-tmp)*rnorm(n,mu,sqrt(sigma2)))
+}</code></pre>
 </div>
 <div id="exercices" class="section level1">
 <h1>Exercices</h1>
@@ -392,8 +396,47 @@ $(document).ready(function () {
 <h2>Exercice 1</h2>
 <div id="premiere-partie" class="section level3">
 <h3>Première Partie</h3>
-<p>On considère <span class="math inline">\(N\)</span> échantillons de taille <span class="math inline">\(n\)</span> tirés d’une loi normale, <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span>. On s’intéresse à l’intervalle de confiance de la moyenne. Pour cela, nous allons donner les trois intervalles suivants : - En considérant que la variance est connue et égale à <span class="math inline">\(1\)</span>. - En considérant que la variance est inconnue et donc en se servant du quantile de la loi de Student. - En considérant que la variance est inconnue mais en remplaçant le quantile de la loi de Student par celui de la loi normale.</p>
+<p>On considère <span class="math inline">\(N\)</span> échantillons de taille <span class="math inline">\(n\)</span> tirés d’une loi normale, <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span>. On s’intéresse à l’intervalle de confiance de la moyenne. Pour cela, nous allons donner les trois intervalles suivants :</p>
+<ul>
+<li><p>En considérant que la variance est connue et égale à <span class="math inline">\(1\)</span>.</p></li>
+<li><p>En considérant que la variance est inconnue et donc en se servant du quantile de la loi de Student.</p></li>
+<li><p>En considérant que la variance est inconnue mais en remplaçant le quantile de la loi de Student par celui de la loi normale.</p></li>
+</ul>
 <p>Remplir le tableau suivant :</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center"><span class="math inline">\(n=15\)</span></th>
+<th align="center"><span class="math inline">\(n=30\)</span></th>
+<th align="center"><span class="math inline">\(n=50\)</span></th>
+<th align="center"><span class="math inline">\(n=100\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(IC(\mu)\)</span> avec <span class="math inline">\(\sigma^2=1\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(IC(\mu)\)</span> avec <span class="math inline">\(\sigma^2\)</span> inconnue <br> et quantile de la loi de Student</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(IC(\mu)\)</span> avec <span class="math inline">\(\sigma^2\)</span> inconnue <br> et quantile de la loi Normale</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="deuxieme-partie" class="section level3">
 <h3>Deuxième partie</h3>
@@ -402,7 +445,7 @@ $(document).ready(function () {
 </div>
 <div id="exercice-2" class="section level2">
 <h2>Exercice 2</h2>
-<p>Dans cet exercice, on suppose que <span class="math inline">\(X\)</span> suit une loi gaussienne, avec une variance connue et une espérance inconnue.</p>
+<p>Dans cet exercice, on suppose que <span class="math inline">\(X\)</span> suit une loi gaussienne, avec une variance connue et une espérance inconnue. Le résultat visuel de ce qui est demandé est visible sur le <a href="http://im2ag-shiny.u-ga.fr/fcorset/ICmu/">serveur shiny de l’Université Grenoble Alpes</a>.</p>
 <ol style="list-style-type: decimal">
 <li><p>Simuler un échantillon de taille <span class="math inline">\(n=50\)</span> avec une espérance <span class="math inline">\(\mu=1\)</span> et un écart-type <span class="math inline">\(\sigma=1\)</span>. Calculer la moyenne empirique <span class="math inline">\(\bar x\)</span>. Calculer l’intervalle de confiance de <span class="math inline">\(\mu\)</span> au niveau <span class="math inline">\(0.95\%\)</span>.</p></li>
 <li><p>Ecrire une fonction  qui prend comme arguments, l’échantillon, l’écart-type (connu) et le niveau de confiance, et retourne les deux bornes de l’intervalle de confiance. Tester cette fonction avec l’échantillon simulé avec des niveaux de confiance <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span> et <span class="math inline">\(0.99\)</span>. Commenter.</p></li>

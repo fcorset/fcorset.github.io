@@ -9,7 +9,16 @@ Pour commencer, lisez la partie du cours relative aux intervalles de confiance.
 
 # Préambule
 
-Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, $\mathcal N(\mu,\sigma^2)$ (par défaut mu=0, sigma = 1, p=0.1 ) avec une proportion $p$ de données polluées (issues d'un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut)
+Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, $\mathcal N(\mu,\sigma^2)$ (par défaut mu=0, sigma = 1, p=0.1 ) avec une proportion $p$ de données polluées (issues d'un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut) :
+
+
+```{r}
+ech.pollue<-function(n,mu=0,sigma2=1,sigma2pollue=50,p=0.1){
+  tmp<-rbinom(n,1,p)
+  return(tmp*rnorm(n,mu,sqrt(sigma2pollue))+(1-tmp)*rnorm(n,mu,sqrt(sigma2)))
+}
+```
+
 
 # Exercices
 
@@ -18,12 +27,20 @@ Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échan
 ### Première Partie
 
 On considère $N$ échantillons de taille $n$ tirés d'une loi normale, $\mathcal N(\mu,\sigma^2)$. On s'intéresse à l'intervalle de confiance de la moyenne. Pour cela, nous allons donner les trois intervalles suivants :
+
 - En considérant que la variance est connue et égale à $1$.
+
 - En considérant que la variance est inconnue et donc en se servant du quantile de la loi de Student.
+
 - En considérant que la variance est inconnue mais en remplaçant le quantile de la loi de Student par celui de la loi normale.
 
 Remplir le tableau suivant :
 
+|                |   $n=15$   |   $n=30$ | $n=50$  |   $n=100$ |
+|----------------|:----------:|:--------:|:-------:|:---------:|
+| $IC(\mu)$ avec $\sigma^2=1$        |           |          |         |           |
+| $IC(\mu)$ avec $\sigma^2$ inconnue <br> et quantile de la loi de Student |            |          |         |           |
+| $IC(\mu)$ avec $\sigma^2$ inconnue <br> et quantile de la loi Normale |           |     |         |           |
 
 ### Deuxième partie
 
@@ -32,7 +49,7 @@ On souhaite refaire la même chose mais cette fois-ci les échantillons sont pol
 
 ## Exercice 2
 
-Dans cet exercice, on suppose que $X$ suit une loi gaussienne, avec une variance connue et une espérance inconnue.
+Dans cet exercice, on suppose que $X$ suit une loi gaussienne, avec une variance connue et une espérance inconnue. Le résultat visuel de ce qui est demandé est visible sur le <a href="http://im2ag-shiny.u-ga.fr/fcorset/ICmu/">serveur shiny de l'Université Grenoble Alpes</a>.
 
 1) Simuler un échantillon de taille $n=50$ avec une espérance $\mu=1$ et un écart-type $\sigma=1$. Calculer la moyenne empirique $\bar x$. Calculer l'intervalle de confiance de $\mu$ au niveau $0.95\%$.
 	
@@ -43,6 +60,7 @@ Dans cet exercice, on suppose que $X$ suit une loi gaussienne, avec une variance
 4) Répéter la même procédure avec $N=1000$, $N=10000$ et $N=100000$ et compter le nombre d'intervalles de confiance ne contenant pas la vraie valeur $\mu$. Commenter.
 	
 5) Simuler un échantillon de taille $n=1000$. Pour chaque $i=1,\ldots,n$, calculer les intervalles de confiance au niveau $0.95\%$ pour la moyenne de l'échantillon. Représenter avec des points rouges les moyennes successives calculées et en bleus les bornes des intervalles de confiance. Commenter.
+
 
 ## Exercice 3
 

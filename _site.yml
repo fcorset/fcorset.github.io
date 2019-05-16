@@ -19,6 +19,8 @@ navbar:
           href: ./TPs/tp3.html
         - text: "TP4"
           href: ./TPs/tp4.html
+        - text: "TP5 : Intervalles de Confiance"
+          href: ./TPs/tp5.html
     - text: "Shiny"
       href: shiny.html
 #    - text: "CV"
