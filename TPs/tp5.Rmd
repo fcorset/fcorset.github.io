@@ -9,7 +9,7 @@ Pour commencer, lisez la partie du cours relative aux intervalles de confiance.
 
 # Préambule
 
-Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, $\mathcal N(\mu,\sigma^2)$ (par défaut mu=0, sigma = 1, p=0.1 ) avec une proportion $p$ de données polluées (issues d'un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut) :
+Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, $\mathcal N(\mu,\sigma^2)$ (par défaut $\mu=0$, $\sigma = 1$, $p=0.1$ ) avec une proportion $p$ de données polluées (issues d'un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut) :
 
 
 ```{r}

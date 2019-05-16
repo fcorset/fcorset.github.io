@@ -384,7 +384,7 @@ $(document).ready(function () {
 </div>
 <div id="preambule" class="section level1">
 <h1>Préambule</h1>
-<p>Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span> (par défaut mu=0, sigma = 1, p=0.1 ) avec une proportion <span class="math inline">\(p\)</span> de données polluées (issues d’un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut) :</p>
+<p>Préambule : La fonction ech.pollue(n,mu,sigma,sigmapollue,p) retourne un échantillon gaussien, <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span> (par défaut <span class="math inline">\(\mu=0\)</span>, <span class="math inline">\(\sigma = 1\)</span>, <span class="math inline">\(p=0.1\)</span> ) avec une proportion <span class="math inline">\(p\)</span> de données polluées (issues d’un échantillon gaussien de même moyenne mais de variance beaucoup plus grande : sigmapollue = 50 par défaut) :</p>
 <pre class="r"><code>ech.pollue&lt;-function(n,mu=0,sigma2=1,sigma2pollue=50,p=0.1){
   tmp&lt;-rbinom(n,1,p)
   return(tmp*rnorm(n,mu,sqrt(sigma2pollue))+(1-tmp)*rnorm(n,mu,sqrt(sigma2)))
