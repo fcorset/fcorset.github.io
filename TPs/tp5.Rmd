@@ -54,9 +54,9 @@ Dans cet exercice, on suppose que $X$ suit une loi gaussienne, avec une variance
 
 1) Simuler un échantillon de taille $n=50$ avec une espérance $\mu=1$ et un écart-type $\sigma=1$. Calculer la moyenne empirique $\bar x$. Calculer l'intervalle de confiance de $\mu$ au niveau de confiance $0.95$.
 	
-2)  Ecrire une fonction \textsf{confint.mean} qui prend comme arguments, l'échantillon, l'écart-type (connu) et le niveau de confiance, et retourne les deux bornes de l'intervalle de confiance. Tester cette fonction avec l'échantillon simulé avec des niveaux de confiance $0.90$, $0.95$ et $0.99$. Commenter.
+2)  Ecrire une fonction *confint.mean* qui prend comme arguments, l'échantillon, l'écart-type (connu) et le niveau de confiance, et retourne les deux bornes de l'intervalle de confiance. Tester cette fonction avec l'échantillon simulé avec des niveaux de confiance $0.90$, $0.95$ et $0.99$. Commenter.
 	
-3) Un intervalle de confiance ne contient pas toujours la vraie valeur. Simuler 100 échantillons de taille $n=50$ avec une espérance $\mu=1$ et un écart-type $\sigma=1$ et mettre cela dans une matrice notée $X100$. Calculer les 100 intervalles de confiance au niveau $0.95$ en utilisant votre fonction \textsf{confint.mean}. Faire une figure avec les 100 intervalles de confiance avec les vraies valeurs. On utilisera la fonction \textsf{matplot()}. Tracer sur le même graphique la droite d'équation $x=\mu$.
+3) Un intervalle de confiance ne contient pas toujours la vraie valeur. Simuler 100 échantillons de taille $n=50$ avec une espérance $\mu=1$ et un écart-type $\sigma=1$ et mettre cela dans une matrice notée $X100$. Calculer les 100 intervalles de confiance au niveau $0.95$ en utilisant votre fonction *confint.mean*. Faire une figure avec les 100 intervalles de confiance avec les vraies valeurs. On utilisera la fonction *matplot*. Tracer sur le même graphique la droite d'équation $x=\mu$.
 	
 4) Répéter la même procédure avec $N=1000$, $N=10000$ et $N=100000$ et compter le nombre d'intervalles de confiance ne contenant pas la vraie valeur $\mu$. Commenter.
 	

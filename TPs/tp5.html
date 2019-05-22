@@ -390,11 +390,11 @@ $(document).ready(function () {
   return(tmp*rnorm(n,mu,sqrt(sigma2pollue))+(1-tmp)*rnorm(n,mu,sqrt(sigma2)))
 }
 ech.pollue(25)</code></pre>
-<pre><code>##  [1]  -1.12172459   0.48947766  13.46163071   0.09208327  -1.61600419
-##  [6]   0.67384561   0.62910577  -0.82094474  -0.19284901  -2.01251047
-## [11]   0.66570569   0.93862864   0.21966948   0.81340653  -0.73278318
-## [16]  -2.22152118  -1.46675024   1.07178089   0.05045631 -12.47474429
-## [21]   0.84383287   1.37816135   1.37558690  -1.37073652   1.67179177</code></pre>
+<pre><code>##  [1] -1.4739850  1.3465558  0.7004950 -0.1461872  1.4100905 -1.2056065
+##  [7] -0.4181504  0.3676346  0.4553671 -1.5241985 -6.0338100  1.4726274
+## [13]  1.5067629  1.3788172 -0.3440378 -1.2027968 -0.4700502  1.2724677
+## [19] -0.1955786  1.3408882 12.1579307 -0.4046370 -0.2437434 -1.4290700
+## [25]  0.8775010</code></pre>
 </div>
 <div id="exercices" class="section level1">
 <h1>Exercices</h1>
@@ -454,8 +454,8 @@ ech.pollue(25)</code></pre>
 <p>Dans cet exercice, on suppose que <span class="math inline">\(X\)</span> suit une loi gaussienne, avec une variance connue et une espérance inconnue. Le résultat visuel de ce qui est demandé est visible sur le <a href="http://im2ag-shiny.u-ga.fr/fcorset/ICmu/">serveur shiny de l’Université Grenoble Alpes</a>.</p>
 <ol style="list-style-type: decimal">
 <li><p>Simuler un échantillon de taille <span class="math inline">\(n=50\)</span> avec une espérance <span class="math inline">\(\mu=1\)</span> et un écart-type <span class="math inline">\(\sigma=1\)</span>. Calculer la moyenne empirique <span class="math inline">\(\bar x\)</span>. Calculer l’intervalle de confiance de <span class="math inline">\(\mu\)</span> au niveau de confiance <span class="math inline">\(0.95\)</span>.</p></li>
-<li><p>Ecrire une fonction  qui prend comme arguments, l’échantillon, l’écart-type (connu) et le niveau de confiance, et retourne les deux bornes de l’intervalle de confiance. Tester cette fonction avec l’échantillon simulé avec des niveaux de confiance <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span> et <span class="math inline">\(0.99\)</span>. Commenter.</p></li>
-<li><p>Un intervalle de confiance ne contient pas toujours la vraie valeur. Simuler 100 échantillons de taille <span class="math inline">\(n=50\)</span> avec une espérance <span class="math inline">\(\mu=1\)</span> et un écart-type <span class="math inline">\(\sigma=1\)</span> et mettre cela dans une matrice notée <span class="math inline">\(X100\)</span>. Calculer les 100 intervalles de confiance au niveau <span class="math inline">\(0.95\)</span> en utilisant votre fonction . Faire une figure avec les 100 intervalles de confiance avec les vraies valeurs. On utilisera la fonction . Tracer sur le même graphique la droite d’équation <span class="math inline">\(x=\mu\)</span>.</p></li>
+<li><p>Ecrire une fonction <em>confint.mean</em> qui prend comme arguments, l’échantillon, l’écart-type (connu) et le niveau de confiance, et retourne les deux bornes de l’intervalle de confiance. Tester cette fonction avec l’échantillon simulé avec des niveaux de confiance <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span> et <span class="math inline">\(0.99\)</span>. Commenter.</p></li>
+<li><p>Un intervalle de confiance ne contient pas toujours la vraie valeur. Simuler 100 échantillons de taille <span class="math inline">\(n=50\)</span> avec une espérance <span class="math inline">\(\mu=1\)</span> et un écart-type <span class="math inline">\(\sigma=1\)</span> et mettre cela dans une matrice notée <span class="math inline">\(X100\)</span>. Calculer les 100 intervalles de confiance au niveau <span class="math inline">\(0.95\)</span> en utilisant votre fonction <em>confint.mean</em>. Faire une figure avec les 100 intervalles de confiance avec les vraies valeurs. On utilisera la fonction <em>matplot</em>. Tracer sur le même graphique la droite d’équation <span class="math inline">\(x=\mu\)</span>.</p></li>
 <li><p>Répéter la même procédure avec <span class="math inline">\(N=1000\)</span>, <span class="math inline">\(N=10000\)</span> et <span class="math inline">\(N=100000\)</span> et compter le nombre d’intervalles de confiance ne contenant pas la vraie valeur <span class="math inline">\(\mu\)</span>. Commenter.</p></li>
 <li><p>Simuler un échantillon de taille <span class="math inline">\(n=1000\)</span>. Pour chaque <span class="math inline">\(i=1,\ldots,n\)</span>, calculer les intervalles de confiance au niveau <span class="math inline">\(0.95\%\)</span> pour la moyenne de l’échantillon. Représenter avec des points rouges les moyennes successives calculées et en bleus les bornes des intervalles de confiance. Commenter.</p></li>
 </ol>
