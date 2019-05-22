@@ -52,7 +52,7 @@ On souhaite refaire la même chose mais cette fois-ci les échantillons sont pol
 
 Dans cet exercice, on suppose que $X$ suit une loi gaussienne, avec une variance connue et une espérance inconnue. Le résultat visuel de ce qui est demandé est visible sur le <a href="http://im2ag-shiny.u-ga.fr/fcorset/ICmu/">serveur shiny de l'Université Grenoble Alpes</a>.
 
-1) Simuler un échantillon de taille $n=50$ avec une espérance $\mu=1$ et un écart-type $\sigma=1$. Calculer la moyenne empirique $\bar x$. Calculer l'intervalle de confiance de $\mu$ au niveau $0.95\%$.
+1) Simuler un échantillon de taille $n=50$ avec une espérance $\mu=1$ et un écart-type $\sigma=1$. Calculer la moyenne empirique $\bar x$. Calculer l'intervalle de confiance de $\mu$ au niveau de confiance $0.95$.
 	
 2)  Ecrire une fonction \textsf{confint.mean} qui prend comme arguments, l'échantillon, l'écart-type (connu) et le niveau de confiance, et retourne les deux bornes de l'intervalle de confiance. Tester cette fonction avec l'échantillon simulé avec des niveaux de confiance $0.90$, $0.95$ et $0.99$. Commenter.
 	
