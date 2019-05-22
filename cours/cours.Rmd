@@ -665,10 +665,10 @@ où $q^{n-1}_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi du chi
 On suppose que l'on est en présence d'un échantillon de grande taille (en pratique $n\geq 30$). Un intervalle de confiance de niveau $(1-\alpha)$ pour une proportion $p$ inconnue est
 
 $$
-\left[\bar X - u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})};\hat X + u_{1-\alpha/2} \sqrt{(\frac{\hat X (1-\hat X)}{n})} \right].
+\left[\hat p - u_{1-\alpha/2} \sqrt{(\frac{\hat p (1-\hat p)}{n})};\hat p + u_{1-\alpha/2} \sqrt{(\frac{\hat p (1-\hat p)}{n})} \right].
 $$
 
-où $n$ est la taille de l'échantillon, $\bar X$ la fréquence empirique et $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $\mathcal N(0,1)$.
+où $n$ est la taille de l'échantillon, $\bar p$ la fréquence empirique et $u_{1-\alpha/2}$ est le quantile d'ordre $1-\alpha/2$ de la loi normale $\mathcal N(0,1)$.
 
 
 # References
