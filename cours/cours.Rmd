@@ -269,8 +269,6 @@ $$
 >
 > On dit que $X$ et $Y$ sont indépendantes si $\forall (x,y)\in \mathbb R^2$, $P(X\leq x,Y\leq y) =P(X\leq x)P(Y\leq y)$
 
-<<<<<<< HEAD
-=======
 Ainsi, si $X$ et $Y$ sont deux variables aléatoires indépendantes alors :
 $$
 cov(X,Y)=0
