@@ -491,7 +491,7 @@ Elle se calcule uniquement sur des variables quantitatives via la fonction mean(
 mean(taille)
 ```
 
-Question : Quelle est la moyenne de la variable taille ? La comparer à la moyenne ?
+Question : Quelle est la moyenne de la variable taille ? La comparer à la médiane ?
 
 ### Les fractiles
 
