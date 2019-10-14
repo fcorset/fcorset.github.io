@@ -4,7 +4,7 @@ title: "Curriculum Vitae"
 
 <a href="CV.pdf#" class="download" title="Download CV as PDF">Télécharger le CV</a>			
 
-## Maître de Conférences à l'Université Grenoble Alpes
+## Maître de Conférences au LJK (UMR 5224) et à l'Université Grenoble Alpes
 
 # Enseignements 
 
@@ -12,6 +12,6 @@ Au département informatique de l'IUT2 : Mathématiques et Statistique
 
 En M2 SSD de l'UFR IM2AG : Fiabilité et Statistique Computationnelle
 
-# Recherche 
+# Recherche au sein de l'équipe ASAR
 
 Fiabilité et Optimisation de la maintenance

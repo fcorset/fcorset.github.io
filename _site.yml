@@ -23,9 +23,9 @@ navbar:
           href: ./TPs/tp5.html
     - text: "Shiny"
       href: shiny.html
-#    - text: "CV"
-#      icon: fa-file-pdf-o
-#      href: cv.html
+    - text: "CV"
+      icon: fa-file-pdf-o
+      href: cv.html
 #    - text: "Blog"
 #      icon: fa-rss
 #      href: https://fcorset.github.io/blog/     
